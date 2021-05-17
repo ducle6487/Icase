@@ -41,7 +41,7 @@ public class HomeController {
 	public String newdes() {
 		return "newdescription";
 	}
-
+//	gelloasdaga
 	@GetMapping("/product")
 	public String product() {
 		return "product";
