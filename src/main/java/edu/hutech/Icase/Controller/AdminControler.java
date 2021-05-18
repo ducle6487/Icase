@@ -25,4 +25,8 @@ public class AdminControler {
 
 	}
 
+	@GetMapping("/test")
+	public void test() {
+
+	}
 }
