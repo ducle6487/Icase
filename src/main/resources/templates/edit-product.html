@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Dashboard | Icase</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/vendor/linearicons/style.css">
+    <link rel="stylesheet" href="../assets/vendor/chartist/css/chartist-custom.css">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <!-- ICONS -->
+
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/styleanhduc.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+
+    <link rel="stylesheet" href="../css/select2.min.css">
+
+    <!-- <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> -->
+    <link rel="icon" type="image/png" sizes="96x96" href="../image/phone-case.png">
+</head>
+
+<body>
+    <!-- WRAPPER -->
+    <div id="wrapper">
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="brand" style="padding: 8px 39px;">
+                <a th:href="@{/admin/dashboard}"><img src="../image/iconic.png" alt="Icase Logo"
+                        class="img-responsive logo"></a>
+            </div>
+            <div class="container-fluid">
+
+
+                <div id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- <li class="dropdown">
+							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+								<i class="lnr lnr-alarm"></i>
+								<span class="badge bg-danger">5</span>
+							</a>
+							<ul class="dropdown-menu notifications">
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
+								<li><a href="#" class="more">See all notifications</a></li>
+							</ul>
+						</li> -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png"
+                                    class="img-circle" alt="Avatar"> <span>Samuel</span> <i
+                                    class="icon-submenu lnr lnr-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                            </ul>
+                        </li>
+
+                        <!-- <li>
+							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
+						</li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- END NAVBAR -->
+        <!-- LEFT SIDEBAR -->
+        <div id="sidebar-nav" class="sidebar">
+            <div class="sidebar-scroll">
+                <nav>
+                    <ul class="nav">
+                        <li><a th:href="@{/admin/dashboard}" class=""><i class="lnr lnr-home"></i> <span>Tổng
+                                    quan</span></a></li>
+                        <li><a th:href="@{/admin/all-product}" class=""><i class="lnr lnr-dice"></i> <span>Sản
+                                    phẩm</span></a></li>
+                        <li>
+                            <a th:href="@{/admin/all-order}" class=""><i class="lnr lnr-file-empty"></i> <span>Đơn
+                                    hàng</span></i></a>
+                        </li>
+                        <li><a th:href="@{/admin/product-edit}" class="active"><i class="lnr lnr-code"></i> <span>Cập
+                                    nhật đơn
+                                    hàng</span></a></li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- END LEFT SIDEBAR -->
+        <!-- MAIN -->
+        <div class="main">
+            <!-- MAIN CONTENT -->
+            <div class="main-content">
+                <div class="container-fluid">
+
+                    <div class="container">
+
+                        <section class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Cập nhật thông tin sản phẩm</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <form th:action="@{/update-product}" th:object="${product}" class="form-horizontal"
+                                    role="form" enctype="multipart/form-data">
+
+                                    <input type="number" hidden="true" field="*{idproduct}" value="0" name="idproduct">
+
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-3 control-label">Tên sản phẩm</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" field="*{name}" required name="name"
+                                                id="name" placeholder="Nhập tên sản phẩm">
+                                        </div>
+                                    </div> <!-- form-group // -->
+
+                                    <div class="form-group">
+                                        <label for="tech" class="col-sm-3 control-label">Thiết bị hỗ trợ</label>
+                                        <div class="col-sm-3">
+                                            <!-- <select class="js-example-basic-multiple" name="states[]" id="device-brand"
+                                                multiple="multiple">
+
+                                            </select> -->
+                                            <select class="js-example-basic-single js-states form-control"
+                                                id="device-brand" field="*{phonebrand}" required name="phonebrand">
+                                                <option selected hidden="true"></option>
+                                            </select>
+
+
+                                            <!-- <select class="select" id="device-brand">
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                            </select>
+                                            <label class="form-label select-label">Nhà cung cấp thiết bị</label> -->
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="value-device" field="*{device}" name="device"
+                                                hidden="true">
+                                            <select class="js-example-basic-multiple js-states form-control" id="device"
+                                                multiple="multiple" required></select>
+
+                                            <!-- <select class="select" id="device" multiple>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                            </select>
+                                            <label class="form-label select-label">Tên thiết bị</label> -->
+                                        </div>
+                                    </div> <!-- form-group // -->
+                                    <div class="form-group">
+                                        <label for="tech" class="col-sm-3 control-label">Mẫu - Màu hỗ trợ</label>
+                                        <input type="text" hidden="true" field="*{color}" name="color" id="value-color">
+                                        <div class="col-sm-3">
+                                            <select class="js-example-basic-multiple js-states form-control"
+                                                multiple="multiple" id="color" required>
+
+                                                <!-- <option th:each="color : ${colors}" th:text="${color}"></option> -->
+                                            </select>
+
+                                            <!-- <select class="select" id="device" multiple>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                            </select>
+                                            <label class="form-label select-label">Tên thiết bị</label> -->
+                                        </div>
+                                    </div> <!-- form-group // -->
+                                    <div class="form-group">
+                                        <label for="amount" class="col-sm-3 control-label">Tồn kho</label>
+                                        <div class="col-sm-3">
+                                            <input type="number" class="form-control" value="0" min="1" max="100000"
+                                                required name="amount" field="*{amount}" id="amount"
+                                                placeholder="Số lượng còn trong kho.">
+                                        </div>
+                                    </div> <!-- form-group // -->
+                                    <div class="form-group">
+                                        <label for="price" class="col-sm-3 control-label">Đơn giá</label>
+                                        <div class="col-sm-3">
+                                            <input type="number" class="form-control" value="0" min="1" max="100000"
+                                                required name="price" field="*{price}" id="price"
+                                                placeholder="Đơn giá sản phẩm.">
+                                        </div>
+                                    </div> <!-- form-group // -->
+                                    <div class="form-group">
+                                        <label for="casebrand" class="col-sm-3 control-label">Thương hiệu</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" name="casebrand" required
+                                                field="*{brand}" id="casebrand" placeholder="Thương hiệu nhà cung cấp.">
+                                        </div>
+                                    </div> <!-- form-group // -->
+                                    <div class="form-group">
+                                        <label for="about" class="col-sm-3 control-label">Mô tả</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" name="description"
+                                                placeholder="Mô tả thông tin sản phẩm." field="*{description}"
+                                                required></textarea>
+                                        </div>
+                                    </div> <!-- form-group // -->
+
+
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-3 control-label">Hình ảnh (png)</label>
+                                        <div class="col-sm-3">
+                                            <input type="file" multiple accept="image/png">
+                                        </div>
+
+                                    </div> <!-- form-group // -->
+
+                                    <hr>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-9">
+                                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                        </div>
+                                    </div> <!-- form-group // -->
+                                </form>
+
+                            </div><!-- panel-body // -->
+                        </section><!-- panel// -->
+
+
+                    </div> <!-- container// -->
+
+                </div>
+            </div>
+            <!-- END MAIN CONTENT -->
+        </div>
+        <!-- END MAIN -->
+        <div class="clearfix"></div>
+        <footer>
+            <div class="container-fluid">
+                <p class="copyright">&copy; 2021 <a href="https://www.themeineed.com" target="_blank">Icase Admin
+                        Page</a>. Made by Anh Duc.</p>
+            </div>
+        </footer>
+    </div>
+    <!-- END WRAPPER -->
+    <!-- Javascript -->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../assets/scripts/klorofil-common.js"></script>
+    <script src="../js/select2.min.js"></script>
+    <script th:inline="javascript">
+        var subjectObject = {
+            "Xiaomi": ["Mi 10T Pro", "Redmi K30s", "Mi 10T Lite", "Redmi Note 9 Pro 5G", "Mi 11", "Black Shark 3", "Redmi Note 9S", "Note 9 Pro", "Poco M3", "Redmi 9T", "Poco X3 NFC", "Redmi Note 8 Pro", "Mi 10T", "Mi 10T Pro 5G", "K30S", "Redmi Note 9 5G", "Note 9 Pro 5G", "Redmi K30 5G", "Redmi Note 8", "Poco F2 Pro", "Redmi K30 Pro", "K30 Ultra", "Mi 9T", "Redmi K20", "Redmi Note 7", "Redmi 9A", "Mi Note 10 Lite", "PocoPhone X2", "Redmi 9", "Redmi 9C", "Redmi Note 9", "Redmi 10X 4G", "Mi 10 Lite", "Mi 9", "Mi 8", "Poco X2", "Note 8 Pro"],
+            "Realme": ["Realme 7", "Realme 7i", "Realme 7 Pro", "Realme 6", "Realme 6 Pro", "Realme C17", "Realme 5 Pro", "Realme 5", "Realme X2 Pro", "Realme XT", "Realme X2"],
+            "Oppo": ["Oppo A52", "Oppo A92", "OPPO A5", "OPPO A3S", "Reno ACE", "Oppo K5", "Oppo A9", "Oppo A11X"],
+            "Apple": ["iPhone 6 Plus", "iPhone 7", "iPhone 7 Plus / 8 Plus", "iPhone X / Xs", "iPhone 6 Plus / 6s Plus", "iPhone Xs Max", "iPhone X", "iPhone Xs", "iPhone XR", "iPhone 7 Plus", "iPhone X-XR", "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone 8", "iPhone 6/7/8", "iPhone 6/6S", "Airpods 1 / 2", "Airpods Pro"],
+            "Vsmart": ["Vsmart Aris Pro", "Vsmart Aris", "Vsmart Joy 4", "Vsmart Live 4", "Vsmart Star 4", "Vsmart Star 3", "Vsmart Active 3", "Vsmart Joy 3", "Vsmart Bee 3", "Vsmart Star", "Vsmart Joy 1", "Vsmart Joy 1+ Plus"],
+            "Samsung": ["Galaxy Note 20 Ultra", "Galaxy S8", "Galaxy A7 2017", "Galaxy A5 2017", "Galaxy A3 2017", "Galaxy J7 Prime", "Galaxy A52", "Galaxy S21 Ultra", "Galaxy S21+ Plus", "Galaxy S21", "Galaxy A02s", "Galaxy Note 9", "Galaxy Note 8", "Galaxy S20 FE", "Galaxy M51", "Galaxy A11", "Galaxy A21s", "Galaxy M11", "Galaxy M31", "Galaxy S10 5G"],
+            "Huawei": ["Huawei P40 Pro", "Huawei P40", "Huawei Nova 5T", "Mate 30 Pro", "Huawei Y9s", "Huawei Nova 7i", "Huawei Nova 6 SE", "Huawei P30 Lite", "Huawei Y9 2019", "Huawei P30", "Huawei P30 Pro", "Redmi K30"]
+        }
+
+
+
+        window.onload = function () {
+            var subjectSel = document.getElementById("device-brand");
+            var chapterSel = document.getElementById("device");
+            var colorSel = document.getElementById("color");
+
+            /*<![CDATA[*/
+
+            var brand = /*[[${ brand }]]*/ '';  //Make sure this is bills and not bill as you have done it.
+            var list = /*[[${device}]]*/[];
+            var listallcolor =  /*[[${colors}]]*/[];
+            var listcolor = /*[[${listcolor}]]*/[];
+
+            /*]]>*/
+
+            var data;
+
+            for (var x in subjectObject) {
+
+                if (x == brand) {
+                    subjectSel.options[subjectSel.options.length] = new Option(x, x, false, true);
+                    // window.alert(x);
+                    data = x;
+                } else {
+                    // window.alert(x);
+                    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+                }
+
+
+            }
+
+            if (data != null) {
+
+
+                //empty Chapters dropdown
+                chapterSel.length = -1;
+                //display correct values
+                var z = subjectObject[data];
+
+
+
+                for (var i = 0; i < z.length; i++) {
+                    var selected = false;
+                    for (var j = 0; j < list.length; j++) {
+                        if (list[j] == z[i]) {
+                            chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i], false, true);
+                            selected = true;
+                            break;
+                        }
+                    }
+                    if (selected == false) {
+                        chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+
+                    }
+
+                }
+                var str = "";
+                var strValue = Array.from(document.getElementById("device").options).filter(option => option.selected).map(option => option.value);
+                var device = document.getElementById("value-device");
+                for (var i = 0; i < strValue.length; i++) {
+                    strValue[i] = strValue[i] + "|";
+                    str = str + strValue[i];
+
+                }
+                device.value = str;
+                // window.alert(device.value);
+            }
+
+            subjectSel.onchange = function () {
+
+                //empty Chapters dropdown
+                chapterSel.length = 1;
+
+                //display correct values
+                // window.alert(this.value);
+                var z = subjectObject[this.value];
+                for (var i = 0; i < z.length; i++) {
+
+                    chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+
+                }
+
+
+            }
+            chapterSel.onchange = function () {
+                var z = Array.from(document.getElementById("device").options).filter(option => option.selected).map(option => option.value);
+
+                var str = "";
+                var device = document.getElementById("value-device");
+                for (var i = 0; i < z.length; i++) {
+                    z[i] = z[i] + "|";
+                    str = str + z[i];
+
+                }
+                device.value = str;
+                // window.alert(device.value);
+            }
+
+            if (listcolor.length > 0) {
+                //load all option
+                for (var i = 0; i < listallcolor.length; i++) {
+                    var selected = false;
+                    for (var j = 0; j < listcolor.length; j++) {
+                        if (listallcolor[i] == listcolor[j]) {
+                            selected = true;
+                            colorSel.options[colorSel.options.length] = new Option(listallcolor[i], listallcolor[i], false, true);
+                        }
+                    }
+                    if (selected == false) {
+
+                        colorSel.options[colorSel.options.length] = new Option(listallcolor[i], listallcolor[i]);
+
+                    }
+                }
+
+                //save value option
+                var selectedcolors = Array.from(document.getElementById("color").options).filter(option => option.selected).map(option => option.value);
+
+                var str = "";
+                var colorValue = document.getElementById("value-color");
+                for (var i = 0; i < selectedcolors.length; i++) {
+                    selectedcolors[i] = selectedcolors[i] + "|";
+                    str = str + selectedcolors[i];
+                }
+                colorValue.value = str;
+                // window.alert(colorValue.value);
+            }
+
+            colorSel.onchange = function () {
+                //save value option
+                var selectedcolors = Array.from(document.getElementById("color").options).filter(option => option.selected).map(option => option.value);
+
+                var str = "";
+                var colorValue = document.getElementById("value-color");
+                for (var i = 0; i < selectedcolors.length; i++) {
+                    selectedcolors[i] = selectedcolors[i] + "|";
+                    str = str + selectedcolors[i];
+                }
+                colorValue.value = str;
+                // window.alert(colorValue.value);
+            }
+
+        }
+
+
+
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2({
+                tags: true,
+                placeholder: "Chọn hoặc thêm mới",
+
+
+            });
+            $(".js-example-basic-single").select2({
+                tags: true,
+                placeholder: "Chọn hoặc thêm mới",
+                allowClear: true
+            });
+        });
+    </script>
+
+</body>
+
+</html>

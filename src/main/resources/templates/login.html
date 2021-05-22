@@ -14,17 +14,18 @@
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-	<!-- ICONS --><!-- 
+	<!-- ICONS -->
+	<!-- 
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> -->
 	<link rel="icon" type="image/png" sizes="96x96" href="../image/phone-case.png">
-	
+
 </head>
 
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
-	<script src="https://apps.elfsight.com/p/platform.js" defer></script>
-	<div hidden=true class="elfsight-app-2cee16c1-38a2-4bff-8330-242bdd9af5a1"></div>
+		<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+		<div hidden=true class="elfsight-app-2cee16c1-38a2-4bff-8330-242bdd9af5a1"></div>
 		<div class="vertical-align-wrap">
 			<div class="vertical-align-middle">
 				<div class="auth-box ">
@@ -36,12 +37,14 @@
 							</div>
 							<form class="form-auth-small" th:action="@{/checkLogin}" th:object="${admin}" method="post">
 								<div class="form-group ">
-									<label for="signin-email" class="control-label sr-only" >Email</label>
-									<input type="text" class="form-control" id="signin-email" name="userName" placeholder="Tài khoản">
+									<label for="signin-email" class="control-label sr-only">Email</label>
+									<input type="text" class="form-control" id="signin-email" name="userName" required
+										pattern=".{5,}" placeholder="Tài khoản">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" class="form-control" id="signin-password" name="password" placeholder="Mật khẩu">
+									<input type="password" class="form-control" id="signin-password" name="password"
+										required pattern=".{6,}" placeholder="Mật khẩu">
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">Đăng nhập</button>
 							</form>

@@ -16,6 +16,11 @@
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
+
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/styleanhduc.css" />
+	<link rel="stylesheet" href="../css/responsive.css" />
+
 	<!-- <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> -->
 	<link rel="icon" type="image/png" sizes="96x96" href="../image/phone-case.png">
 </head>
@@ -26,11 +31,12 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand" style="padding: 8px 39px;">
-				<a th:href="@{/admin/dashboard}"><img src="../image/iconic.png" alt= "Icase Logo" class="img-responsive logo"></a>
+				<a th:href="@{/admin/dashboard}"><img src="../image/iconic.png" alt="Icase Logo"
+						class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
-				
-				
+
+
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<!-- <li class="dropdown">
@@ -48,7 +54,9 @@
 							</ul>
 						</li> -->
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png"
+									class="img-circle" alt="Avatar"> <span>Samuel</span> <i
+									class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -56,7 +64,7 @@
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
-						
+
 						<!-- <li>
 							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
 						</li> -->
@@ -70,13 +78,17 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a th:href="@{/admin/dashboard}" class="active"><i class="lnr lnr-home"></i> <span>Tổng quan</span></a></li>
-						<li><a th:href="@{/admin/all-product}" class=""><i class="lnr lnr-dice"></i> <span>Sản phẩm</span></a></li>
+						<li><a th:href="@{/admin/dashboard}" class="active"><i class="lnr lnr-home"></i> <span>Tổng
+									quan</span></a></li>
+						<li><a th:href="@{/admin/all-product}" class=""><i class="lnr lnr-dice"></i> <span>Sản
+									phẩm</span></a></li>
 						<li>
-							<a  th:href="@{/admin/all-order}" class=""><i class="lnr lnr-file-empty"></i> <span>Đơn hàng</span></i></a>
+							<a th:href="@{/admin/all-order}" class=""><i class="lnr lnr-file-empty"></i> <span>Đơn
+									hàng</span></i></a>
 						</li>
-						<li><a th:href="@{/admin/add-product}" class=""><i class="lnr lnr-code"></i> <span>Thêm đơn hàng</span></a></li>
-						
+						<li><a th:href="@{/admin/product-edit}" class=""><i class="lnr lnr-code"></i> <span>Cập nhật đơn
+									hàng</span></a></li>
+
 					</ul>
 				</nav>
 			</div>
@@ -94,7 +106,7 @@
 							<p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
 						</div>
 						<div class="panel-body">
-							
+
 							<div class="row">
 								<div class="col-md-9">
 									<div id="headline-chart" class="ct-chart"></div>
@@ -122,35 +134,37 @@
 							<h3 class="panel-title">Tổng quan năm 2021</h3>
 						</div>
 						<div class="panel-body">
-							
+
 							<div class="row">
 								<div class="col-md-9">
 									<div id="headline-chart-year" class="ct-chart"></div>
 								</div>
 								<div class="col-md-3">
 									<div class="weekly-summary text-right">
-										<span class="number">2,315</span><span class="percentage"></span> đơn hàng</span>
+										<span class="number">2,315</span><span class="percentage"></span> đơn
+										hàng</span>
 										<span class="info-label">Tổng số đơn hàng đã bán năm 2021</span>
 									</div>
 									<div class="weekly-summary text-right">
 										<span class="number">5,758,000</span><span class="percentage"></i> VNĐ</span>
 										<span class="info-label">Tổng lợi nhuận năm 2021</span>
 									</div>
-								
+
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- END OVERVIEW -->
-					<div class="row"> 
+					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-6" style="align-self: center;">
 							<!-- RECENT PURCHASES -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">Recent Purchases</h3>
+									<h3 class="panel-title">Đơn hàng</h3>
 									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-toggle-collapse"><i
+												class="lnr lnr-chevron-up"></i></button>
 										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
 									</div>
 								</div>
@@ -206,8 +220,10 @@
 								</div>
 								<div class="panel-footer">
 									<div class="row">
-										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> 24 giờ qua</span></div>
-										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Xem tất cả đơn hàng</a></div>
+										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> 24
+												giờ qua</span></div>
+										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Xem tất cả
+												đơn hàng</a></div>
 									</div>
 								</div>
 							</div>
@@ -220,7 +236,7 @@
 						<script src="https://apps.elfsight.com/p/platform.js" defer></script>
 						<div class="elfsight-app-2cee16c1-38a2-4bff-8330-242bdd9af5a1"></div>
 					</div>
-					
+
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
@@ -229,7 +245,8 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Icase Admin Page</a>. Made by Anh Duc.</p>
+				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Icase Admin
+						Page</a>. Made by Anh Duc.</p>
 			</div>
 		</footer>
 	</div>
@@ -242,44 +259,44 @@
 	<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="../assets/scripts/klorofil-common.js"></script>
 	<script>
-	$(function() {
-		var data, options;
+		$(function () {
+			var data, options;
 
-		// headline charts for weekly
-		data = {
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-			series: [
-				[23, 29, 24, 40, 25]
-			]
-		};
+			// headline charts for weekly
+			data = {
+				labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+				series: [
+					[23, 29, 24, 40, 25]
+				]
+			};
 
-		options = {
-			height: "300px",
-			axisX: {
-				showGrid: false
-			},
-		};
+			options = {
+				height: "300px",
+				axisX: {
+					showGrid: false
+				},
+			};
 
-		new Chartist.Line('#headline-chart', data, options);
+			new Chartist.Line('#headline-chart', data, options);
 
-		// headline charts for year
-		data = {
-			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-			series: [
-				[200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
-			]
-		};
+			// headline charts for year
+			data = {
+				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				series: [
+					[200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
+				]
+			};
 
-		options = {
-			height: "300px",
-			axisX: {
-				showGrid: false
-			},
-		};
+			options = {
+				height: "300px",
+				axisX: {
+					showGrid: false
+				},
+			};
 
-		new Chartist.Line('#headline-chart-year', data, options);
+			new Chartist.Line('#headline-chart-year', data, options);
 
-	});
+		});
 	</script>
 </body>
 
