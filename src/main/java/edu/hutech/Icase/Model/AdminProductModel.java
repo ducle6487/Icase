@@ -1,19 +1,16 @@
 package edu.hutech.Icase.Model;
 
-
 public class AdminProductModel {
-    
 
     public int idProduct;
     public String nameProduct;
     public int idBrandPhone;
-    public Long price;
+    public Long price = 0l;
     public String description;
     public int amount;
     public String caseBrand;
     public int sold;
     public String dateAdded;
-
 
     public int getIdProduct() {
         return this.idProduct;
@@ -86,7 +83,5 @@ public class AdminProductModel {
     public void setDateAdded(String dateAdded) {
         this.dateAdded = dateAdded;
     }
-
-
 
 }

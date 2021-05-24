@@ -114,13 +114,15 @@
                                 <form th:action="@{/update-product}" th:object="${product}" class="form-horizontal"
                                     role="form" enctype="multipart/form-data">
 
-                                    <input type="number" hidden="true" field="*{idproduct}" value="0" name="idproduct">
+                                    <input type="number" hidden="true" field="*{idproduct}" value="0"
+                                        th:value="${product.idProduct}" name="idproduct">
 
                                     <div class="form-group">
                                         <label for="name" class="col-sm-3 control-label">Tên sản phẩm</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" field="*{name}" required name="name"
-                                                id="name" placeholder="Nhập tên sản phẩm">
+                                            <input type="text" class="form-control" field="*{name}"
+                                                th:value="${product.nameProduct}" required name="name" id="name"
+                                                placeholder="Nhập tên sản phẩm">
                                         </div>
                                     </div> <!-- form-group // -->
 
@@ -185,38 +187,41 @@
                                     <div class="form-group">
                                         <label for="amount" class="col-sm-3 control-label">Tồn kho</label>
                                         <div class="col-sm-3">
-                                            <input type="number" class="form-control" value="0" min="1" max="100000"
-                                                required name="amount" field="*{amount}" id="amount"
-                                                placeholder="Số lượng còn trong kho.">
+                                            <input type="number" class="form-control" value="0"
+                                                th:value="${product.amount}" min="1" max="100000" required name="amount"
+                                                field="*{amount}" id="amount" placeholder="Số lượng còn trong kho.">
                                         </div>
                                     </div> <!-- form-group // -->
                                     <div class="form-group">
                                         <label for="price" class="col-sm-3 control-label">Đơn giá</label>
                                         <div class="col-sm-3">
-                                            <input type="number" class="form-control" value="0" min="1" max="100000"
-                                                required name="price" field="*{price}" id="price"
+                                            <input type="number" class="form-control" value="0"
+                                                th:value="${product.price}" min="1" max="100000000" required
+                                                name="price" field="*{price}" id="price"
                                                 placeholder="Đơn giá sản phẩm.">
                                         </div>
                                     </div> <!-- form-group // -->
                                     <div class="form-group">
                                         <label for="casebrand" class="col-sm-3 control-label">Thương hiệu</label>
                                         <div class="col-sm-3">
-                                            <input type="text" class="form-control" name="casebrand" required
-                                                field="*{brand}" id="casebrand" placeholder="Thương hiệu nhà cung cấp.">
+                                            <input type="text" class="form-control" th:value="${product.caseBrand}"
+                                                name="brand" required field="*{brand}" id="brand"
+                                                placeholder="Thương hiệu nhà cung cấp.">
                                         </div>
                                     </div> <!-- form-group // -->
                                     <div class="form-group">
                                         <label for="about" class="col-sm-3 control-label">Mô tả</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" name="description"
-                                                placeholder="Mô tả thông tin sản phẩm." field="*{description}"
-                                                required></textarea>
+
+                                            <textarea class="form-control" th:text="${product.description}"
+                                                name="description" placeholder="Mô tả thông tin sản phẩm."
+                                                field="*{description}" id="description" required></textarea>
                                         </div>
                                     </div> <!-- form-group // -->
 
 
                                     <div class="form-group">
-                                        <label for="name" class="col-sm-3 control-label">Hình ảnh (png)</label>
+                                        <label for="name" class="col-sm-3 control-label">Thêm hình ảnh (png)</label>
                                         <div class="col-sm-3">
                                             <input type="file" multiple accept="image/png">
                                         </div>
@@ -258,16 +263,6 @@
     <script src="../assets/scripts/klorofil-common.js"></script>
     <script src="../js/select2.min.js"></script>
     <script th:inline="javascript">
-        var subjectObject = {
-            "Xiaomi": ["Mi 10T Pro", "Redmi K30s", "Mi 10T Lite", "Redmi Note 9 Pro 5G", "Mi 11", "Black Shark 3", "Redmi Note 9S", "Note 9 Pro", "Poco M3", "Redmi 9T", "Poco X3 NFC", "Redmi Note 8 Pro", "Mi 10T", "Mi 10T Pro 5G", "K30S", "Redmi Note 9 5G", "Note 9 Pro 5G", "Redmi K30 5G", "Redmi Note 8", "Poco F2 Pro", "Redmi K30 Pro", "K30 Ultra", "Mi 9T", "Redmi K20", "Redmi Note 7", "Redmi 9A", "Mi Note 10 Lite", "PocoPhone X2", "Redmi 9", "Redmi 9C", "Redmi Note 9", "Redmi 10X 4G", "Mi 10 Lite", "Mi 9", "Mi 8", "Poco X2", "Note 8 Pro"],
-            "Realme": ["Realme 7", "Realme 7i", "Realme 7 Pro", "Realme 6", "Realme 6 Pro", "Realme C17", "Realme 5 Pro", "Realme 5", "Realme X2 Pro", "Realme XT", "Realme X2"],
-            "Oppo": ["Oppo A52", "Oppo A92", "OPPO A5", "OPPO A3S", "Reno ACE", "Oppo K5", "Oppo A9", "Oppo A11X"],
-            "Apple": ["iPhone 6 Plus", "iPhone 7", "iPhone 7 Plus / 8 Plus", "iPhone X / Xs", "iPhone 6 Plus / 6s Plus", "iPhone Xs Max", "iPhone X", "iPhone Xs", "iPhone XR", "iPhone 7 Plus", "iPhone X-XR", "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone 8", "iPhone 6/7/8", "iPhone 6/6S", "Airpods 1 / 2", "Airpods Pro"],
-            "Vsmart": ["Vsmart Aris Pro", "Vsmart Aris", "Vsmart Joy 4", "Vsmart Live 4", "Vsmart Star 4", "Vsmart Star 3", "Vsmart Active 3", "Vsmart Joy 3", "Vsmart Bee 3", "Vsmart Star", "Vsmart Joy 1", "Vsmart Joy 1+ Plus"],
-            "Samsung": ["Galaxy Note 20 Ultra", "Galaxy S8", "Galaxy A7 2017", "Galaxy A5 2017", "Galaxy A3 2017", "Galaxy J7 Prime", "Galaxy A52", "Galaxy S21 Ultra", "Galaxy S21+ Plus", "Galaxy S21", "Galaxy A02s", "Galaxy Note 9", "Galaxy Note 8", "Galaxy S20 FE", "Galaxy M51", "Galaxy A11", "Galaxy A21s", "Galaxy M11", "Galaxy M31", "Galaxy S10 5G"],
-            "Huawei": ["Huawei P40 Pro", "Huawei P40", "Huawei Nova 5T", "Mate 30 Pro", "Huawei Y9s", "Huawei Nova 7i", "Huawei Nova 6 SE", "Huawei P30 Lite", "Huawei Y9 2019", "Huawei P30", "Huawei P30 Pro", "Redmi K30"]
-        }
-
 
 
         window.onload = function () {
@@ -277,16 +272,19 @@
 
             /*<![CDATA[*/
 
-            var brand = /*[[${ brand }]]*/ '';  //Make sure this is bills and not bill as you have done it.
+            var brand = /*[[${ brand }]]*/ '';
             var list = /*[[${device}]]*/[];
-            var listallcolor =  /*[[${colors}]]*/[];
-            var listcolor = /*[[${listcolor}]]*/[];
+            var listallcolor =  /*[[${allcolor}]]*/[];
+            var listcolor = /*[[${selectedcolor}]]*/[];
+            var phoneByBrand = /*[[${PhoneByBrand}]]*/'';
 
             /*]]>*/
 
+            var DeviceObject = JSON.parse(phoneByBrand);
+
             var data;
 
-            for (var x in subjectObject) {
+            for (var x in DeviceObject) {
 
                 if (x == brand) {
                     subjectSel.options[subjectSel.options.length] = new Option(x, x, false, true);
@@ -306,7 +304,7 @@
                 //empty Chapters dropdown
                 chapterSel.length = -1;
                 //display correct values
-                var z = subjectObject[data];
+                var z = DeviceObject[data];
 
 
 
@@ -344,7 +342,7 @@
 
                 //display correct values
                 // window.alert(this.value);
-                var z = subjectObject[this.value];
+                var z = DeviceObject[this.value];
                 for (var i = 0; i < z.length; i++) {
 
                     chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
@@ -413,7 +411,13 @@
 
         }
 
-
+        $(document).ready(function () {
+            $('textarea').on('keyup keypress', function () {
+                $(this).height(0);
+                $(this).height(this.scrollHeight);
+            });
+            $('textarea').trigger("keyup");
+        });
 
         $(document).ready(function () {
             $('.js-example-basic-multiple').select2({

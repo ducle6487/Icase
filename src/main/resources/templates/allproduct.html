@@ -98,7 +98,7 @@
 							<a th:href="@{/admin/all-order}" class=""><i class="lnr lnr-file-empty"></i> <span>Đơn
 									hàng</span></i></a>
 						</li>
-						<li><a th:href="@{/admin/product-edit&id=2}" class=""><i class="lnr lnr-code"></i> <span>Cập
+						<li><a th:href="@{/admin/product-edit}" class=""><i class="lnr lnr-code"></i> <span>Cập
 									nhật
 									sản
 									phẩm</span></a></li>
@@ -138,17 +138,24 @@
 											<div class="product-action-2">
 												<a title="Add to cart" href="#">&nbsp;&nbsp; &nbsp;&nbsp; Detail
 													&nbsp;&nbsp;</a>
-												<a title="edit" th:href="@{/admin/product-edit/1}">Edit &nbsp;&nbsp;</a>
+												<a title="edit"
+													th:href="@{'/admin/product-edit&id='+${product.idProduct}}">Edit
+													&nbsp;&nbsp;</a>
 												<a title="remove" href="#">Remove</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
 										<h3>
-											<a href="product-details.html">Women Hot Collection</a>
+											<a style="overflow : hidden;
+											text-overflow: ellipsis;
+											display: -webkit-box;
+											-webkit-line-clamp: 2;
+											-webkit-box-orient: vertical;min-height: 50px;" th:href="@{'/admin/product-edit&id='+${product.idProduct}}"
+												th:text="${product.nameProduct}"></a>
 										</h3>
 										<div class="product-price">
-											<span>$29.00</span>
+											<span>[[${product.price}]] VNĐ</span>
 
 										</div>
 									</div>

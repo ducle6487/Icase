@@ -258,7 +258,7 @@
 	<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="../assets/scripts/klorofil-common.js"></script>
-	<script>
+	<script th:inline="javascript">
 		$(function () {
 			var data, options;
 
@@ -279,11 +279,20 @@
 
 			new Chartist.Line('#headline-chart', data, options);
 
+			/*<![CDATA[*/
+
+			var list = /*[[${ anhduc }]]*/[];
+
+
+			/*]]>*/
+
+
 			// headline charts for year
 			data = {
 				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 				series: [
-					[200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
+					list,
+
 				]
 			};
 

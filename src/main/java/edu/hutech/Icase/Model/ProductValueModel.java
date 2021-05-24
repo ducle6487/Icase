@@ -1,6 +1,7 @@
 package edu.hutech.Icase.Model;
 
 public class ProductValueModel {
+
     public int idproduct;
     public String name;
     public String phonebrand;
@@ -8,6 +9,8 @@ public class ProductValueModel {
     public String color;
     public int amount;
     public Long price;
+    public String brand;
+    public String description;
 
     public int getIdproduct() {
         return this.idproduct;
@@ -81,6 +84,4 @@ public class ProductValueModel {
         this.description = description;
     }
 
-    public String brand;
-    public String description;
 }
