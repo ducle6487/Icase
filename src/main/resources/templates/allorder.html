@@ -21,6 +21,31 @@
 	<!-- ICONS -->
 	<link rel="icon" type="image/png" sizes="96x96" href="../image/phone-case.png">
 </head>
+<style>
+	th {
+		cursor: pointer
+	}
+
+	a:link {
+		text-decoration: none;
+		color: cornflowerblue
+	}
+
+	a:visited {
+		text-decoration: none;
+		color: cornflowerblue
+	}
+
+	a:hover {
+		text-decoration: underline;
+		color: blue
+	}
+
+	a:active {
+		text-decoration: underline;
+		color: blue
+	}
+</style>
 
 <body>
 	<!-- WRAPPER -->
@@ -89,36 +114,50 @@
 						<!-- TABLE HOVER -->
 						<div class="panel">
 							<div class="panel-heading">
-								<h3 class="panel-title">Hover Row</h3>
+								<h3 class="panel-title">Lịch sử mua hàng</h3>
 							</div>
 							<div class="panel-body">
-								<table class="table table-hover">
+								<table id="table" class="table table-hover">
 									<thead>
 										<tr>
-											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
+											<th onclick="sortTable(0)">Mã đơn hàng</th>
+											<th onclick="sortTable(1)">Tên khách hàng</th>
+											<th onclick="sortTable(2)">Số điện thoại</th>
+											<th onclick="sortTable(3)">Địa chỉ</th>
+											<th onclick="sortTable(4)">Ngày đặt</th>
+											<th onclick="sortTable(5)">Lời nhắn</th>
+											<th onclick="sortTable(6)">Phương thức thanh toán</th>
+											<th onclick="sortTable(7)">Trạng thái thanh toán</th>
+											<th onclick="sortTable(8)">Trạng thái vận chuyển</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Steve</td>
-											<td>Jobs</td>
-											<td>@steve</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Simon</td>
-											<td>Philips</td>
-											<td>@simon</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Jane</td>
-											<td>Doe</td>
-											<td>@jane</td>
+										<tr th:each=" ord : ${orderhistories}">
+											<td th:text="${ord.idorder}"></td>
+											<td th:text="${ord.namecustomer}"></td>
+											<td th:text="${ord.phone}"></td>
+											<td th:text="${ord.address}"></td>
+											<td th:text="${ord.dateorder}"></td>
+											<td th:text="${ord.message}"></td>
+											<td th:text="${ord.methodpayment}"></td>
+											<td th:switch="${ord.paymentstatus}">
+												<span th:case="'Chưa thanh toán'" th:text="${ord.paymentstatus}"
+													class="label label-danger"></span>
+												<span th:case="'Đã thanh toán'" th:text="${ord.paymentstatus}"
+													class="label label-success"></span>
+											</td>
+											<td th:switch="${ord.deliverystatus}">
+												<span th:case="'Đang lấy hàng'" th:text="${ord.deliverystatus}"
+													class="label label-warning"></span>
+												<span th:case="'Đang vận chuyển'" th:text="${ord.deliverystatus}"
+													class="label label-warning"></span>
+												<span th:case="'Đã giao'" th:text="${ord.deliverystatus}"
+													class="label label-success"></span>
+												<span th:case="'Đã hủy'" th:text="${ord.deliverystatus}"
+													class="label label-danger"></span>
+											</td>
+											<td><a th:href="'/admin/detail-order&id='+${ord.idorder}">Chi tiết ></a>
+											</td>
 										</tr>
 									</tbody>
 								</table>
@@ -136,17 +175,73 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Icase Admin
-						Page</a>. Made by Anh Duc.</p>
+				<p class="copyright">&copy; 2021 Icase Admin
+					Page. Made by Anh Duc.</p>
 			</div>
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-	<script src="assets/vendor/jquery/jquery.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/scripts/klorofil-common.js"></script>
+	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../assets/scripts/klorofil-common.js"></script>
+	<script>
+		function sortTable(n) {
+			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+			table = document.getElementById("table");
+			switching = true;
+			// Set the sorting direction to ascending:
+			dir = "asc";
+			/* Make a loop that will continue until
+			no switching has been done: */
+			while (switching) {
+				// Start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/* Loop through all table rows (except the
+				first, which contains table headers): */
+				for (i = 1; i < (rows.length - 1); i++) {
+					// Start by saying there should be no switching:
+					shouldSwitch = false;
+					/* Get the two elements you want to compare,
+					one from current row and one from the next: */
+					x = rows[i].getElementsByTagName("TD")[n];
+					y = rows[i + 1].getElementsByTagName("TD")[n];
+					/* Check if the two rows should switch place,
+					based on the direction, asc or desc: */
+					if (dir == "asc") {
+						if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+							// If so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					} else if (dir == "desc") {
+						if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+							// If so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					}
+				}
+				if (shouldSwitch) {
+					/* If a switch has been marked, make the switch
+					and mark that a switch has been done: */
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					// Each time a switch is done, increase this count by 1:
+					switchcount++;
+				} else {
+					/* If no switching has been done AND the direction is "asc",
+					set the direction to "desc" and run the while loop again. */
+					if (switchcount == 0 && dir == "asc") {
+						dir = "desc";
+						switching = true;
+					}
+				}
+			}
+		}
+	</script>
 </body>
 
 </html>

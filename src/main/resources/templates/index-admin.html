@@ -18,12 +18,37 @@
 	<!-- ICONS -->
 
 	<link rel="stylesheet" href="../css/reset.css" />
-	<link rel="stylesheet" href="../css/styleanhduc.css" />
+	<!-- <link rel="stylesheet" href="../css/styleanhduc.css" /> -->
 	<link rel="stylesheet" href="../css/responsive.css" />
 
 	<!-- <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> -->
 	<link rel="icon" type="image/png" sizes="96x96" href="../image/phone-case.png">
 </head>
+<style>
+	th {
+		cursor: pointer
+	}
+
+	a:link {
+		text-decoration: none;
+		color: cornflowerblue
+	}
+
+	a:visited {
+		text-decoration: none;
+		color: cornflowerblue
+	}
+
+	a:hover {
+		text-decoration: underline;
+		color: blue
+	}
+
+	a:active {
+		text-decoration: underline;
+		color: blue
+	}
+</style>
 
 <body>
 	<!-- WRAPPER -->
@@ -103,7 +128,7 @@
 					<div class="panel panel-headline">
 						<div class="panel-heading">
 							<h3 class="panel-title">Tổng quan tuần này</h3>
-							<p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
+							<p class="panel-subtitle">Giai đoạn: [[${monday}]] - [[${sunday}]]</p>
 						</div>
 						<div class="panel-body">
 
@@ -113,15 +138,23 @@
 								</div>
 								<div class="col-md-3">
 									<div class="weekly-summary text-right">
-										<span class="number">5,758,000</span><span class="percentage"></i> VNĐ</span>
+										<span class="number">[[${amountthisweek}]]</span><span class="percentage"></i>
+											đơn hàng</span>
+										<span class="info-label">Tổng số đơn hàng đã bán tuần này</span>
+									</div>
+									<div class="weekly-summary text-right">
+										<span class="number">[[${pricethisweek}]]</span><span class="percentage"></i>
+											VNĐ</span>
 										<span class="info-label">Lợi nhuận tuần này</span>
 									</div>
 									<div class="weekly-summary text-right">
-										<span class="number">2,315</span><span class="percentage"></i> đơn hàng</span>
+										<span class="number">[[${amountthismonth}]]</span><span class="percentage"></i>
+											đơn hàng</span>
 										<span class="info-label">Tổng số đơn hàng đã bán tháng 5</span>
 									</div>
 									<div class="weekly-summary text-right">
-										<span class="number">65,938,000</span><span class="percentage"></i> VNĐ</span>
+										<span class="number">[[${pricethismonth}]]</span><span class="percentage"></i>
+											VNĐ</span>
 										<span class="info-label">Lợi nhuận tháng 5</span>
 									</div>
 								</div>
@@ -141,12 +174,14 @@
 								</div>
 								<div class="col-md-3">
 									<div class="weekly-summary text-right">
-										<span class="number">2,315</span><span class="percentage"></span> đơn
+										<span class="number">[[${amountthisyear}]]</span><span
+											class="percentage"></span> đơn
 										hàng</span>
 										<span class="info-label">Tổng số đơn hàng đã bán năm 2021</span>
 									</div>
 									<div class="weekly-summary text-right">
-										<span class="number">5,758,000</span><span class="percentage"></i> VNĐ</span>
+										<span class="number">[[${pricethisyear}]]</span><span class="percentage"></i>
+											VNĐ</span>
 										<span class="info-label">Tổng lợi nhuận năm 2021</span>
 									</div>
 
@@ -157,7 +192,7 @@
 					<!-- END OVERVIEW -->
 					<div class="row">
 						<div class="col-md-3"></div>
-						<div class="col-md-6" style="align-self: center;">
+						<div class="col-md-12" style="align-self: center;">
 							<!-- RECENT PURCHASES -->
 							<div class="panel">
 								<div class="panel-heading">
@@ -172,58 +207,61 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Mã đơn hàng</th>
-												<th>Tên khách hàng</th>
-												<th>Giá trị</th>
-												<th>Ngày mua</th>
-												<th>Trạng thái</th>
+												<th onclick="sortTable(0)">Mã đơn hàng</th>
+												<th onclick="sortTable(1)">Tên khách hàng</th>
+												<th onclick="sortTable(2)">Số điện thoại</th>
+												<th onclick="sortTable(3)">Địa chỉ</th>
+												<th onclick="sortTable(4)">Ngày đặt</th>
+												<th onclick="sortTable(5)">Lời nhắn</th>
+												<th onclick="sortTable(6)">Phương thức thanh toán</th>
+												<th onclick="sortTable(7)">Trạng thái thanh toán</th>
+												<th onclick="sortTable(8)">Trạng thái vận chuyển</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td><a href="#">763648</a></td>
-												<td>Steve</td>
-												<td>$122</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-success">COMPLETED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763649</a></td>
-												<td>Amber</td>
-												<td>$62</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-warning">PENDING</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763650</a></td>
-												<td>Michael</td>
-												<td>$34</td>
-												<td>Oct 18, 2016</td>
-												<td><span class="label label-danger">FAILED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763651</a></td>
-												<td>Roger</td>
-												<td>$186</td>
-												<td>Oct 17, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763652</a></td>
-												<td>Smith</td>
-												<td>$362</td>
-												<td>Oct 16, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
+											<tr th:each=" ord : ${orderhistories}">
+												<td th:text="${ord.idorder}"></td>
+												<td th:text="${ord.namecustomer}"></td>
+												<td th:text="${ord.phone}"></td>
+												<td th:text="${ord.address}"></td>
+												<td th:text="${ord.dateorder}"></td>
+												<td th:text="${ord.message}"></td>
+												<td th:text="${ord.methodpayment}"></td>
+												<td th:switch="${ord.paymentstatus}">
+													<span th:case="'Chưa thanh toán'" th:text="${ord.paymentstatus}"
+														class="label label-danger"></span>
+													<span th:case="'Đã thanh toán'" th:text="${ord.paymentstatus}"
+														class="label label-success"></span>
+												</td>
+												<td th:switch="${ord.deliverystatus}">
+													<span th:case="'Đang lấy hàng'" th:text="${ord.deliverystatus}"
+														class="label label-warning"></span>
+													<span th:case="'Đang vận chuyển'" th:text="${ord.deliverystatus}"
+														class="label label-warning"></span>
+													<span th:case="'Đã giao'" th:text="${ord.deliverystatus}"
+														class="label label-success"></span>
+													<span th:case="'Đã hủy'" th:text="${ord.deliverystatus}"
+														class="label label-danger"></span>
+												</td>
+												<td><a th:href="'/admin/detail-order&id='+${ord.idorder}">Chi tiết ></a>
+												</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
 								<div class="panel-footer">
 									<div class="row">
-										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> 24
-												giờ qua</span></div>
-										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Xem tất cả
-												đơn hàng</a></div>
+										<div class="col-md-6">
+											<span class="panel-note"><i class="fa fa-clock-o"></i> 24
+												giờ qua</span>
+										</div>
+
+										<div class="col-md-6 text-right">
+											<a th:href="'/admin/all-order'"><button type="submit"
+													class="btn btn-success">Xem tất cả
+													đơn hàng</button></a>
+										</div>
+
 									</div>
 								</div>
 							</div>
@@ -242,13 +280,13 @@
 			<!-- END MAIN CONTENT -->
 		</div>
 		<!-- END MAIN -->
-		<div class="clearfix"></div>
-		<footer>
+		<!-- <div class="clearfix"></div> -->
+		<!-- <footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Icase Admin
-						Page</a>. Made by Anh Duc.</p>
+				<p class="copyright">&copy; 2021 Icase Admin
+					Page</a>. Made by Anh Duc.</p>
 			</div>
-		</footer>
+		</footer> -->
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
@@ -258,15 +296,23 @@
 	<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="../assets/scripts/klorofil-common.js"></script>
+	<!-- <script src="../js/scrollup.js"></script> -->
 	<script th:inline="javascript">
 		$(function () {
 			var data, options;
+
+			/*<![CDATA[*/
+
+			var weekly = /*[[${ weekly }]]*/[];
+			var yearly = /*[[${ yearly }]]*/[];
+
+			/*]]>*/
 
 			// headline charts for weekly
 			data = {
 				labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 				series: [
-					[23, 29, 24, 40, 25]
+					weekly,
 				]
 			};
 
@@ -279,19 +325,14 @@
 
 			new Chartist.Line('#headline-chart', data, options);
 
-			/*<![CDATA[*/
 
-			var list = /*[[${ anhduc }]]*/[];
-
-
-			/*]]>*/
 
 
 			// headline charts for year
 			data = {
 				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 				series: [
-					list,
+					yearly
 
 				]
 			};
