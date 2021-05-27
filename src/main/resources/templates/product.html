@@ -98,10 +98,10 @@
         </div>
         <div class="search-content row">
             <div class="col-md-3 card-product">
-                <div class="box-240-315 ">
+                <div class="box-240-315" th:each="product : ${product}">
                     <img src="../image/header-logo.jpeg " width="240px" height="240px">
                     <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
+                        <a href="#" th:text="${product.getName()}"></a>
                         <p>Price: <span class="text-danger">400.000</span> VND</p>
                     </div>
                 </div>

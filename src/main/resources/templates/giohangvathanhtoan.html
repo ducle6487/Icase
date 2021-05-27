@@ -1,147 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 
 <head>
-    <meta charset="UTF-8">
+    <!-- Meta Tag -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../fonts/fontawesome-free-5.15.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../image/favicon-32x32.png">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Đồ Án Java</title>
+    <meta name='copyright' content=''>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title Tag  -->
+    <title>ICASE - Đổi Mới Thiết Bị Của Bạn</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="image/favicon.ico">
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <!-- StyleSheet -->
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="fonts/fontawesome-free-5.15.0/css/all.min.css">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/niceselect.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="css/flex-slider.min.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+
+    <!-- Eshop StyleSheet -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+
 </head>
 
-<body>
-    <header class="header">
-        <div class="header-banner">
-            <div class="header-banner-diachi">
-                <i class="fas fa-map-marker-alt header-banner-diachi-icon"></i>
-                <p class="header-banner-text">395 Phan Văn Trị, Phường 11, Bình Thạnh</p>
+<body class="js">
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
             </div>
-            <div class="header-banner-giolamviec">
-                <i class="far fa-clock header-banner-giolamviec-icon"></i>
-                <p class="header-banner-text">Giờ làm việc: 8:30-23:00</p>
-            </div>
-            <div class="header-banner-conlai">
-                <a href="#" class="header-link">
-                    <div class="header-banner-content">
-                        <i class="far fa-bell header-banner-conlai-icon"></i>
-                        <p class="header-banner-content-text">
-                            Thông Báo
-                        </p>
+        </div>
+    </div>
+    <!-- End Preloader -->
+
+
+    <!-- Header -->
+    <header class="header shop">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-12">
+                        <!-- Top Left -->
+                        <div class="top-left">
+                            <ul class="list-main">
+                                <li><i class="ti-location-pin"></i> 395 Phan Văn Trị, Phường 11, Bình Thạnh</li>
+                            </ul>
+                        </div>
+                        <!--/ End Top Left -->
                     </div>
-                </a>
-                <a href="#" class="header-link">
-                    <div class="header-banner-content">
-                        <i class="fas fa-shopping-cart header-banner-conlai-icon"></i>
-                        <p class="header-banner-content-text">
-                            Giỏ Hàng
-                        </p>
+                    <div class="col-lg-7 col-md-12 col-12">
+                        <!-- Top Right -->
+                        <div class="right-content">
+                            <ul class="list-main">
+                                <li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
+                                <li><i class="ti-bell"></i><a href="#">Thông Báo</a></li>
+                                <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
+                                <li><i class="ti-power-off"></i><a href="login.html#">Đăng Nhập</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Top Right -->
                     </div>
-                </a>
-                <div class="header-banner-content header-banner-content-1">
-                    <a href="">
-                        <p class="header-banner-content-register">
-                            Đăng Ký
-                        </p>
-                    </a>
-                    <a href="">
-                        <p class="header-banner-content-login">
-                            Đăng Nhập
-                        </p>
-                    </a>
                 </div>
             </div>
         </div>
-        <div class="header-contain">
-            <img src="../image/header-logo.jpeg" alt="" class="header-img">
-            <div class="header-contain-search">
-                <form id="" name="">
-                    <div class="input-group" id="btn-search">
-                        <input class=" header-search-input" type="text" name="subscribe_email" id="subscribe_email" placeholder="Nhập từ khóa..." />
-                        <span class="input-group-btn">
-                            <button class=" header-search-btn" id="btn" name="subscribe_btn"><i class="fas fa-search header-search-icon"></i></button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <nav class="header-navbar" style="background-color: #ccc;">
-            <ul class="header-navbar-list">
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item-last-child">Trang chủ</li>
-                </a>
-            </ul>
-        </nav>
-    </header>
-    <div class="main">
-        <div class="giohangvathanhtoan row">
-            <div class="sanpham-giohang col-6">
-                <div class="sanpham-giohang-place">
-                    <p class="sanpham-giohang-title">Giỏ hàng của bạn</p>
-                    <div class="sanpham-giohang-content">
-                        <img src="../image/994990793756.jpeg" alt="">
-                        <div class="sanpham-giohang-text">
-                            <div class="sanpham-giohang-text-left">
-                                <p class="sanpham-giohang-text-left-heading">Kính cường lực Samsung A50</p>
-                                <a href=""><i class="fas fa-times-circle"></i>Bỏ Sản phẩm</a>
-                                <p>
-                                    Siêu cứng cáp chuẩn 9H ngang ngữa Sapphire Không giòn, không bị biến dạng
-                                </p>
+        <!-- End Topbar -->
+        <div class="middle-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a th:href="@{/home}"><img src="image/logo.gif" alt="logo"></a>
+                        </div>
+                        <!--/ End Logo -->
+                        <!-- Search Form -->
+                        <div class="search-top">
+                            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+                            <!-- Search Form -->
+                            <div class="search-top">
+                            
+                                <form class="search-form" th:action="@{/search}" method="get">
+                                    <input type="search" placeholder="Tìm kiếm sản phẩm..." name="search">                         
+                                    <button value="Search" type="submit"><i class="ti-search"></i></button>                                    
+                                </form>
+                                
                             </div>
-                            <div class="sanphamgiohang-space"></div>
-                            <div class="sanpham-giohang-text-right">
-                                <p class="sanpham-giohang-text-right-price">
-                                    198.00đ
-                                </p>
-                                <div class="sanpham-giohang-text-right-count">
-                                    <p>-</p>
-                                    <input type="text" class="" value="2" />
-                                    <p>+</p>
+                            <!--/ End Search Form -->
+                        </div>
+                        <!--/ End Search Form -->
+                        <div class="mobile-nav"></div>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-12">
+                        <div class="search-bar-top">
+                            <div class="search-bar">
+                                <form>
+                                    <input name="search" placeholder="Tìm kiếm sản phẩm....." type="search">
+                                    <button class="btnn"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-12">
+                        <div class="right-bar">
+                            <!-- Search Form -->
+                            <div class="sinlge-bar">
+                                <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="sinlge-bar">
+                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="sinlge-bar shopping">
+                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+                                <!-- Shopping Item -->
+                                <div class="shopping-item">
+                                    <div class="dropdown-cart-header">
+                                        <span>2 Items</span>
+                                        <a th:href="@{/giohang}">View Cart</a>
+                                    </div>
+                                    <ul class="shopping-list">
+                                        <li>
+                                            <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+                                            <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+                                            <h4><a href="#">Woman Ring</a></h4>
+                                            <p class="quantity">1x - <span class="amount">$99.00</span></p>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+                                            <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+                                            <h4><a href="#">Woman Necklace</a></h4>
+                                            <p class="quantity">1x - <span class="amount">$35.00</span></p>
+                                        </li>
+                                    </ul>
+                                    <div class="bottom">
+                                        <div class="total">
+                                            <span>Total</span>
+                                            <span class="total-amount">$134.00</span>
+                                        </div>
+                                        <a href="checkout.html" class="btn animate">Checkout</a>
+                                    </div>
                                 </div>
+                                <!--/ End Shopping Item -->
                             </div>
                         </div>
-
-                    </div>
-                    <div class="sanpham-giohang-total">
-                        <p class="sanpham-giohang-total-text">
-                            Tổng tiền:
-                        </p>
-                        <p class="sanpham-giohang-total-price">
-                            150.000đ
-                        </p>
                     </div>
                 </div>
             </div>
-            <div class="thanhtoan col-6">
-                <div class="thanhtoan-place">
-                    <p class="sanpham-giohang-title">Thông tin giao hàng:</p>
-                    <div class="information-cart">
-                        <div class="input-cart">
-                            <input type="text" name="ten" placeholder="Họ tên của bạn" class="inp-cart" required>
-                            <input type="number" name="dienthoai" placeholder="Số điện thoại của bạn" class="inp-cart inp-number" required>
-
+        </div>
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-lg-3">
                         </div>
-                        <div class="select-cart">
-                            <select required name="tinhthanh" onchange="load_quanhuyen(this.value);" class="sel-cart sel-tinhthanh">
-										<option value="">Tỉnh/thành phố</option>
-																					<option value="1">Hồ Chí Minh</option>
+                        <div class="col-lg-9 col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li class="active"><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li><a th:href="@{/product}">Sản Phẩm</a></li>
+                                                <li><a href="#">Shop<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown ">
+                                                        <li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
+                                                        <li><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Hãng<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown">
+                                                    	<div th:each="phonebrands : ${phonebrands}">
+                                                        <li><a th:text="${phonebrands.getName}"></a>
+                                                        <ul class="dropright">
+                                                    	<div class="div-grid" >
+                                                        <li th:each="phones : ${phones}"><a  th:href="@{|/product/{getNamephone}|}" class="a-trong"  th:text="${phones.getNamephone}"></a></li>                                                 	
+                                                    	</div>                                                      
+                                                    	</ul>                                                    	
+                                                        </li>
+                                                    	</div>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="contact.html">Liên Hệ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <!--/ End Main Menu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!--/ End Header -->
+	
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="bread-inner">
+							<ul class="bread-list">
+								<li><a th:href="@{/home}">Trang Chủ<i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
+				
+		<!-- Start Checkout -->
+		<section class="shop checkout section">
+			<div class="container">
+				<div class="row"> 
+					<div class="col-lg-8 col-12">
+						<div class="checkout-form">
+							<h2>Make Your Checkout Here</h2>
+							<p>Please register in order to checkout more quickly</p>
+							<!-- Form -->
+							<form class="form" method="post" action="#">
+								<div class="row">
+									<div class="col-lg-7 col-md-7 col-12">
+										<div class="form-group">
+											<label>Họ Và Tên<span>*</span></label>
+											<input type="text" name="name" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Số Điện Thoại<span>*</span></label>
+											<input type="number" name="number" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Tỉnh / Thành Phố<span>*</span></label>
+											<select name="state-province" onchange="Render()" id="tinhthanh">
+												<option value="">Tỉnh / Thành Phố</option>
+													<option value="1">Hồ Chí Minh</option>
 																					<option value="2">Hà Nội</option>
 																					<option value="3">Bình Dương</option>
 																					<option value="4">Đà Nẵng</option>
@@ -203,101 +333,400 @@
 																					<option value="61">Vĩnh Long</option>
 																					<option value="62">Vĩnh Phúc</option>
 																					<option value="63">Yên Bái</option>
-																			</select>
-                            <select required name="quanhuyen" onchange="load_phuongxa(this.value);" class="sel-cart sel-quanhuyen">
-										<option value="">Quận/huyện</option>
-									</select>
-                            <select required name="phuongxa" class="sel-cart sel-phuongxa">
-										<option value="">Phường/xã</option>
-									</select>
-                        </div>
-                        <textarea name="diachi" placeholder="Địa chỉ của bạn" required></textarea>
-                        <textarea name="noidung" placeholder="Yêu cầu khác (không bắt buộc)" required></textarea>
-                    </div>
-                    <div class="httt">
-                        <form>
-                            <div class="check_ht">
-                                <input type="radio" name="httt" value="1" id="ht1" checked>
-                                <div class="tt_info">
-                                    <b>Thanh toán qua ngân hàng</b>
-                                </div>
-                            </div>
-                            <div class="htinfo ht1" style="display: block;margin-bottom: 10px;">
-                                <p>Test ng&acirc;n h&agrave;ng</p>
-                            </div>
-                            <div class="check_ht">
-                                <input type="radio" name="httt" id="ht2" value="0">
-                                <div class="tt_info">
-                                    <b>Thanh toán khi nhận hàng (COD)</b>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="htinfo ht2">
-                                <p>Test nhận h&agrave;ng</p>
-                            </div>
-                        </form>
-                    </div>
-                    <input type="submit" class="thanhtoan-btn bgcart" name="thanhtoan" value="Hoàn tất đặt hàng">
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <footer class="container-fluid footer-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Toán</strong></h4>
-                    <p><a href="#">Hình học</a></p>
-                    <p><a href="#">Tuyến tính</a></p>
-                    <p><a href="#">Xác suất</a></p>
-                    <p><a href="#">IQ</a></p>
-                    <p><a href="#">Logic</a></p>
-                    <p><a href="#">Giải tích</a></p>
-                    <p><a href="#">Đồ thị</a></p>
-                    <p><a href="#">Hàm số</a></p>
-                </div>
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Tiếng anh</strong></h4>
-                    <p><a href="#">IELTS</a></p>
-                    <p><a href="#">TOEFL</a></p>
-                    <p><a href="#">BASIC</a></p>
-                    <p><a href="#">SPEAKING</a></p>
-                    <p><a href="#">READING</a></p>
-                    <p><a href="#">LISTENING</a></p>
-                    <h4 class="footer-tittle-col"><strong>Vật lý</strong></h4>
-                    <p><a href="#">Đại cương</a></p>
-                    <p><a href="#">Nâng cao</a></p>
-                </div>
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Lập trình</strong></h4>
-                    <p><a href="#">C/C++</a></p>
-                    <p><a href="#">Java</a></p>
-                    <p><a href="#">C#</a></p>
-                    <p><a href="#">Kotlin</a></p>
-                    <p><a href="#">Ruby</a></p>
-                    <p><a href="#">Javascript</a></p>
-                    <p><a href="#">Html/Css</a></p>
-                    <h4 class="footer-tittle-col"><strong>Bắt đầu</strong></h4>
-                    <p><a href="@Url.Action(" UserLogin ","Authenticate ", new{URL = Request.Url.ToString()})">Đăng ký</a></p>
-                    <p><a href="@Url.Action(" UserLogin ","Authenticate ", new{URL = Request.Url.ToString()})">Đăng nhập</a></p>
-                </div>
-                <div class="col-6 ">
-                    <div class="contact">
-                        <h3><strong>Liên hệ với chúng tôi!</strong></h3>
-                        <p>Email: harley20005@gmail.com <br>hoặc: ducle6487@gmail.com</p>
-                        <h4><strong>Kết nối với chúng tôi</strong></h4>
-                        <div>
-                            <img class="img-circle" onclick="location.href='https://www.facebook.com/ducle6487'" src="~/Content/Image/Facebook-200x200.jpg" width="80px" height="80px">
-                            <img class="img-circle" src="~/Content/Image/Twitter-1.jpg" width="80px" height="80px">
-                            <img class="img-circle" src="~/Content/Image/zalo_sharelogo.png" width="80px" height="80px">
-                        </div>
-                    </div>
-                    <div class="copyright">Copyright &copy; Sang - Đức</div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+											<label>Quận / Huyện<span>*</span></label>
+											<select name="country_name" id="quanhuyen">
+												<option value="0">Quận / Huyện</option>
+											</select>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Phường / Xã<span>*</span></label>
+											<select name="state-province" id="phuongxa">
+												<option value="0">Phường / Xã</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Địa chỉ của bạn<span>*</span></label>
+											<input type="text" name="address" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Yêu cầu khác</label>
+											<input type="text" name="address" placeholder="" required="required">
+										</div>
+									</div>		
+									<div class="col-12">
+										<div class="form-group create-account">
+											<input id="cbox" type="checkbox">
+											<label>Create an account?</label>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!--/ End Form -->
+						</div>
+					</div>
+					<div class="col-lg-4 col-12">
+						<div class="order-details">
+							<!-- Order Widget -->
+							<div class="single-widget">
+								<h2>Hóa Đơn</h2>
+								<div class="content">
+									<ul>
+										<li>Tiền Hóa Đơn<span>$330.00</span></li>
+										<li>(+) Shipping<span>$10.00</span></li>
+										<li class="last">Tổng Tiền<span>$340.00</span></li>
+									</ul>
+								</div>
+							</div>
+							<!--/ End Order Widget -->
+							<!-- Order Widget -->
+							<div class="single-widget">
+								<h2>Phương thức thanh toán</h2>
+								<div class="content">
+									<div class="checkbox">
+										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" checked> Thanh Toán Khi Giao Hàng</label>
+										<label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox" disabled> Thanh Toán Bằng Điện Thoại</label>
+										<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox" disabled> Thanh Toán Bằng Thẻ</label>
+									</div>
+								</div>
+							</div>
+							<!--/ End Order Widget -->
+							<!-- Payment Method Widget -->
+							<div class="single-widget payement">
+								<div class="content">
+									<img src="image/payment-method.png" alt="#">
+								</div>
+							</div>
+							<!--/ End Payment Method Widget -->
+							<!-- Button Widget -->
+							<div class="single-widget get-button">
+								<div class="content">
+									<div class="button">
+										<a href="#" class="btn">proceed to checkout</a>
+									</div>
+								</div>
+							</div>
+							<!--/ End Button Widget -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Checkout -->
+		
+		<!-- Start Shop Services Area  -->
+		<section class="shop-services section home">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-rocket"></i>
+							<h4>Free shiping</h4>
+							<p>Orders over $100</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-reload"></i>
+							<h4>Free Return</h4>
+							<p>Within 30 days returns</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-lock"></i>
+							<h4>Sucure Payment</h4>
+							<p>100% secure payment</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-tag"></i>
+							<h4>Best Peice</h4>
+							<p>Guaranteed price</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Shop Services -->
+		<!-- Start Footer Area -->
+		<footer class="footer">
+			<!-- Footer Top -->
+			<div class="footer-top section">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5 col-md-6 col-12">
+							<!-- Single Widget -->
+							<div class="single-footer about">
+								<div class="logo">
+									<a href="index.html"><img src="images/logo2.png" alt="#"></a>
+								</div>
+								<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+								<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+							</div>
+							<!-- End Single Widget -->
+						</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<!-- Single Widget -->
+							<div class="single-footer links">
+								<h4>Information</h4>
+								<ul>
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Faq</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+						</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<!-- Single Widget -->
+							<div class="single-footer links">
+								<h4>Customer Service</h4>
+								<ul>
+									<li><a href="#">Payment Methods</a></li>
+									<li><a href="#">Money-back</a></li>
+									<li><a href="#">Returns</a></li>
+									<li><a href="#">Shipping</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+						</div>
+						<div class="col-lg-3 col-md-6 col-12">
+							<!-- Single Widget -->
+							<div class="single-footer social">
+								<h4>Get In Tuch</h4>
+								<!-- Single Widget -->
+								<div class="contact">
+									<ul>
+										<li>NO. 342 - London Oxford Street.</li>
+										<li>012 United Kingdom.</li>
+										<li>info@eshop.com</li>
+										<li>+032 3456 7890</li>
+									</ul>
+								</div>
+								<!-- End Single Widget -->
+								<ul>
+									<li><a href="#"><i class="ti-facebook"></i></a></li>
+									<li><a href="#"><i class="ti-twitter"></i></a></li>
+									<li><a href="#"><i class="ti-flickr"></i></a></li>
+									<li><a href="#"><i class="ti-instagram"></i></a></li>
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Footer Top -->
+			<div class="copyright">
+				<div class="container">
+					<div class="inner">
+						<div class="row">
+							<div class="col-lg-6 col-12">
+								<div class="left">
+									<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
+								</div>
+							</div>
+							<div class="col-lg-6 col-12">
+								<div class="right">
+									<img src="images/payments.png" alt="#">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- /End Footer Area -->
+ 
+	<!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<!-- Popper JS -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Color JS -->
+	<script src="js/colors.js"></script>
+	<!-- Slicknav JS -->
+	<script src="js/slicknav.min.js"></script>
+	<!-- Owl Carousel JS -->
+	<script src="js/owl-carousel.js"></script>
+	<!-- Magnific Popup JS -->
+	<script src="js/magnific-popup.js"></script>
+	<!-- Fancybox JS -->
+	<script src="js/facnybox.min.js"></script>
+	<!-- Waypoints JS -->
+	<script src="js/waypoints.min.js"></script>
+	<!-- Countdown JS -->
+	<script src="js/finalcountdown.min.js"></script>
+	<!-- Nice Select JS -->
+	<script src="js/nicesellect.js"></script>
+	<!-- Ytplayer JS -->
+	<script src="js/ytplayer.min.js"></script>
+	<!-- Flex Slider JS -->
+	<script src="js/flex-slider.js"></script>
+	<!-- ScrollUp JS -->
+	<script src="js/scrollup.js"></script>
+	<!-- Onepage Nav JS -->
+	<script src="js/onepage-nav.min.js"></script>
+	<!-- Easing JS -->
+	<script src="js/easing.js"></script>
+	<!-- Active JS -->
+	<script src="js/active.js"></script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+			var list = /*[[${HoChiMinh}]]*/ "Test1";
+		/*]]>*/
+        var x = document.getElementById('tinhthanh');
+        var t = document.getElementById('quanhuyen');
+        var z = document.getElementById('phuongxa');
+        var u = x.selectedIndex;
+        var ul = document.getElementsByClassName('list');
+        function Render(){
+        	
+        	 //switch(x.options[u].value){
+             //case 1:
+             //	alert("Có chạy");
+             	//for(var i=0;i<list.length();i++){
+             	//	 t.options[t.options.length] = new Option(list[i], i++);
+             	//}
+             //	break;
+             //case 2:
+            // case 3:
+            // case 4:
+            // case 5:
+            /*case 6:
+             case 7:
+             case 8:
+             case 9:
+             case 10:
+             case 11:
+             case 12:
+             case 13:
+             case 14:
+             case 15:
+             case 16:
+             case 17:
+             case 18:
+             case 19:
+             case 20:
+             case 21:
+             case 22:
+             case 23:
+             case 24:
+             case 25:
+             case 26:
+             case 27:
+             case 28:
+             case 29:
+             case 30:
+             case 31:
+             case 32:
+             case 33:
+             case 34:
+             case 35:
+             case 36:
+             case 37:
+             case 38:
+             case 39:
+             case 40:
+             case 41:
+             case 42:
+             case 43:
+             case 44:
+             case 45:
+             case 46:
+             case 47:
+             case 48:
+             case 49:
+             case 50:
+             case 51:
+             case 52:
+             case 53:
+             case 54:
+             case 55:
+             case 56:
+             case 57:
+             case 58:
+             case 59:
+             case 40:
+             case 41:
+             case 42:
+             case 43:
+             case 44:
+             case 45:
+             case 46:
+             case 47:
+             case 48:
+             case 49:
+             case 50:
+             case 51:
+             case 52:
+             case 53:
+             case 54:
+             case 55:
+             case 56:
+             case 57:
+             case 58:
+             case 59:
+             case 60:
+             case 61:
+             case 62:
+             case 63:
+             default:
+        		 alert("Không hiểu");
+             	 alert(x.options[x.selectedIndex].value);
+             }*/
+        	 if(x.options[x.selectedIndex].value == 1){
+        		
+        		 for(var i=0;i<list.length;i++){
+        			 b = i+1;
+             		 t.options[t.options.length] = new Option(list[i], b);
+             		
+             		var li=document.createElement('li');
+             		 li.innerHTML = li.innerHTML + list[i];
+             		 ul.innerHTML = ul.inn
+             		
+             	}
+        	 }
 
+           
+        	
+        }
+        document.getElementById('tinhthanh').addEventListener("change", function() {
+           
+        	
+        	if (x.value == "1") {
+        		alert()
+                t.options[t.options.length] = new Option("Quận 9", 1);
+                t.options[t.options.length] = new Option("Quận 9", 2);
+                t.options[t.options.length] = new Option("Quận 9", 3);
+            } else {
+                t.options.length = 1;
+            }
+        })
+    </script>
+</body>
 </html>
