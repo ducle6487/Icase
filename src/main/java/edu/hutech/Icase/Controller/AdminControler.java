@@ -108,42 +108,6 @@ public class AdminControler {
 		return list;
 	}
 
-	private String getJsonPhoneByBrand() throws JsonProcessingException {
-		Map<String, String[]> dic = new Hashtable<String, String[]>();
-		String[] ls = new String[] { "Oppo A52", "Oppo A92", "OPPO A5", "OPPO A3S", "Reno ACE", "Oppo K5", "Oppo A9",
-				"Oppo A11X" };
-
-		dic.put("Xiaomi", new String[] { "Mi 10T Pro", "Redmi K30s", "Mi 10T Lite", "Redmi Note 9 Pro 5G", "Mi 11",
-				"Black Shark 3", "Redmi Note 9S", "Note 9 Pro", "Poco M3", "Redmi 9T", "Poco X3 NFC",
-				"Redmi Note 8 Pro", "Mi 10T", "Mi 10T Pro 5G", "K30S", "Redmi Note 9 5G", "Note 9 Pro 5G",
-				"Redmi K30 5G", "Redmi Note 8", "Poco F2 Pro", "Redmi K30 Pro", "K30 Ultra", "Mi 9T", "Redmi K20",
-				"Redmi Note 7", "Redmi 9A", "Mi Note 10 Lite", "PocoPhone X2", "Redmi 9", "Redmi 9C", "Redmi Note 9",
-				"Redmi 10X 4G", "Mi 10 Lite", "Mi 9", "Mi 8", "Poco X2", "Note 8 Pro" });
-		dic.put("Realme", new String[] { "Realme 7", "Realme 7i", "Realme 7 Pro", "Realme 6", "Realme 6 Pro",
-				"Realme C17", "Realme 5 Pro", "Realme 5", "Realme X2 Pro", "Realme XT", "Realme X2" });
-		dic.put("Oppo", ls);
-		dic.put("Apple",
-				new String[] { "iPhone 6 Plus", "iPhone 7", "iPhone 7 Plus / 8 Plus", "iPhone X / Xs",
-						"iPhone 6 Plus / 6s Plus", "iPhone Xs Max", "iPhone X", "iPhone Xs", "iPhone XR",
-						"iPhone 7 Plus", "iPhone X-XR", "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone 8",
-						"iPhone 6/7/8", "iPhone 6/6S", "Airpods 1 / 2", "Airpods Pro" });
-		dic.put("Vsmart",
-				new String[] { "Vsmart Aris Pro", "Vsmart Aris", "Vsmart Joy 4", "Vsmart Live 4", "Vsmart Star 4",
-						"Vsmart Star 3", "Vsmart Active 3", "Vsmart Joy 3", "Vsmart Bee 3", "Vsmart Star",
-						"Vsmart Joy 1", "Vsmart Joy 1+ Plus" });
-		dic.put("Samsung",
-				new String[] { "Galaxy Note 20 Ultra", "Galaxy S8", "Galaxy A7 2017", "Galaxy A5 2017",
-						"Galaxy A3 2017", "Galaxy J7 Prime", "Galaxy A52", "Galaxy S21 Ultra", "Galaxy S21+ Plus",
-						"Galaxy S21", "Galaxy A02s", "Galaxy Note 9", "Galaxy Note 8", "Galaxy S20 FE", "Galaxy M51",
-						"Galaxy A11", "Galaxy A21s", "Galaxy M11", "Galaxy M31", "Galaxy S10 5G" });
-		dic.put("Huawei",
-				new String[] { "Huawei P40 Pro", "Huawei P40", "Huawei Nova 5T", "Mate 30 Pro", "Huawei Y9s",
-						"Huawei Nova 7i", "Huawei Nova 6 SE", "Huawei P30 Lite", "Huawei Y9 2019", "Huawei P30",
-						"Huawei P30 Pro", "Redmi K30" });
-		return new ObjectMapper().writeValueAsString(dic);
-
-	}
-
 	private int getIdBrandByNameBrand(String name) {
 
 		List<PhoneBrandModel> listPhoneBrand = getAllPhoneBrand();
@@ -239,6 +203,33 @@ public class AdminControler {
 	private List<InfoOrderModel> getInfoOrderByIdOrder(int idorder) {
 		String sql = "select IdProduct as idproduct, Amount as amount, a.Color as color, b.namephone as phone, a.Total as total from infoorder a, phone b where a.Phone = b.idphone and a.IdOrder = ?";
 		return jdbcTemplate.query(sql, new InfoOrderRowMapper(), idorder);
+	}
+
+	private List<String> getAllPhoneByBrand(int idbrand) {
+		String sql = "select namephone from Phone where idphonebrand = ?";
+		return jdbcTemplate.query(sql, new RowMapper<String>() {
+			@Override
+			public String mapRow(ResultSet rs, int numRow) throws SQLException {
+				return rs.getString("namephone");
+			}
+		}, idbrand);
+	}
+
+	private String getJsonPhoneByBrand() throws JsonProcessingException {
+
+		List<PhoneBrandModel> listKey = getAllPhoneBrand();
+		Map<String, String[]> dic = new Hashtable<String, String[]>();
+
+		for (PhoneBrandModel k : listKey) {
+			List<String> l = getAllPhoneByBrand(k.idbrand);
+			String[] v = new String[l.size()];
+			for (int i = 0; i < l.size(); i++) {
+				v[i] = l.get(i);
+			}
+			dic.put(k.namebrand, v);
+		}
+		return new ObjectMapper().writeValueAsString(dic);
+
 	}
 
 	private int[] getListOrderCountInThisWeek() {
