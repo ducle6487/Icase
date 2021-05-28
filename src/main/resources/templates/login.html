@@ -28,6 +28,17 @@
 		<div hidden=true class="elfsight-app-2cee16c1-38a2-4bff-8330-242bdd9af5a1"></div>
 		<div class="vertical-align-wrap">
 			<div class="vertical-align-middle">
+				<div class="container" th:switch="${message}">
+					<div class="alert alert-danger alert-dismissible" th:case="'online valid'">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Cảnh báo!</strong> Đang có quản trị viên khác đang hoạt động, hãy thoát hết tài khoản
+						trước khi đăng nhập lại.
+					</div>
+					<div class="alert alert-danger alert-dismissible" th:case="'login fail'">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Cảnh báo!</strong> Tài khoản hoặc mật khẩu không đúng, thử lại.
+					</div>
+				</div>
 				<div class="auth-box ">
 					<div class="left">
 						<div class="content">
@@ -35,7 +46,8 @@
 								<div class="logo text-center"><img src="../image/Icase.png" alt="Icase Logo"></div>
 								<p class="lead">Đăng nhập bằng tài khoản quản trị</p>
 							</div>
-							<form class="form-auth-small" th:action="@{/checkLogin}" th:object="${admin}" method="post">
+							<form class="form-auth-small" th:action="@{/admin/check-login}" th:object="${admin}"
+								method="post">
 								<div class="form-group ">
 									<label for="signin-email" class="control-label sr-only">Email</label>
 									<input type="text" class="form-control" id="signin-email" name="userName" required
@@ -63,6 +75,9 @@
 		</div>
 	</div>
 	<!-- END WRAPPER -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -67,14 +67,15 @@
 							</ul>
 						</li> -->
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png"
-									class="img-circle" alt="Avatar"> <span>Samuel</span> <i
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
+									src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
+									class="img-circle" alt="Avatar"> <span>[[${username}]]</span> <i
 									class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
 								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a th:href="@{/sign-out}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
 						<!-- <li>
@@ -136,12 +137,15 @@
 											<!-- <a title="remove" href="#">Remove</a> -->
 											<!-- </div> -->
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">&nbsp;&nbsp; &nbsp;&nbsp; Detail
+												<a title="Add to cart" href="#">&nbsp;&nbsp; &nbsp;&nbsp; Chi tiết
 													&nbsp;&nbsp;</a>
 												<a title="edit"
-													th:href="@{'/admin/product-edit&id='+${product.idProduct}}">Edit
+													th:href="@{'/admin/product-edit&id='+${product.idProduct}}">Chỉnh
+													sửa
 													&nbsp;&nbsp;</a>
-												<a title="remove" href="#">Remove</a>
+												<a title="remove"
+													onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');"
+													th:href="'/delete-product&id='+${product.idProduct}">Xóa</a>
 											</div>
 										</div>
 									</div>
@@ -151,11 +155,13 @@
 											text-overflow: ellipsis;
 											display: -webkit-box;
 											-webkit-line-clamp: 2;
-											-webkit-box-orient: vertical;min-height: 50px;" th:href="@{'/admin/product-edit&id='+${product.idProduct}}"
+											-webkit-box-orient: vertical;min-height: 50px;" id="nameproduct"
+												th:href="@{'/admin/product-edit&id='+${product.idProduct}}"
 												th:text="${product.nameProduct}"></a>
 										</h3>
 										<div class="product-price">
-											<span>[[${product.price}]] VNĐ</span>
+											<span>[[${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')}]]
+												VNĐ</span>
 
 										</div>
 									</div>
@@ -182,7 +188,6 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-
 
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/jquery-migrate-3.0.0.js"></script>

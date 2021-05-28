@@ -9,14 +9,20 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import static java.time.DayOfWeek.MONDAY;
 import static java.time.DayOfWeek.SUNDAY;
 import static java.time.temporal.TemporalAdjusters.nextOrSame;
 import static java.time.temporal.TemporalAdjusters.previousOrSame;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -34,6 +40,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.hutech.Icase.Model.AdminModel;
 import edu.hutech.Icase.Model.AdminProductModel;
@@ -50,7 +58,23 @@ public class AdminControler {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Utility function
+
+	private boolean islogedIn(HttpSession session) {
+
+		if (session.getAttribute("username") == null) {
+			return false;
+		}
+		return true;
+	}
 
 	private int countOrder(int[] input) {
 
@@ -120,6 +144,26 @@ public class AdminControler {
 
 	}
 
+	private int getIdBrandByNameBrand(String name) {
+
+		List<PhoneBrandModel> listPhoneBrand = getAllPhoneBrand();
+
+		for (PhoneBrandModel phoneBrandModel : listPhoneBrand) {
+			if (phoneBrandModel.namebrand.equals(name)) {
+				return phoneBrandModel.idbrand;
+			}
+		}
+		return -1;
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// RSelect and Insert, update data Area
 
 	private List<AdminProductModel> getAllProduct() {
@@ -359,32 +403,148 @@ public class AdminControler {
 		return jdbcTemplate.update(sql, idorder);
 	}
 
+	private int deleteProduct(int idproduct) {
+		String sql = "delete from product where idproduct = ?";
+		return jdbcTemplate.update(sql, idproduct);
+	}
+
+	private int addNewPhoneBrand(String phoneBrand) {
+		String sql = "insert into phonebrand(name) values(?)";
+		return jdbcTemplate.update(sql, phoneBrand);
+	}
+
+	private int addNewPhone(String phone) {
+		String sql = "insert into Phone(namephone) values(?)";
+		return jdbcTemplate.update(sql, phone);
+	}
+
+	private int getIdPhoneByName(String name) {
+		String sql = "select idphone from Phone where namephone = ?";
+		List<Integer> l = jdbcTemplate.query(sql, new RowMapper<Integer>() {
+			@Override
+			public Integer mapRow(ResultSet rs, int numRow) throws SQLException {
+				return Integer.valueOf(rs.getInt("idphone"));
+			}
+		}, name);
+		if (!l.isEmpty()) {
+			return l.get(0).intValue();
+		}
+		return 0;
+	}
+
+	private int addNewProduct(ProductValueModel product) {
+		PhoneBrandModel idbp = findIdPhoneBrandByName(product.phonebrand);
+		String sql = "insert into product(name,idphonebrand,price,desciption,amount,casebrand,sold,dateadded) output inserted.idproduct values(?,?,?,?,?,?,0,GETDATE())";
+		List<Integer> l = jdbcTemplate.query(sql, new RowMapper<Integer>() {
+			@Override
+			public Integer mapRow(ResultSet rs, int numRow) throws SQLException {
+				return Integer.valueOf(rs.getInt("idproduct"));
+			}
+		}, product.name, idbp.idbrand, product.price, product.description, product.amount, product.brand);
+		if (!l.isEmpty()) {
+			return l.get(0).intValue();
+		}
+		return 0;
+	}
+
+	private int updateProduct(ProductValueModel product) {
+		PhoneBrandModel pb = findIdPhoneBrandByName(product.phonebrand);
+		String sql = "update product set name=?,idphonebrand=?,price=?,desciption=?,amount=?,casebrand=? where idproduct=?";
+		return jdbcTemplate.update(sql, product.name, pb.idbrand, product.price, product.description, product.amount,
+				product.brand, product.idproduct);
+	}
+
+	private int deleteOldColor(int idproduct) {
+		String sql = "delete from color where idproduct = ?";
+		return jdbcTemplate.update(sql, idproduct);
+	}
+
+	private int addNewColor(int idproduct, String name) {
+		String sql = "insert into color values(?,?)";
+		return jdbcTemplate.update(sql, idproduct, name);
+	}
+
+	private int deleteOldDevice(int idproduct) {
+		String sql = "delete from device where idproduct = ?";
+		return jdbcTemplate.update(sql, idproduct);
+	}
+
+	private int addNewDevice(int idproduct, int idphone) {
+		String sql = "insert into device values(?,?)";
+		return jdbcTemplate.update(sql, idproduct, idphone);
+	}
+
+	private int addNewImage(String name, int idproduct) {
+		String sql = "insert into image(name,idproduct) values(?,?)";
+		return jdbcTemplate.update(sql, name, idproduct);
+	}
+
+	private int checkLogin(String username, String password) {
+		String sql = "select count(*) as counter from Admin where binary_checksum(username) = BINARY_CHECKSUM(?) and BINARY_CHECKSUM(password) = BINARY_CHECKSUM(?)";
+		List<Integer> l = jdbcTemplate.query(sql, new RowMapper<Integer>() {
+			@Override
+			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return Integer.valueOf(rs.getInt("counter"));
+			}
+		}, username, password);
+		if (!l.isEmpty()) {
+			return l.get(0).intValue();
+		}
+		return 0;
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Mapping Area
 
 	@GetMapping("/admin/login")
-	public String adminLogin() {
+	public String adminLogin(Model model, HttpSession session) {
+
+		if (islogedIn(session)) {
+			return "redirect:/admin/dashboard";
+		}
+
+		System.out.println(model.getAttribute("message"));
 		return "login";
 	}
 
-	@PostMapping(path = "checkLogin")
-	public String checkLogin(AdminModel admin) {
+	@PostMapping(path = "admin/check-login")
+	public String checkLogin(AdminModel admin, Model model, HttpSession session) {
 
-		if (admin.getUserName().equals("admin") && admin.getPassword().equals("anhducle")) {
+		String message = "";
+		if (checkLogin(admin.userName, admin.password) > 0) {
+			session.setAttribute("username", admin.userName);
 			return "redirect:/admin/dashboard";
 		} else {
-			return "redirect:/admin/login";
+			message = "login fail";
+
 		}
 
+		model.addAttribute("message", message);
+		// adminLogin(model);
+		return "login";
 	}
 
 	@GetMapping("/admin/dashboard")
-	public String adminMainPage(Model model) {
+	public String adminMainPage(Model model, HttpSession session) {
 		// ArrayList<Integer> list = new ArrayList<Integer>();
 		// list.add(300);
 		// list.add(200);
 		// list.add(100);
 		// list.add(600);
 		// list.add(500);
+
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 
 		LocalDate today = LocalDate.now();
 
@@ -393,14 +553,18 @@ public class AdminControler {
 
 		String thisMonth = today.format(DateTimeFormatter.ofPattern("MM"));
 
+		DecimalFormat fm = new DecimalFormat("###,###,###");
+
+		model.addAttribute("username", (String) session.getAttribute("username"));
 		model.addAttribute("monday", monday.format(DateTimeFormatter.ofPattern("MMM, dd yyyy")));
 		model.addAttribute("sunday", sunday.format(DateTimeFormatter.ofPattern("MMM, dd yyyy")));
-		model.addAttribute("pricethisweek", getSumPriceThisWeek());
-		model.addAttribute("amountthisweek", countOrder(getListOrderCountInThisWeek()));
-		model.addAttribute("amountthismonth", getListOrderCountInThisYear()[Integer.parseInt(thisMonth) - 1]);
-		model.addAttribute("pricethismonth", getSumPriceThisMonth());
-		model.addAttribute("amountthisyear", countOrder(getListOrderCountInThisYear()));
-		model.addAttribute("pricethisyear", getSumPriceThisYear());
+		model.addAttribute("pricethisweek", fm.format(getSumPriceThisWeek()));
+		model.addAttribute("amountthisweek", fm.format(countOrder(getListOrderCountInThisWeek())));
+		model.addAttribute("amountthismonth",
+				fm.format(getListOrderCountInThisYear()[Integer.parseInt(thisMonth) - 1]));
+		model.addAttribute("pricethismonth", fm.format(getSumPriceThisMonth()));
+		model.addAttribute("amountthisyear", fm.format(countOrder(getListOrderCountInThisYear())));
+		model.addAttribute("pricethisyear", fm.format(getSumPriceThisYear()));
 		model.addAttribute("orderhistories", getRecent24hOrderHistory());
 		model.addAttribute("weekly", getListOrderCountInThisWeek());
 		model.addAttribute("yearly", getListOrderCountInThisYear());
@@ -409,17 +573,25 @@ public class AdminControler {
 	}
 
 	@GetMapping("/admin/all-product")
-	public String allProduct(Model model) {
-
+	public String allProduct(Model model, HttpSession session) {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 		List<AdminProductModel> list = getAllProduct();
-		System.out.println(list.get(0).getPrice());
+		// System.out.println(list.get(0).getPrice());
+
+		model.addAttribute("username", (String) session.getAttribute("username"));
 		model.addAttribute("products", list);
 
 		return "allproduct";
 	}
 
 	@GetMapping("/admin/product-edit&id={id}")
-	public String editProduct(@PathVariable String id, Model model) throws JsonProcessingException {
+	public String editProduct(@PathVariable String id, Model model, HttpSession session)
+			throws JsonProcessingException {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 		AdminProductModel product = findProduct(Integer.parseInt(id));
 
 		List<PhoneModel> list = findPhoneByIdProduct(product.idProduct);
@@ -440,6 +612,7 @@ public class AdminControler {
 			listSelectedColorsString.add(color.getNamecolor());
 		});
 
+		model.addAttribute("username", (String) session.getAttribute("username"));
 		model.addAttribute("PhoneByBrand", getJsonPhoneByBrand());
 		model.addAttribute("product", product);
 		model.addAttribute("brand", findPhoneBrandById(product.idBrandPhone).namebrand);
@@ -450,34 +623,113 @@ public class AdminControler {
 	}
 
 	@GetMapping("/admin/all-order")
-	public String allOrder(Model model) {
+	public String allOrder(Model model, HttpSession session) {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
+		model.addAttribute("username", (String) session.getAttribute("username"));
 		model.addAttribute("orderhistories", getAllOrderHistory());
 		return "allorder";
 	}
 
 	@GetMapping("/admin/product-edit")
-	public String addProduct(Model model) throws JsonProcessingException {
+	public String addProduct(Model model, HttpSession session) throws JsonProcessingException {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 
+		ArrayList<String> listAllColorString = new ArrayList<String>();
+		List<ColorModel> listAllColors = getAllColor();
+		listAllColors.forEach(item -> {
+			listAllColorString.add(item.getNamecolor());
+		});
+
+		ArrayList<String> l2 = new ArrayList<String>();
+		l2.add("");
 		AdminProductModel p = new AdminProductModel();
+
+		model.addAttribute("username", (String) session.getAttribute("username"));
 		model.addAttribute("PhoneByBrand", getJsonPhoneByBrand());
 		model.addAttribute("product", p);
+		model.addAttribute("allcolor", listAllColorString);
+		model.addAttribute("selectedcolor", l2);
 
 		return "edit-product";
 	}
 
 	@RequestMapping(value = "/update-product")
-	public String updateProduct(@ModelAttribute ProductValueModel product) {
+	public String updateProduct(@RequestParam("files") MultipartFile[] files, @ModelAttribute ProductValueModel product,
+			HttpSession session, Model model) throws IllegalStateException, IOException {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
+
+		model.addAttribute("username", (String) session.getAttribute("username"));
 		String[] phones = product.device.split("\\|", -1);
 		String[] colors = product.color.split("\\|", -1);
 		List<String> listSelectedPhone = convertArrayToList(phones);
 		List<String> listSelectedColor = convertArrayToList(colors);
-		System.out.println(listSelectedColor + "" + listSelectedPhone + "" + product.idproduct + product.brand
-				+ product.amount + product.description + product.name + product.phonebrand);
+
+		String path = Paths.get("").toFile().getAbsolutePath();
+
+		// path + "/src/main/resources/static/temp/a.png"
+		if (getIdBrandByNameBrand(product.phonebrand) == -1) {
+			// add new phone brand and phone
+
+			if (addNewPhoneBrand(product.phonebrand) == 0) {
+				return "redirect:/admin/dashboard";
+			}
+
+			for (String s : listSelectedPhone) {
+				addNewPhone(s);
+			}
+
+		}
+
+		int idproduct = product.idproduct;
+		if (product.idproduct == 0) {
+			// add new product
+			idproduct = addNewProduct(product);
+			if (idproduct == 0) {
+				return "redirect:/admin/dashboard";
+			}
+
+		} else {
+			// just editting
+			if (updateProduct(product) == 0) {
+				return "redirect:/admin/dashboard";
+			}
+
+		}
+
+		if (idproduct != 0) {
+			if (deleteOldColor(idproduct) >= 0) {
+				for (String s : listSelectedColor) {
+					addNewColor(idproduct, s);
+				}
+			}
+			if (deleteOldDevice(idproduct) >= 0) {
+				for (String s : listSelectedPhone) {
+					addNewDevice(idproduct, getIdPhoneByName(s));
+				}
+			}
+			if (files.length > 0) {
+				for (int i = 0; i < files.length; i++) {
+					files[i].transferTo(
+							new File(path + "/src/main/resources/static/imageCase/" + files[i].getOriginalFilename()));
+					addNewImage(files[i].getOriginalFilename(), idproduct);
+				}
+			}
+		}
+
 		return "redirect:/admin/dashboard";
 	}
 
 	@GetMapping("/admin/detail-order&id={id}")
-	public String detailorder(@PathVariable String id, Model model) {
+	public String detailorder(@PathVariable String id, Model model, HttpSession session) {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 
 		OrderHistoryModel ord = new OrderHistoryModel();
 		List<OrderHistoryModel> list = getAllOrderHistoryByIdOrder(Integer.parseInt(id));
@@ -486,14 +738,17 @@ public class AdminControler {
 		}
 
 		List<InfoOrderModel> listInfo = getInfoOrderByIdOrder(Integer.parseInt(id));
-
+		model.addAttribute("username", (String) session.getAttribute("username"));
 		model.addAttribute("infoorder", listInfo);
 		model.addAttribute("order", ord);
 		return "detail-order";
 	}
 
 	@GetMapping("/change-to-shipping&id={id}")
-	public String changeToShipping(@PathVariable String id, Model model) {
+	public String changeToShipping(@PathVariable String id, Model model, HttpSession session) {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 
 		updateDeliveryStatus(2, Integer.parseInt(id), false);
 
@@ -513,7 +768,10 @@ public class AdminControler {
 	boolean updated = false;
 
 	@GetMapping("/change-to-accept&id={id}")
-	public String changeToAccept(@PathVariable String id, Model model) {
+	public String changeToAccept(@PathVariable String id, Model model, HttpSession session) {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 
 		List<OrderHistoryModel> list = getAllOrderHistoryByIdOrder(Integer.parseInt(id));
 
@@ -541,7 +799,10 @@ public class AdminControler {
 	}
 
 	@GetMapping("/change-to-decline&id={id}")
-	public String changeToDecline(@PathVariable String id, Model model) {
+	public String changeToDecline(@PathVariable String id, Model model, HttpSession session) {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 
 		updateDeliveryStatus(4, Integer.parseInt(id), false);
 
@@ -559,7 +820,10 @@ public class AdminControler {
 	}
 
 	@GetMapping("/change-to-payed&id={id}")
-	public String changeToPayed(@PathVariable String id, Model model) {
+	public String changeToPayed(@PathVariable String id, Model model, HttpSession session) {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
 
 		updatePaymentStatus(Integer.parseInt(id));
 
@@ -574,6 +838,21 @@ public class AdminControler {
 		model.addAttribute("infoorder", listInfo);
 		model.addAttribute("order", ord);
 		return "redirect:/admin/detail-order&id=" + id;
+	}
+
+	@GetMapping("/delete-product&id={id}")
+	public String deleteProduct(@PathVariable String id, HttpSession session) {
+		if (!islogedIn(session)) {
+			return "redirect:/admin/login";
+		}
+		deleteProduct(Integer.parseInt(id));
+		return "redirect:/admin/all-product";
+	}
+
+	@GetMapping("/sign-out")
+	public String signOut(HttpSession session) {
+		session.setAttribute("username", null);
+		return "redirect:/admin/login";
 	}
 
 }
