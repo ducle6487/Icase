@@ -26,9 +26,6 @@ public class IcaseApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM product";
-		List<Case> loaihangs = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Case.class));
-		loaihangs.forEach(System.out :: println);
 	}
 
 }

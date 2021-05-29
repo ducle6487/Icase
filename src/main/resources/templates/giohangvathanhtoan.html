@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="zxx">
+	<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Meta Tag -->
@@ -252,7 +252,7 @@
 							<h2>Make Your Checkout Here</h2>
 							<p>Please register in order to checkout more quickly</p>
 							<!-- Form -->
-							<form class="form" method="post" action="#">
+							<form class="form" th:action="@{/thanhtoan}" th:object="${user}" method="post">
 								<div class="row">
 									<div class="col-lg-7 col-md-7 col-12">
 										<div class="form-group">
@@ -269,9 +269,9 @@
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Tỉnh / Thành Phố<span>*</span></label>
-											<select name="state-province" onchange="Render()" id="tinhthanh">
+											<select name="tinhthanh" onchange="Render()" id="tinhthanh">
 												<option value="">Tỉnh / Thành Phố</option>
-													<option value="1">Hồ Chí Minh</option>
+													<option value="Hồ Chí Minh">Hồ Chí Minh</option>
 																					<option value="2">Hà Nội</option>
 																					<option value="3">Bình Dương</option>
 																					<option value="4">Đà Nẵng</option>
@@ -338,15 +338,16 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 											<label>Quận / Huyện<span>*</span></label>
-											<select name="country_name" id="quanhuyen">
+											<select name="quanhuyen" id="quanhuyen" style="display: block">
 												<option value="0">Quận / Huyện</option>
 											</select>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Phường / Xã<span>*</span></label>
-											<select name="state-province" id="phuongxa">
+											<select name="phuongxa" id="phuongxa" style="display: block">
 												<option value="0">Phường / Xã</option>
+												<option value="1">Hiệp phú</option>
 											</select>
 										</div>
 									</div>
@@ -359,14 +360,11 @@
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Yêu cầu khác</label>
-											<input type="text" name="address" placeholder="" required="required">
+											<input type="text" name="message" placeholder="" required="required">
 										</div>
 									</div>		
 									<div class="col-12">
-										<div class="form-group create-account">
-											<input id="cbox" type="checkbox">
-											<label>Create an account?</label>
-										</div>
+									<button type="submit" class="btn" value="Thanh Toán">proceed to checkout</button>
 									</div>
 								</div>
 							</form>
@@ -407,13 +405,6 @@
 							</div>
 							<!--/ End Payment Method Widget -->
 							<!-- Button Widget -->
-							<div class="single-widget get-button">
-								<div class="content">
-									<div class="button">
-										<a href="#" class="btn">proceed to checkout</a>
-									</div>
-								</div>
-							</div>
 							<!--/ End Button Widget -->
 						</div>
 					</div>
@@ -595,138 +586,27 @@
 	<script src="js/easing.js"></script>
 	<!-- Active JS -->
 	<script src="js/active.js"></script>
-	<script th:inline="javascript">
+	<script th:inline="javascript" type="text/javascript">
 		/*<![CDATA[*/
 			var list = /*[[${HoChiMinh}]]*/ "Test1";
+		/*[[${thu}]]*/ "Test1" = list;
 		/*]]>*/
         var x = document.getElementById('tinhthanh');
         var t = document.getElementById('quanhuyen');
         var z = document.getElementById('phuongxa');
+        var n = x.options[x.selectedIndex].value;
         var u = x.selectedIndex;
-        var ul = document.getElementsByClassName('list');
-        function Render(){
-        	
-        	 //switch(x.options[u].value){
-             //case 1:
-             //	alert("Có chạy");
-             	//for(var i=0;i<list.length();i++){
-             	//	 t.options[t.options.length] = new Option(list[i], i++);
-             	//}
-             //	break;
-             //case 2:
-            // case 3:
-            // case 4:
-            // case 5:
-            /*case 6:
-             case 7:
-             case 8:
-             case 9:
-             case 10:
-             case 11:
-             case 12:
-             case 13:
-             case 14:
-             case 15:
-             case 16:
-             case 17:
-             case 18:
-             case 19:
-             case 20:
-             case 21:
-             case 22:
-             case 23:
-             case 24:
-             case 25:
-             case 26:
-             case 27:
-             case 28:
-             case 29:
-             case 30:
-             case 31:
-             case 32:
-             case 33:
-             case 34:
-             case 35:
-             case 36:
-             case 37:
-             case 38:
-             case 39:
-             case 40:
-             case 41:
-             case 42:
-             case 43:
-             case 44:
-             case 45:
-             case 46:
-             case 47:
-             case 48:
-             case 49:
-             case 50:
-             case 51:
-             case 52:
-             case 53:
-             case 54:
-             case 55:
-             case 56:
-             case 57:
-             case 58:
-             case 59:
-             case 40:
-             case 41:
-             case 42:
-             case 43:
-             case 44:
-             case 45:
-             case 46:
-             case 47:
-             case 48:
-             case 49:
-             case 50:
-             case 51:
-             case 52:
-             case 53:
-             case 54:
-             case 55:
-             case 56:
-             case 57:
-             case 58:
-             case 59:
-             case 60:
-             case 61:
-             case 62:
-             case 63:
-             default:
-        		 alert("Không hiểu");
-             	 alert(x.options[x.selectedIndex].value);
-             }*/
-        	 if(x.options[x.selectedIndex].value == 1){
-        		
-        		 for(var i=0;i<list.length;i++){
-        			 b = i+1;
-             		 t.options[t.options.length] = new Option(list[i], b);
-             		
-             		var li=document.createElement('li');
-             		 li.innerHTML = li.innerHTML + list[i];
-             		 ul.innerHTML = ul.inn
-             		
-             	}
-        	 }
-
-           
-        	
-        }
-        document.getElementById('tinhthanh').addEventListener("change", function() {
-           
-        	
-        	if (x.value == "1") {
-        		alert()
-                t.options[t.options.length] = new Option("Quận 9", 1);
-                t.options[t.options.length] = new Option("Quận 9", 2);
-                t.options[t.options.length] = new Option("Quận 9", 3);
-            } else {
-                t.options.length = 1;
-            }
-        })
+        function Render()
+        {
+        	if((x.options[x.selectedIndex].value.localeCompare("Hồ Chí Minh"))==0)
+        			{
+        		alert(x.options[x.selectedIndex].value);
+        		for(var i=0;i<list.length;i++){
+               		 t.options[t.options.length] = new Option(list[i], list[i]);
+        		}
+        	}	
+             }
+       
     </script>
 </body>
 </html>

@@ -5,18 +5,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class Device {
 	private int idproduct;
-	private String phone;
+	private int idphone;
 	
 	public Device() {
 		
 	}
-	public Device(int a,String b) {
+	public Device(int a,int b) {
 		this.idproduct = a;
-		this.phone = b;
+		this.idphone = b;
+	}
+	public int getIdphone() {
+		return idphone;
+	}
+	public void setIdphone(int idphone) {
+		this.idphone = idphone;
 	}
 	@Override
 	public String toString() {
-		return "Device [idproduct=" + idproduct + ", phone=" + phone + "]";
+		return "Device [idproduct=" + idproduct + ", phone=" + idphone + "]";
 	}
 	public int getIdproduct() {
 		return idproduct;
@@ -24,10 +30,5 @@ public class Device {
 	public void setIdproduct(int idproduct) {
 		this.idproduct = idproduct;
 	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+	
 }

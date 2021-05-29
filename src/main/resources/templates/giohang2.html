@@ -272,17 +272,17 @@
 												<i class="ti-minus"></i>
 											</button>
 										</div>
-										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1" th:value="${cart.getSl}">
+										<input type="text" th:name="${cart.getName}" class="input-number"  data-min="1" data-max="100" value="1" th:value="${cart.getSl}">
 										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+											<button type="button" class="btn btn-primary btn-number" data-type="plus" th:field="${cart.getName}">
 												<i class="ti-plus"></i>
 											</button>
 										</div>
 									</div>
 									<!--/ End Input Order -->
 								</td>
-								<td class="total-amount" data-title="Total"><span>$220.88</span></td>
-								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+								<td class="total-amount" data-title="Total"><span th:text="${cart.getPrice}*${cart.getSl}">$220.88</span></td>
+								<td class="action" data-title="Remove"><a th:href="@{|/Remove/${cart.getIdproduct}|}"><i class="ti-trash remove-icon"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -311,12 +311,12 @@
 								<div class="right">
 									<ul>
 										<li>Cart ToTal<span th:text="${CartTotal}">$330.00</span></li>
-										<li>Shipping<span>Free</span></li>
-										<li class="last">You Pay<span>$310.00</span></li>
+										<li>Shipping<span th:value="${cartship}">30.000đ</span></li>
+										<li class="last">You Pay<span th:text="${CartTotal} + ${cartship}">$310.00</span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">Checkout</a>
-										<a href="#" class="btn">Continue shopping</a>
+										<a th:href="@{/giohang+thanhtoan}" class="btn">Thanh Toán</a>
+										<a th:href="@{/home}" class="btn">Tiếp tục mua sắm</a>
 									</div>
 								</div>
 							</div>

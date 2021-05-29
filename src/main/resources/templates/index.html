@@ -108,8 +108,8 @@
                             <!-- Search Form -->
                             <div class="search-top">
                             
-                                <form class="search-form" th:action="@{/search}" method="get">
-                                    <input type="search" placeholder="Tìm kiếm sản phẩm..." name="search">                         
+                                <form class="search-form" th:action="@{/search}" th:object="${product}">
+                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">                         
                                     <button value="Search" type="submit"><i class="ti-search"></i></button>                                    
                                 </form>
                                 
@@ -122,9 +122,9 @@
                     <div class="col-lg-8 col-md-7 col-12">
                         <div class="search-bar-top">
                             <div class="search-bar">
-                                <form>
-                                    <input name="search" placeholder="Tìm kiếm sản phẩm....." type="search">
-                                    <button class="btnn"><i class="ti-search"></i></button>
+                                <form th:action="@{/search}" th:object="${product}">
+                                	<input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
+                                    <button class="btnn" type="submit"><i class="ti-search"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -143,22 +143,17 @@
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
-                                        <span>2 Items</span>
+                                        <span th:text="${cartcount}">2 Items</span>
                                         <a th:href="@{/giohang}">View Cart</a>
                                     </div>
                                     <ul class="shopping-list">
-                                        <li>
+                                        <li th:each="giohang : ${cart}">
                                             <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
                                             <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                                            <h4><a href="#">Woman Ring</a></h4>
-                                            <p class="quantity">1x - <span class="amount">$99.00</span></p>
+                                            <h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
+                                            <p class="quantity">1x - <span class="amount" >$99.00</span></p>
                                         </li>
-                                        <li>
-                                            <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                                            <h4><a href="#">Woman Necklace</a></h4>
-                                            <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                                        </li>
+                                     
                                     </ul>
                                     <div class="bottom">
                                         <div class="total">
@@ -203,7 +198,7 @@
                                                         <li><a th:text="${phonebrands.getName}"></a>
                                                         <ul class="dropright">
                                                     	<div class="div-grid" >
-                                                        <li th:each="phones : ${phones}"><a  th:href="@{|/product/{getNamephone}|}" class="a-trong"  th:text="${phones.getNamephone}"></a></li>                                                 	
+                                                        <li th:each="phones : ${phones}"><a  th:href="@{|/product/${phones.getIdphone}|}" class="a-trong"  th:text="${phones.getNamephone}"></a></li>                                                 	
                                                     	</div>                                                      
                                                     	</ul>                                                    	
                                                         </li>
