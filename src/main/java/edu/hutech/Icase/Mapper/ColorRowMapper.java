@@ -13,7 +13,7 @@ public class ColorRowMapper implements RowMapper<ColorModel> {
     public ColorModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         ColorModel color = new ColorModel();
-        color.setNamecolor(rs.getString("color"));
+        color.setColor(rs.getString("color"));
         return color;
     }
 

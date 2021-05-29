@@ -13,8 +13,8 @@ public class PhoneBrandRowMapper implements RowMapper<PhoneBrandModel> {
     public PhoneBrandModel mapRow(ResultSet rs, int rownum) throws SQLException {
 
         PhoneBrandModel pb = new PhoneBrandModel();
-        pb.setIdbrand(rs.getInt("idphonebrand"));
-        pb.setNamebrand(rs.getString("name"));
+        pb.setIdPhoneBrand(rs.getInt("idphonebrand"));
+        pb.setName(rs.getString("name"));
         return pb;
     }
 

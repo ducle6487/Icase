@@ -5,10 +5,9 @@ import java.sql.ResultSet;
 import org.springframework.jdbc.core.RowMapper;
 
 import edu.hutech.Icase.Model.PhoneModel;
-import edu.hutech.Icase.Model.ProductModel;
 
-public class PhoneMapper implements RowMapper<PhoneModel>{
-	@Override
+public class PhoneMapper implements RowMapper<PhoneModel> {
+    @Override
     public PhoneModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         PhoneModel phone = new PhoneModel();

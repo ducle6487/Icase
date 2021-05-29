@@ -1,11 +1,10 @@
 package edu.hutech.Icase;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class MyConnect {
-	private String servername;
+	// private String servername;
 	private String port;
 	private String db_name;
 	private String db_user;
@@ -14,8 +13,8 @@ public class MyConnect {
 	public MyConnect() {
 		port = "1433";
 		db_name = "Icase";
-		db_user = "sa";
-		db_pass = "sang1411";
+		db_user = "userz";
+		db_pass = "user";
 	}
 
 	public Connection getcn() {

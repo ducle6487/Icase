@@ -1,19 +1,10 @@
 package edu.hutech.Icase.Controller;
 
-import java.io.Console;
-import java.lang.reflect.Array;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-
-import javax.websocket.Session;
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Conventions;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -21,10 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.thymeleaf.expression.Conversions;
 
 import edu.hutech.Icase.Model.Case;
 import edu.hutech.Icase.Model.Device;
@@ -114,11 +101,15 @@ public class HomeController {
 
 	@PostMapping(path = "thanhtoan")
 	public String thanhtoan(User user) {
-		String[] stringarray = new String[] { "Bình Chánh", "Bình Tân", "Bình Thạnh", "Cần Giờ", "Củ Chi", "Gò Vấp",
-				"Hóc Môn", "Nhà Bè", "Phú Nhuận", "Quận 1", "Quận 10", "Quận 11", "Quận 12", "Quận 3", "Quận 4",
-				"Quận 9", "Quận 2", "Quận 5", "Quận 6", "Quận 7", "Quận 8", "Thủ Đức", "Tân Bình", "Tân Phú" };
+		// String[] stringarray = new String[] { "Bình Chánh", "Bình Tân", "Bình Thạnh",
+		// "Cần Giờ", "Củ Chi", "Gò Vấp",
+		// "Hóc Môn", "Nhà Bè", "Phú Nhuận", "Quận 1", "Quận 10", "Quận 11", "Quận 12",
+		// "Quận 3", "Quận 4",
+		// "Quận 9", "Quận 2", "Quận 5", "Quận 6", "Quận 7", "Quận 8", "Thủ Đức", "Tân
+		// Bình", "Tân Phú" };
 		System.out.println(user.getTinhthanh());
-		double total = GioHang.cart.stream().mapToDouble(Case::getPrice).sum() + 30000;
+		// double total = GioHang.cart.stream().mapToDouble(Case::getPrice).sum() +
+		// 30000;
 		// int row = jdbctemplate.update("insert into
 		// orders(DateOrder,Total,Name,Phone,Address,Message) values
 		// ("+date+","+total+",N'"+user.getName()+"',"+"0"+user.getNumber()+",N'"+
@@ -132,10 +123,10 @@ public class HomeController {
 		return "newdescription";
 	}
 
-	@GetMapping("/product")
-	public String product(Model model) {
-		return "product";
-	}
+	// @GetMapping("/product")
+	// public String product(Model model) {
+	// return "product";
+	// }
 
 	@GetMapping("/product/{getIdphone}")
 	public String product(@PathVariable int getIdphone, Model model) {

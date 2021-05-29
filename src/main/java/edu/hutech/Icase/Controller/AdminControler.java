@@ -113,8 +113,8 @@ public class AdminControler {
 		List<PhoneBrandModel> listPhoneBrand = getAllPhoneBrand();
 
 		for (PhoneBrandModel phoneBrandModel : listPhoneBrand) {
-			if (phoneBrandModel.namebrand.equals(name)) {
-				return phoneBrandModel.idbrand;
+			if (phoneBrandModel.name.equals(name)) {
+				return phoneBrandModel.idPhoneBrand;
 			}
 		}
 		return -1;
@@ -221,12 +221,12 @@ public class AdminControler {
 		Map<String, String[]> dic = new Hashtable<String, String[]>();
 
 		for (PhoneBrandModel k : listKey) {
-			List<String> l = getAllPhoneByBrand(k.idbrand);
+			List<String> l = getAllPhoneByBrand(k.idPhoneBrand);
 			String[] v = new String[l.size()];
 			for (int i = 0; i < l.size(); i++) {
 				v[i] = l.get(i);
 			}
-			dic.put(k.namebrand, v);
+			dic.put(k.name, v);
 		}
 		return new ObjectMapper().writeValueAsString(dic);
 
@@ -431,7 +431,7 @@ public class AdminControler {
 			public Integer mapRow(ResultSet rs, int numRow) throws SQLException {
 				return Integer.valueOf(rs.getInt("idproduct"));
 			}
-		}, product.name, idbp.idbrand, product.price, product.description, product.amount, product.brand);
+		}, product.name, idbp.idPhoneBrand, product.price, product.description, product.amount, product.brand);
 		if (!l.isEmpty()) {
 			return l.get(0).intValue();
 		}
@@ -441,8 +441,8 @@ public class AdminControler {
 	private int updateProduct(ProductValueModel product) {
 		PhoneBrandModel pb = findIdPhoneBrandByName(product.phonebrand);
 		String sql = "update product set name=?,idphonebrand=?,price=?,desciption=?,amount=?,casebrand=? where idproduct=?";
-		return jdbcTemplate.update(sql, product.name, pb.idbrand, product.price, product.description, product.amount,
-				product.brand, product.idproduct);
+		return jdbcTemplate.update(sql, product.name, pb.idPhoneBrand, product.price, product.description,
+				product.amount, product.brand, product.idproduct);
 	}
 
 	private int deleteOldColor(int idproduct) {
@@ -594,19 +594,19 @@ public class AdminControler {
 		List<ColorModel> listAllColors = getAllColor();
 		ArrayList<String> listAllColorString = new ArrayList<String>();
 		listAllColors.forEach(item -> {
-			listAllColorString.add(item.getNamecolor());
+			listAllColorString.add(item.getColor());
 		});
 
 		List<ColorModel> listSelectedColors = findColorByIdProduct(product.idProduct);
 		ArrayList<String> listSelectedColorsString = new ArrayList<String>();
 		listSelectedColors.forEach(color -> {
-			listSelectedColorsString.add(color.getNamecolor());
+			listSelectedColorsString.add(color.getColor());
 		});
 
 		model.addAttribute("username", (String) session.getAttribute("username"));
 		model.addAttribute("PhoneByBrand", getJsonPhoneByBrand());
 		model.addAttribute("product", product);
-		model.addAttribute("brand", findPhoneBrandById(product.idBrandPhone).namebrand);
+		model.addAttribute("brand", findPhoneBrandById(product.idBrandPhone).name);
 		model.addAttribute("device", listDevice);
 		model.addAttribute("allcolor", listAllColorString);
 		model.addAttribute("selectedcolor", listSelectedColorsString);
@@ -632,7 +632,7 @@ public class AdminControler {
 		ArrayList<String> listAllColorString = new ArrayList<String>();
 		List<ColorModel> listAllColors = getAllColor();
 		listAllColors.forEach(item -> {
-			listAllColorString.add(item.getNamecolor());
+			listAllColorString.add(item.getColor());
 		});
 
 		ArrayList<String> l2 = new ArrayList<String>();
