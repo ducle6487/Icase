@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Dashboard | Icase</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="../assets/vendor/chartist/css/chartist-custom.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+
+	<link rel="stylesheet" href="../css/reset.css" />
+	<!-- <link rel="stylesheet" href="../css/styleanhduc.css" /> -->
+	<link rel="stylesheet" href="../css/responsive.css" />
+
+	<!-- <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> -->
+	<link rel="icon" type="image/png" sizes="96x96" href="../image/phone-case.png">
+</head>
+<style>
+	th {
+		cursor: pointer
+	}
+
+	a:link {
+		text-decoration: none;
+		color: cornflowerblue
+	}
+
+	a:visited {
+		text-decoration: none;
+		color: cornflowerblue
+	}
+
+	a:hover {
+		text-decoration: underline;
+		color: blue
+	}
+
+	a:active {
+		text-decoration: underline;
+		color: blue
+	}
+</style>
+
+<body>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="brand" style="padding: 8px 39px;">
+				<a th:href="@{/admin/dashboard}"><img src="../image/iconic.png" alt="Icase Logo"
+						class="img-responsive logo"></a>
+			</div>
+			<div class="container-fluid">
+
+
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <li class="dropdown">
+							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+								<i class="lnr lnr-alarm"></i>
+								<span class="badge bg-danger">5</span>
+							</a>
+							<ul class="dropdown-menu notifications">
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
+								<li><a href="#" class="more">See all notifications</a></li>
+							</ul>
+						</li> -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
+									src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
+									class="img-circle" alt="Avatar"> <span>[[${username}]]</span> <i
+									class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+								<li><a th:href="@{/sign-out}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+							</ul>
+						</li>
+
+						<!-- <li>
+							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END NAVBAR -->
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a th:href="@{/admin/dashboard}" class="active"><i class="lnr lnr-home"></i> <span>Tổng
+									quan</span></a></li>
+						<li><a th:href="@{/admin/all-product}" class=""><i class="lnr lnr-dice"></i> <span>Sản
+									phẩm</span></a></li>
+						<li>
+							<a th:href="@{/admin/all-order}" class=""><i class="lnr lnr-file-empty"></i> <span>Đơn
+									hàng</span></i></a>
+						</li>
+						<li><a th:href="@{/admin/product-edit}" class=""><i class="lnr lnr-code"></i> <span>Cập nhật đơn
+									hàng</span></a></li>
+
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- END LEFT SIDEBAR -->
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<!-- OVERVIEW -->
+					<div class="panel panel-headline">
+						<div class="panel-heading">
+							<h3 class="panel-title">Tổng quan tuần này</h3>
+							<p class="panel-subtitle">Giai đoạn: [[${monday}]] - [[${sunday}]]</p>
+						</div>
+						<div class="panel-body">
+
+							<div class="row">
+								<div class="col-md-9">
+									<div id="headline-chart" class="ct-chart"></div>
+								</div>
+								<div class="col-md-3">
+									<div class="weekly-summary text-right">
+										<span class="number">[[${amountthisweek}]]</span><span class="percentage"></i>
+											đơn hàng</span>
+										<span class="info-label">Tổng số đơn hàng đã bán tuần này</span>
+									</div>
+									<div class="weekly-summary text-right">
+										<span class="number">[[${pricethisweek}]]</span><span class="percentage"></i>
+											VNĐ</span>
+										<span class="info-label">Lợi nhuận tuần này</span>
+									</div>
+									<div class="weekly-summary text-right">
+										<span class="number">[[${amountthismonth}]]</span><span class="percentage"></i>
+											đơn hàng</span>
+										<span class="info-label">Tổng số đơn hàng đã bán tháng 5</span>
+									</div>
+									<div class="weekly-summary text-right">
+										<span class="number">[[${pricethismonth}]]</span><span class="percentage"></i>
+											VNĐ</span>
+										<span class="info-label">Lợi nhuận tháng 5</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-headline">
+						<div class="panel-heading">
+							<h3 class="panel-title">Tổng quan năm 2021</h3>
+						</div>
+						<div class="panel-body">
+
+							<div class="row">
+								<div class="col-md-9">
+									<div id="headline-chart-year" class="ct-chart"></div>
+								</div>
+								<div class="col-md-3">
+									<div class="weekly-summary text-right">
+										<span class="number">[[${amountthisyear}]]</span><span
+											class="percentage"></span> đơn
+										hàng</span>
+										<span class="info-label">Tổng số đơn hàng đã bán năm 2021</span>
+									</div>
+									<div class="weekly-summary text-right">
+										<span class="number">[[${pricethisyear}]]</span><span class="percentage"></i>
+											VNĐ</span>
+										<span class="info-label">Tổng lợi nhuận năm 2021</span>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END OVERVIEW -->
+					<div class="row">
+						<div class="col-md-3"></div>
+						<div class="col-md-12" style="align-self: center;">
+							<!-- RECENT PURCHASES -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Đơn hàng</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i
+												class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body no-padding">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th onclick="sortTable(0)">Mã đơn hàng</th>
+												<th onclick="sortTable(1)">Tên khách hàng</th>
+												<th onclick="sortTable(2)">Số điện thoại</th>
+												<th onclick="sortTable(3)">Địa chỉ</th>
+												<th onclick="sortTable(4)">Ngày đặt</th>
+												<th onclick="sortTable(5)">Lời nhắn</th>
+												<th onclick="sortTable(6)">Phương thức thanh toán</th>
+												<th onclick="sortTable(7)">Trạng thái thanh toán</th>
+												<th onclick="sortTable(8)">Trạng thái vận chuyển</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each=" ord : ${orderhistories}">
+												<td th:text="${ord.idorder}"></td>
+												<td th:text="${ord.namecustomer}"></td>
+												<td th:text="${ord.phone}"></td>
+												<td th:text="${ord.address}"></td>
+												<td th:text="${ord.dateorder}"></td>
+												<td th:text="${ord.message}"></td>
+												<td th:text="${ord.methodpayment}"></td>
+												<td th:switch="${ord.paymentstatus}">
+													<span th:case="'Chưa thanh toán'" th:text="${ord.paymentstatus}"
+														class="label label-danger"></span>
+													<span th:case="'Đã thanh toán'" th:text="${ord.paymentstatus}"
+														class="label label-success"></span>
+												</td>
+												<td th:switch="${ord.deliverystatus}">
+													<span th:case="'Đang lấy hàng'" th:text="${ord.deliverystatus}"
+														class="label label-warning"></span>
+													<span th:case="'Đang vận chuyển'" th:text="${ord.deliverystatus}"
+														class="label label-warning"></span>
+													<span th:case="'Đã giao'" th:text="${ord.deliverystatus}"
+														class="label label-success"></span>
+													<span th:case="'Đã hủy'" th:text="${ord.deliverystatus}"
+														class="label label-danger"></span>
+												</td>
+												<td><a th:href="'/admin/detail-order&id='+${ord.idorder}">Chi tiết ></a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer">
+									<div class="row">
+										<div class="col-md-6">
+											<span class="panel-note"><i class="fa fa-clock-o"></i> 24
+												giờ qua</span>
+										</div>
+
+										<div class="col-md-6 text-right">
+											<a th:href="'/admin/all-order'"><button type="submit"
+													class="btn btn-success">Xem tất cả
+													đơn hàng</button></a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<!-- END RECENT PURCHASES -->
+						</div>
+						<!--  -->
+					</div>
+					<div class="col-md-3"></div>
+					<div class="col-md-8">
+						<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+						<div class="elfsight-app-2cee16c1-38a2-4bff-8330-242bdd9af5a1"></div>
+					</div>
+
+				</div>
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		<!-- <div class="clearfix"></div> -->
+		<!-- <footer>
+			<div class="container-fluid">
+				<p class="copyright">&copy; 2021 Icase Admin
+					Page</a>. Made by Anh Duc.</p>
+			</div>
+		</footer> -->
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="../assets/scripts/klorofil-common.js"></script>
+	<!-- <script src="../js/scrollup.js"></script> -->
+	<script th:inline="javascript">
+		$(function () {
+			var data, options;
+
+			/*<![CDATA[*/
+
+			var weekly = /*[[${ weekly }]]*/[];
+			var yearly = /*[[${ yearly }]]*/[];
+
+			/*]]>*/
+
+			// headline charts for weekly
+			data = {
+				labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+				series: [
+					weekly,
+				]
+			};
+
+			options = {
+				height: "300px",
+				axisX: {
+					showGrid: false
+				},
+			};
+
+			new Chartist.Line('#headline-chart', data, options);
+
+
+
+
+			// headline charts for year
+			data = {
+				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				series: [
+					yearly
+
+				]
+			};
+
+			options = {
+				height: "300px",
+				axisX: {
+					showGrid: false
+				},
+			};
+
+			new Chartist.Line('#headline-chart-year', data, options);
+
+		});
+	</script>
+</body>
+
+</html>
