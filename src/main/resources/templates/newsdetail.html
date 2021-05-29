@@ -187,27 +187,98 @@
         <!--/ End Header Inner -->
 	</header>
 	<!--/ End Header -->
-	<div class="m-5">
-	    <div class="container ">
-	        <div>
-	        <th:block th:each="news : ${listNews}">
-	            <div class="row m-3">
-	                <div class="col-4 ">
-	                    <img th:src="@{'/imageNews/'+ ${news.thumnail}}" width="200px"height="200px">
-	                </div>
-	                <div class="col-8">
-	                    <h2 th:text="${news.header}"></h2>
-	                    <p class="text-truncate" th:text="${news.detail}">
-	                    </p>
-	                </div>
-	            </div>
-	        </th:block>
-	        </div>
-	    </div>
-	</div>
-
-  
-            
+	    
+	<!-- Start Blog Single -->
+		<section class="blog-single section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-12">
+						<div class="blog-single-main">
+							<div class="row">
+								<div class="col-12">
+									<div class="image">
+										<img th:src="@{'/imageNews/'+${news.thumnail}}" alt="#">
+									</div>
+									<div class="blog-detail">
+										<h2 class="blog-title" th:text="${news.header}"></h2>
+										<div class="blog-meta">
+											<span class="author"><a href="#"><i class="fa fa-user"></i>By Admin</a><a href="#"><i class="fa fa-calendar"></i>Dec 24, 2018</a><a href="#"><i class="fa fa-comments"></i>Comment (15)</a></span>
+										</div>
+										<div class="content">
+											<p th:text="${news.detail}"></p>
+											<blockquote> <i class="fa fa-quote-left"></i> Hãy làm những gì bạn thích và cống hiến hết sức mình. Cho dù đó là kinh doanh hay bóng chày, nhà hát, hoặc bất kỳ lĩnh vực nào. Nếu bạn không yêu thích những gì bạn đang làm và bạn không thể cống hiến hết mình, hãy thoát khỏi nó. Cuộc sống quá ngắn. Bạn sẽ là một ông già trước khi bạn biết điều đó.</blockquote>
+											</div>
+									</div>
+								</div>
+											
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-12">
+						<div class="main-sidebar">
+							<!-- Single Widget -->
+							<div class="single-widget search">
+								<div class="form">
+									<input type="email" placeholder="Search Here...">
+									<a class="button" href="#"><i class="fa fa-search"></i></a>
+								</div>
+							</div>
+							<!--/ End Single Widget -->
+							
+							<!-- Single Widget -->
+							<div class="single-widget recent-post">
+								<h3 class="title">Recent post</h3>
+								<!-- Single Post -->
+								<div class="single-post">
+									<div class="image">
+										<img src="https://via.placeholder.com/100x100" alt="#">
+									</div>
+									<div class="content">
+										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
+										<ul class="comment">
+											<li><i class="fa fa-calendar" aria-hidden="true"></i>Jan 11, 2020</li>
+											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>35</li>
+										</ul>
+									</div>
+								</div>
+								<!-- End Single Post -->
+								<!-- Single Post -->
+								<div class="single-post">
+									<div class="image">
+										<img src="https://via.placeholder.com/100x100" alt="#">
+									</div>
+									<div class="content">
+										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
+										<ul class="comment">
+											<li><i class="fa fa-calendar" aria-hidden="true"></i>Mar 05, 2019</li>
+											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>59</li>
+										</ul>
+									</div>
+								</div>
+								<!-- End Single Post -->
+								<!-- Single Post -->
+								<div class="single-post">
+									<div class="image">
+										<img src="https://via.placeholder.com/100x100" alt="#">
+									</div>
+									<div class="content">
+										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
+										<ul class="comment">
+											<li><i class="fa fa-calendar" aria-hidden="true"></i>June 09, 2019</li>
+											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>44</li>
+										</ul>
+									</div>
+								</div>
+								<!-- End Single Post -->
+							</div>
+							<!--/ End Single Widget -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Blog Single -->
 	
 
 	<!-- Start Most Popular -->
@@ -252,6 +323,33 @@
 	</div>
 	<!-- End Most Popular Area -->
 
+	<!-- Start Shop Blog  -->
+	<section class="shop-blog section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>Từ Blog của chúng tôi</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row" >
+				<div class="col-lg-4 col-md-6 col-12" th:each="newNews : ${list3News}">
+					<!-- Start Single Blog  -->
+					<div class="shop-single-blog">
+						<img th:src="@{'../imageNews/'+${newNews.thumnail}}" alt="#" width="250px">
+						<div class="content">
+							<p class="date">24 July, 2020. Monday</p>
+							<a href="#" class="title" th:text="${newNews.header}"></a> <a href="#"
+								class="more-btn">Tiếp tục đọc</a>
+						</div>
+					</div>
+					<!-- End Single Blog  -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Shop Blog  -->
 
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">

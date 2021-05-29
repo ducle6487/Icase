@@ -181,4 +181,18 @@ public class ProductService {
 		 
 		 return listNews;
 	 }
+	 public List<NewsModel> getList3NewNews(){
+		 List<NewsModel> list3News = new ArrayList<NewsModel>();
+		 for(int index =1; index <=3;index ++) {
+			 list3News.add(getListNews().get(getListNews().size()-index));
+		 }
+		 
+		 return list3News;
+	 }
+	 public NewsModel getNewsById(String id) {
+		String sql = "SELECT * FROM dbo.news WHERE \"IdNews\" = "+id;
+		List<NewsModel> newsList = jdbcTemplate.query(sql, new NewsMapper());
+		NewsModel news = newsList.get(0);
+		return news;
+	 }
 }

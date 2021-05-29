@@ -310,7 +310,7 @@
 						<th:block >
 							<div  th:each=" newProductItem : ${new5Products}"class="single-product">
 								<div class="product-img">
-									<a href="product-details.html"> 
+									<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"> 
 										<img class="default-img" th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.1.png'}" alt="#"> 
 										<img class="hover-img"   th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.2.png'}" alt="#"> 
 										<span class="out-of-stock">New</span>
@@ -318,7 +318,7 @@
 								</div>
 								<div class="product-content">
 									<h3>
-										<a href="product-details.html" th:text="${newProductItem.name}"></a>
+										<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}" th:text="${newProductItem.name}"></a>
 									</h3>
 									<div class="product-price">
 										 <span th:text="${newProductItem.price}"></span><span>VND</span>
@@ -345,38 +345,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6 col-12">
+			<div class="row" >
+				<div class="col-lg-4 col-md-6 col-12" th:each="newNews : ${list3News}">
 					<!-- Start Single Blog  -->
 					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
-						<div class="content">
-							<p class="date">22 July , 2020. Monday</p>
-							<a href="#" class="title">Ốp điện thoại trending siêu vip.</a> <a href="#"
-								class="more-btn">Tiếp tục đọc</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
-						<div class="content">
-							<p class="date">23 July, 2020. Monday</p>
-							<a href="#" class="title">ốp xịn cho huawei y9</a> <a
-								href="#" class="more-btn">Tiếp tục đọc</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
+						<img th:src="@{'../imageNews/'+${newNews.thumnail}}" alt="#" width="250px">
 						<div class="content">
 							<p class="date">24 July, 2020. Monday</p>
-							<a href="#" class="title">Women Fashion Festive</a> <a href="#"
+							<a th:href="@{'/news/'+${newNews.idNews}}" class="title" th:text="${newNews.header}"></a> <a href="#"
 								class="more-btn">Tiếp tục đọc</a>
 						</div>
 					</div>

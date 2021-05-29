@@ -43,12 +43,14 @@ public class ProductController {
 		List<Integer> listNumPages = prodService.NumberPage(prodService.getAllProduct());
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+		List<NewsModel> list3NewNews = prodService.getList3NewNews();
 		
 		model.addAttribute("products",productsList);
 		model.addAttribute("new5Products",new5Products);
 		model.addAttribute("numberPage",listNumPages);
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		model.addAttribute("list3News", list3NewNews);
 		
 		return "product";
 	}
@@ -60,12 +62,14 @@ public class ProductController {
 		List<Integer> listNumPages = prodService.NumberPage(productsList);
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+		List<NewsModel> list3NewNews = prodService.getList3NewNews();
 		
 		model.addAttribute("products",productsList);
 		model.addAttribute("new5Products",new5Products);
 		model.addAttribute("numberPage",listNumPages);
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		model.addAttribute("list3News", list3NewNews);
 		
 		return "product";
 	}
@@ -81,6 +85,7 @@ public class ProductController {
 		if(productsList.size() == 0) {
 			numberOfProductIsNull = true;
 		}
+		List<NewsModel> list3NewNews = prodService.getList3NewNews();
 		
 		model.addAttribute("products",productsList);
 		model.addAttribute("new5Products",new5Products);
@@ -88,6 +93,7 @@ public class ProductController {
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("numberOfProductIsNull", numberOfProductIsNull);
+		model.addAttribute("list3News", list3NewNews);
 
 		return "product";
 	}
@@ -103,6 +109,7 @@ public class ProductController {
 		if(productsList.size() == 0) {
 			numberOfProductIsNull = true;
 		}
+		List<NewsModel> list3NewNews = prodService.getList3NewNews();
 		
 		model.addAttribute("products",productsList);
 		model.addAttribute("new5Products",new5Products);
@@ -110,6 +117,7 @@ public class ProductController {
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("numberOfProductIsNull", numberOfProductIsNull);
+		model.addAttribute("list3News", list3NewNews);
 
 		return "product";
 	}
@@ -126,6 +134,7 @@ public class ProductController {
 			numberOfProductIsNull = true;
 		}
 		int amount = 0;
+		List<NewsModel> list3NewNews = prodService.getList3NewNews();
 		
 		model.addAttribute("products",productsList);
 		model.addAttribute("new5Products",new5Products);
@@ -134,12 +143,13 @@ public class ProductController {
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("numberOfProductIsNull", numberOfProductIsNull);
 		model.addAttribute("amountWantBuy", amount);
+		model.addAttribute("list3News", list3NewNews);
 
 		return "product";
 	}
 	//
 	//     Detail product
-	//System.out.println("ok");
+	//
 	@GetMapping("/detailproduct/{id}")
 	public String detailProduct(@PathVariable String id,Model model) {	
 		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
@@ -152,6 +162,7 @@ public class ProductController {
 		List<PhoneModel> listPhonesById = prodService.getListPhonesByProductId(id);
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+		List<NewsModel> list3NewNews = prodService.getList3NewNews();
 		
 		model.addAttribute("product", product);
 		model.addAttribute("new5Products",new5Products);
@@ -163,6 +174,7 @@ public class ProductController {
 		model.addAttribute("listPhone",listPhonesById);
 		model.addAttribute("prodinfor", new ProductInforBuying());
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		model.addAttribute("list3News", list3NewNews);
 		
 		return "DetailProduct";
 	}
@@ -187,14 +199,30 @@ public class ProductController {
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 		List<NewsModel> listNews = prodService.getListNews();
+		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
 		
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("listNews", listNews);
+		model.addAttribute("new5Products",new5Products);
 		
 		return "news";
 	}
-	
+	@GetMapping("/news/{id}")
+	public String newsDetail(@PathVariable String id,Model model) {	
+		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
+		List<PhoneModel> listPhones = prodService.getAllPhone();
+		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+		NewsModel news = prodService.getNewsById(id);
+		
+		model.addAttribute("new5Products",new5Products);
+		model.addAttribute("listPhones", listPhones);
+		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		model.addAttribute("news", news);
+		model.addAttribute("new5Products",new5Products);
+		
+		return "newsdetail";
+	}
 	
 	// test
 
