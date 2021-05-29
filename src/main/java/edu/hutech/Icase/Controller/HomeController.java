@@ -15,21 +15,12 @@ public class HomeController {
 	public String home2() {
 		return "index";
 	}
+	
 
-	@GetMapping("/about")
-	public String about() {
-		return "About";
-	}
 
-	@GetMapping("/detail")
-	public String description() {
-		return "DetailProduct";
-	}
 
-	@GetMapping("/giohang")
-	public String giohang() {
-		return "giohang";
-	}
+
+
 
 	@GetMapping("/giohang+thanhtoan")
 	public String giohang2() {
@@ -40,11 +31,6 @@ public class HomeController {
 	@GetMapping("/newdescription")
 	public String newdes() {
 		return "newdescription";
-	}
-
-	@GetMapping("/product")
-	public String product() {
-		return "product";
 	}
 
 	@GetMapping("/search")

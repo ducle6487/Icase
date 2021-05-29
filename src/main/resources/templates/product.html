@@ -1,246 +1,609 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zxx" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../fonts/fontawesome-free-5.15.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../image/favicon-32x32.png">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Đồ Án Java</title>
+<!-- Meta Tag -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='copyright' content=''>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Title Tag  -->
+<title>Eshop - eCommerce HTML5 Template.</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/images/logo.png">
+<!-- Web Font -->
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+	rel="stylesheet">
+
+<!-- StyleSheet -->
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="/css/bootstrap.css">
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="/css/magnific-popup.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/css/font-awesome.css">
+<!-- Fancybox -->
+<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+<!-- Themify Icons -->
+<link rel="stylesheet" href="/css/themify-icons.css">
+<!-- Nice Select CSS -->
+<link rel="stylesheet" href="/css/niceselect.css">
+<!-- Animate CSS -->
+<link rel="stylesheet" href="/css/animate.css">
+<!-- Flex Slider CSS -->
+<link rel="stylesheet" href="/css/flex-slider.min.css">
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="/css/owl-carousel.css">
+<!-- Slicknav -->
+<link rel="stylesheet" href="/css/slicknav.min.css">
+
+<!-- Eshop StyleSheet -->
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+
+<link rel="stylesheet" href="/css/sang.css">
+
 </head>
+<body class="js">
 
-<body>
-    <header class="header">
-        <div class="header-banner">
-            <div class="header-banner-diachi">
-                <i class="fas fa-map-marker-alt header-banner-diachi-icon"></i>
-                <p class="header-banner-text">395 Phan Văn Trị, Phường 11, Bình Thạnh</p>
-            </div>
-            <div class="header-banner-giolamviec">
-                <i class="far fa-clock header-banner-giolamviec-icon"></i>
-                <p class="header-banner-text">Giờ làm việc: 8:30-23:00</p>
-            </div>
-            <div class="header-banner-conlai">
-                <a href="#" class="header-link">
-                    <div class="header-banner-content">
-                        <i class="far fa-bell header-banner-conlai-icon"></i>
-                        <p class="header-banner-content-text">
-                            Thông Báo
-                        </p>
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- End Preloader -->
+
+	<!-- Header -->
+	<header class="header shop">
+	<!-- Topbar -->
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-12">
+                        <!-- Top Left -->
+                        <div class="top-left">
+                            <ul class="list-main">
+                                <li><i class="ti-location-pin"></i> 395 Phan Văn Trị, Phường 11, Bình Thạnh</li>
+                            </ul>
+                        </div>
+                        <!--/ End Top Left -->
                     </div>
-                </a>
-                <a href="#" class="header-link">
-                    <div class="header-banner-content">
-                        <i class="fas fa-shopping-cart header-banner-conlai-icon"></i>
-                        <p class="header-banner-content-text">
-                            Giỏ Hàng
-                        </p>
+                    <div class="col-lg-7 col-md-12 col-12">
+                        <!-- Top Right -->
+                        <div class="right-content">
+                            <ul class="list-main">
+                                <li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
+                                <li><i class="ti-bell"></i><a href="#">Thông Báo</a></li>
+                                <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
+                                <li><i class="ti-power-off"></i><a href="login.html#">Đăng Nhập</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Top Right -->
                     </div>
-                </a>
-                <div class="header-banner-content header-banner-content-1">
-                    <a href="">
-                        <p class="header-banner-content-register">
-                            Đăng Ký
-                        </p>
-                    </a>
-                    <a href="">
-                        <p class="header-banner-content-login">
-                            Đăng Nhập
-                        </p>
-                    </a>
                 </div>
             </div>
         </div>
-        <div class="header-contain">
-            <img src="../image/header-logo.jpeg" alt="" class="header-img">
-            <div class="header-contain-search">
-                <form id="" name="">
-                    <div class="input-group" id="btn-search">
-                        <input class=" header-search-input" type="text" name="subscribe_email" id="subscribe_email" placeholder="Nhập từ khóa..." />
-                        <span class="input-group-btn">
-                            <button class=" header-search-btn" id="btn" name="subscribe_btn"><i class="fas fa-search header-search-icon"></i></button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <nav class="header-navbar" style="background-color: #ccc;">
-            <ul class="header-navbar-list">
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item">Trang chủ</li>
-                </a>
-                <a href="#" class="header-navbar-link">
-                    <li class="header-navbar-item-last-child">Trang chủ</li>
-                </a>
-            </ul>
-        </nav>
-    </header>
-    <div class="main">
-        <div class="product-main">
-            <div class="product-title">
-                <h3 class="product-text">Sản Phẩm</h3>
-            </div>
-        </div>
-        <div class="search-content row">
-            <div class="col-md-3 card-product">
-                <div class="box-240-315 ">
-                    <img src="../image/header-logo.jpeg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 card-product">
-                <div class="box-240-315 ">
-                    <img src="../image/header-logo.jpeg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 card-product">
-                <div class="box-240-315 ">
-                    <img src="../image/header-logo.jpeg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 card-product">
-                <div class="box-240-315 ">
-                    <img src="../image/header-logo.jpeg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 card-product">
-                <div class="box-240-315 ">
-                    <img src="../image/header-logo.jpeg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 card-product">
-                <div class="box-240-315 ">
-                    <img src="../image/header-logo.jpeg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-3  card-product ">
-                <div class=" box-240-315 ">
-                    <img src="../image/240x315.jpg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 card-product ">
-                <div class=" box-240-315 ">
-                    <img src="../image/240x315.jpg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3  card-product ">
-                <div class=" box-240-315 ">
-                    <img src="../image/240x315.jpg " width="240px" height="240px">
-                    <div class="text-center card-product-text">
-                        <a href="#">bao da ipad vjp pro htht hthth hthth htht</a>
-                        <p>Price: <span class="text-danger">400.000</span> VND</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <footer class="container-fluid footer-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Toán</strong></h4>
-                    <p><a href="#">Hình học</a></p>
-                    <p><a href="#">Tuyến tính</a></p>
-                    <p><a href="#">Xác suất</a></p>
-                    <p><a href="#">IQ</a></p>
-                    <p><a href="#">Logic</a></p>
-                    <p><a href="#">Giải tích</a></p>
-                    <p><a href="#">Đồ thị</a></p>
-                    <p><a href="#">Hàm số</a></p>
-                </div>
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Tiếng anh</strong></h4>
-                    <p><a href="#">IELTS</a></p>
-                    <p><a href="#">TOEFL</a></p>
-                    <p><a href="#">BASIC</a></p>
-                    <p><a href="#">SPEAKING</a></p>
-                    <p><a href="#">READING</a></p>
-                    <p><a href="#">LISTENING</a></p>
-                    <h4 class="footer-tittle-col"><strong>Vật lý</strong></h4>
-                    <p><a href="#">Đại cương</a></p>
-                    <p><a href="#">Nâng cao</a></p>
-                </div>
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Lập trình</strong></h4>
-                    <p><a href="#">C/C++</a></p>
-                    <p><a href="#">Java</a></p>
-                    <p><a href="#">C#</a></p>
-                    <p><a href="#">Kotlin</a></p>
-                    <p><a href="#">Ruby</a></p>
-                    <p><a href="#">Javascript</a></p>
-                    <p><a href="#">Html/Css</a></p>
-                    <h4 class="footer-tittle-col"><strong>Bắt đầu</strong></h4>
-                    <p><a href="@Url.Action(" UserLogin ","Authenticate ", new{URL = Request.Url.ToString()})">Đăng ký</a></p>
-                    <p><a href="@Url.Action(" UserLogin ","Authenticate ", new{URL = Request.Url.ToString()})">Đăng nhập</a></p>
-                </div>
-                <div class="col-6 ">
-                    <div class="contact">
-                        <h3><strong>Liên hệ với chúng tôi!</strong></h3>
-                        <p>Email: harley20005@gmail.com <br>hoặc: ducle6487@gmail.com</p>
-                        <h4><strong>Kết nối với chúng tôi</strong></h4>
-                        <div>
-                            <img class="img-circle" onclick="location.href='https://www.facebook.com/ducle6487'" src="~/Content/Image/Facebook-200x200.jpg" width="80px" height="80px">
-                            <img class="img-circle" src="~/Content/Image/Twitter-1.jpg" width="80px" height="80px">
-                            <img class="img-circle" src="~/Content/Image/zalo_sharelogo.png" width="80px" height="80px">
+        <!-- End Topbar -->
+		<div class="middle-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-12">
+						<!-- Logo -->
+						<div class="logo">
+							<a th:href="@{/home}"><img src="/image/logo.png" alt="logo"
+								width="100px"></a>
+						</div>
+						<!--/ End Logo -->
+						<!-- Search Form -->
+						<div class="search-top">
+							<div class="top-search">
+								<a href="#0"><i class="ti-search"></i></a>
+							</div>
+							<!-- Search Form -->
+							<div class="search-top">
+								<form class="search-form" >
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+							<!--/ End Search Form -->
+						</div>
+						<!--/ End Search Form -->
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-12">
+						<div class="search-bar-top">
+							<div class="search-bar">
+								<form th:action="@{/product/search}"  method="post">
+									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText"
+										type="text">
+									<button class="btnn" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-lg-3">
+                        </div>
+                        <div class="col-lg-9 col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li class="active"><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li><a th:href="@{/product}">Sản Phẩm</a></li>
+                                                <li><a href="#">Shop<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown ">
+                                                        <li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
+                                                        <li><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Hãng<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown">
+                                                    	<div th:each="phonebrands : ${listPhoneBrands}">
+                                                        <li><a th:text="${phonebrands.getName}"></a>
+                                                        <ul class="dropright">
+                                                    	<div class="div-grid" >
+                                                        <li th:each="phones : ${listPhones}"><a  th:href="@{|/product/{getNamephone}|}" class="a-trong"  th:text="${phones.getNamephone}"></a></li>                                                 	
+                                                    	</div>                                                      
+                                                    	</ul>                                                    	
+                                                        </li>
+                                                    	</div>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="contact.html">Liên Hệ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <!--/ End Main Menu -->
+                            </div>
                         </div>
                     </div>
-                    <div class="copyright">Copyright &copy; Sang - Đức</div>
                 </div>
             </div>
         </div>
-    </footer>
-</body>
+        <!--/ End Header Inner -->
+	</header>
+	<!--/ End Header -->
+	    <div class="row">
+        <div class="col-2">
+	
+            <div class=" border p-5 ml-1" style="margin-top: 60px;">
+                <div>
+                    <div class="text-center">
+                        <h3>Tìm kiếm</h3>
+                    </div>
+                    <form class="form-horizontal" th:action="@{/product/phone}"  method="post">
+                        <div class="form-group">
+                            <label class="custom-control-label" style="padding-top: 60px;">Theo Loại thiết bị</label>
+                            <select class="js-example-basic-single js-states form-control" th:name="phone">
+                            <th:block th:each="phoneItem : ${listPhones}">
+                            <option  th:text="${phoneItem.getNamephone}"></option>
+                            </th:block>
+                        </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tìm</button>
+                    </form>
+                    <form class="form-horizontal" th:action="@{/product/phonebrand}"  method="post">
+                        <div class="form-group">
+                            <label class="custom-control-label" style="padding-top: 60px;">Theo hãng thiết bị</label>
+                            <select class="js-example-basic-single js-states form-control" th:name="phoneBrand">
+                       		<th:block th:each="phoneBrandItem : ${listPhoneBrands}">
+                            	<option  th:text="${phoneBrandItem.getName}"></option>
+                            </th:block>
+                        </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tìm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+  
+            <!-- Start Product Area -->
+			<div class="product-area section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="section-title">
+								<h2>Sản phẩm</h2>
+							</div>
+						</div>
+					</div>
+			      	<th:block th:if="${numberOfProductIsNull}">
+        				<div class="text-center">
+     						<h4>Không có sản phẩm bạn cần tìm</h4>
+        				</div>
+					</th:block>
+					<div class="row">
+						<div class="col-12">
+							<div class="product-info">
+								<div class="tab-content" id="myTabContent">
+									<!-- Start Single Tab -->
+									<div class="tab-pane fade show active" id="man" role="tabpanel">
+										<div class="tab-single">
+											<div class="row">
+												<!--  -->
+												<div th:each=" productItem : ${products}"
+													class="col-xl-3 col-lg-4 col-md-4 col-12">
+													<div class="single-product">
+														<div class="product-img">
+															<a th:href="@{'/detailproduct/'+${productItem.idProduct}}"> <img
+																class="default-img"
+																th:src="@{'../imageCase/'+${productItem.idProduct}+'.1.png'}"
+																alt="#"> <img class="hover-img"
+																th:src="@{'../imageCase/'+${productItem.idProduct}+'.2.png'}"
+																alt="#">
+															</a>
+		
+														</div>
+														<div class="product-content">
+															<h3>
+																<a href="product-details.html"
+																	th:text="${productItem.getName}"></a>
+															</h3>
+															<div class="product-price">
+																<span th:text="${productItem.getPrice}"></span><span
+																	class="text-danger"> VND</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								    <div>
+		       							 <div class="text-center d-flex justify-content-center">
+		       	   							 <div th:each="numberPage : ${numberPage}">
+		               							 <a th:href="@{'/product/' + ${numberPage}}"><button  class="btn" th:text="${numberPage}"></button></a>
+		           							 </div>
+		       							 </div>
+		    						</div>
+									<!--/ End Single Tab -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Product Area -->
+        </div>
+    </div>
+	
 
+	<!-- Start Most Popular -->
+	<div class="product-area most-popular section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>Hot Item</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="owl-carousel popular-slider">
+						<!-- Start Single Product -->
+						<th:block >
+							<div  th:each=" newProductItem : ${new5Products}"class="single-product">
+								<div class="product-img">
+									<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"> 
+										<img class="default-img" th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.1.png'}" alt="#"> 
+										<img class="hover-img"   th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.2.png'}" alt="#"> 
+										<span class="out-of-stock">New</span>
+									</a>
+								</div>
+								<div class="product-content">
+									<h3>
+										<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}" th:text="${newProductItem.name}"></a>
+									</h3>
+									<div class="product-price">
+										 <span th:text="${newProductItem.price}"></span><span>VND</span>
+									</div>
+								</div>
+							</div>
+						</th:block>
+						<!-- End Single Product -->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Most Popular Area -->
+
+	<!-- Start Shop Blog  -->
+	<section class="shop-blog section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>Từ Blog của chúng tôi</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Blog  -->
+					<div class="shop-single-blog">
+						<img src="https://via.placeholder.com/370x300" alt="#">
+						<div class="content">
+							<p class="date">22 July , 2020. Monday</p>
+							<a href="#" class="title">Ốp điện thoại trending siêu vip.</a> <a href="#"
+								class="more-btn">Tiếp tục đọc</a>
+						</div>
+					</div>
+					<!-- End Single Blog  -->
+				</div>
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Blog  -->
+					<div class="shop-single-blog">
+						<img src="https://via.placeholder.com/370x300" alt="#">
+						<div class="content">
+							<p class="date">23 July, 2020. Monday</p>
+							<a href="#" class="title">ốp xịn cho huawei y9</a> <a
+								href="#" class="more-btn">Tiếp tục đọc</a>
+						</div>
+					</div>
+					<!-- End Single Blog  -->
+				</div>
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Blog  -->
+					<div class="shop-single-blog">
+						<img src="https://via.placeholder.com/370x300" alt="#">
+						<div class="content">
+							<p class="date">24 July, 2020. Monday</p>
+							<a href="#" class="title">Women Fashion Festive</a> <a href="#"
+								class="more-btn">Tiếp tục đọc</a>
+						</div>
+					</div>
+					<!-- End Single Blog  -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Shop Blog  -->
+
+	<!-- Start Shop Services Area -->
+	<section class="shop-services section home">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-rocket"></i>
+						<h4>Ship rẻ</h4>
+						<p>30k toàn quốc</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-reload"></i>
+						<h4>Miễn phí đổi trả</h4>
+						<p>trong 7 ngày từ ngày nhận hàng</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-lock"></i>
+						<h4>bảo mật thông tin</h4>
+						<p>100% bảo mật thông tin khách hàng</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-tag"></i>
+						<h4>Giá tốt nhất</h4>
+						<p>Đảm bảo rẻ, đẹp, chất lượng</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Shop Services Area -->
+
+	
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span class="ti-close" aria-hidden="true"></span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row no-gutters">
+						<div class="col-lg-6 offset-lg-3 col-12">
+							<h4
+								style="margin-top: 100px; font-size: 14px; font-weight: 500; color: #F7941D; display: block; margin-bottom: 5px;">Eshop
+								Free Lite</h4>
+							<h3 style="font-size: 30px; color: #333;">
+								Currently You are using free lite Version of Eshop.
+								<h3>
+									<p
+										style="display: block; margin-top: 20px; color: #888; font-size: 14px; font-weight: 400;">Please,
+										purchase full version of the template to get all pages,
+										features and commercial license</p>
+									<div class="button" style="margin-top: 30px;">
+										<a
+											href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/"
+											target="_blank" class="btn" style="color: #fff;">Buy Now!</a>
+									</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal end -->
+
+	<!-- Start Footer Area -->
+	<footer class="footer">
+		<!-- Footer Top -->
+		<div class="footer-top section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer about">
+							<div class="logo">
+								<a href="index.html"><img src="/image/logo2.png" alt="#"></a>
+							</div>
+							<p class="text">Web mua bán ốp điện thoại, ốp tai phone. 
+							Thời trang - bền - rẻ - đẹp - chất lượng.
+							Chúng tôi rất vui lòng được phục vụ quý khách hàng.
+							Love you <3 </p>
+							<p class="call">
+								Có câu hỏi không? gọi chúng tôi 24/7<span><a href="tel:123456789">+0123
+										456 789</a></span>
+							</p>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Thông tin</h4>
+							<ul>
+								<li><a th:href="@{/about}">Về chúng tôi</a></li>
+								<li><a href="#">Faq</a></li>
+								<li><a href="#">Terms & Conditions</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Help</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Dịch vụ</h4>
+							<ul>
+								<li><a href="#">Payment Methods</a></li>
+								<li><a href="#">Money-back</a></li>
+								<li><a href="#">Returns</a></li>
+								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer social">
+							<h4>Liên lạc</h4>
+							<!-- Single Widget -->
+							<div class="contact">
+								<ul>
+									<li>395 Phan Văn Trị  </li>
+									<li>Phường 11 Bình Thạnh</li>
+									<li>Icase</li>
+									<li>+032 3456 7890</li>
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+							<ul>
+								<li><a href="#"><i class="ti-facebook"></i></a></li>
+								<li><a href="#"><i class="ti-twitter"></i></a></li>
+								<li><a href="#"><i class="ti-flickr"></i></a></li>
+								<li><a href="#"><i class="ti-instagram"></i></a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Footer Top -->
+		<div class="copyright">
+			<div class="container">
+				<div class="inner">
+					<div class="row">
+						<div class="col-lg-6 col-12">
+							<div class="left">
+								<p>
+									Copyright © 2021 <a href="http://www.wpthemesgrid.com"
+										target="_blank">Wpthemesgrid</a> - Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh Sang.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-12">
+							<div class="right">
+								<img src="/images/payments.png" alt="#">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /End Footer Area -->
+
+	<!-- Jquery -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery-migrate-3.0.0.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<!-- Popper JS -->
+	<script src="/js/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- Color JS -->
+	<script src="/js/colors.js"></script>
+	<!-- Slicknav JS -->
+	<script src="/js/slicknav.min.js"></script>
+	<!-- Owl Carousel JS -->
+	<script src="/js/owl-carousel.js"></script>
+	<!-- Magnific Popup JS -->
+	<script src="/js/magnific-popup.js"></script>
+	<!-- Waypoints JS -->
+	<script src="/js/waypoints.min.js"></script>
+	<!-- Countdown JS -->
+	<script src="/js/finalcountdown.min.js"></script>
+	<!-- Nice Select JS -->
+	<script src="/js/nicesellect.js"></script>
+	<!-- Flex Slider JS -->
+	<script src="/js/flex-slider.js"></script>
+	<!-- ScrollUp JS -->
+	<script src="/js/scrollup.js"></script>
+	<!-- Onepage Nav JS -->
+	<script src="/js/onepage-nav.min.js"></script>
+	<!-- Easing JS -->
+	<script src="/js/easing.js"></script>
+	<!-- Active JS -->
+	<script src="/js/active.js"></script>
+</body>
 </html>

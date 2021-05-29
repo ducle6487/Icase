@@ -1,27 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+<!-- Meta Tag -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='copyright' content=''>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Title Tag  -->
+<title>Eshop - eCommerce HTML5 Template.</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/images/logo.png">
+<!-- Web Font -->
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+	rel="stylesheet">
+
+<!-- StyleSheet -->
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="/css/bootstrap.css">
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="/css/magnific-popup.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/css/font-awesome.css">
+<!-- Fancybox -->
+<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+<!-- Themify Icons -->
+<link rel="stylesheet" href="/css/themify-icons.css">
+<!-- Nice Select CSS -->
+<link rel="stylesheet" href="/css/niceselect.css">
+<!-- Animate CSS -->
+<link rel="stylesheet" href="/css/animate.css">
+<!-- Flex Slider CSS -->
+<link rel="stylesheet" href="/css/flex-slider.min.css">
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="/css/owl-carousel.css">
+<!-- Slicknav -->
+<link rel="stylesheet" href="/css/slicknav.min.css">
+
+<!-- Eshop StyleSheet -->
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+
+<link rel="stylesheet" href="/css/sang.css">
+
 </head>
-<body>
-    <div class="bg-light">
+<body class="js">
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- End Preloader -->
+
+	<!-- Header -->
+	<header class="header shop">
+	<!-- Topbar -->
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-12">
+                        <!-- Top Left -->
+                        <div class="top-left">
+                            <ul class="list-main">
+                                <li><i class="ti-location-pin"></i> 395 Phan Văn Trị, Phường 11, Bình Thạnh</li>
+                            </ul>
+                        </div>
+                        <!--/ End Top Left -->
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-12">
+                        <!-- Top Right -->
+                        <div class="right-content">
+                            <ul class="list-main">
+                                <li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
+                                <li><i class="ti-bell"></i><a href="#">Thông Báo</a></li>
+                                <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
+                                <li><i class="ti-power-off"></i><a href="login.html#">Đăng Nhập</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Top Right -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Topbar -->
+		<div class="middle-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-12">
+						<!-- Logo -->
+						<div class="logo">
+							<a th:href="@{/home}"><img src="/image/logo.png" alt="logo"
+								width="100px"></a>
+						</div>
+						<!--/ End Logo -->
+						<!-- Search Form -->
+						<div class="search-top">
+							<div class="top-search">
+								<a href="#0"><i class="ti-search"></i></a>
+							</div>
+							<!-- Search Form -->
+							<div class="search-top">
+								<form class="search-form" >
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+							<!--/ End Search Form -->
+						</div>
+						<!--/ End Search Form -->
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-12">
+						<div class="search-bar-top">
+							<div class="search-bar">
+								<form th:action="@{/product/search}"  method="post">
+									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText"
+										type="text">
+									<button class="btnn" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-lg-3">
+                        </div>
+                        <div class="col-lg-9 col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li class="active"><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li><a th:href="@{/product}">Sản Phẩm</a></li>
+                                                <li><a href="#">Shop<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown ">
+                                                        <li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
+                                                        <li><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Hãng<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown">
+                                                    	<div th:each="phonebrands : ${listPhoneBrands}">
+                                                        <li><a th:text="${phonebrands.getName}"></a>
+                                                        <ul class="dropright">
+                                                    	<div class="div-grid" >
+                                                        <li th:each="phones : ${listPhones}"><a  th:href="@{|/product/{getNamephone}|}" class="a-trong"  th:text="${phones.getNamephone}"></a></li>                                                 	
+                                                    	</div>                                                      
+                                                    	</ul>                                                    	
+                                                        </li>
+                                                    	</div>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="contact.html">Liên Hệ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <!--/ End Main Menu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+	</header>
+	<!--/ End Header -->
+
+
+	<!-- Start About -->
+	    <div class="bg-light">
         <div class="container-fluid">
             <h1 class="text-center text-info" style="padding-top:50px"><strong>Về chúng tôi</strong></h1>
             <div class=" row justify-content-around">
                 <div class="col-3 center card shadow-lg about">
                     <div class="text-center about-img">
-                        <img class="img-circle" src="../image/duc.jpg" width="230px" height="230px">
+                        <img class="img-circle" src="../image/sang.jpg" width="230px" height="230px">
                     </div>
                     <h1 class="text-center"><strong>Phạm Minh Sang</strong></h1>
                     <ul>
                         <li>Email: harley20005@gmail.com</li>
                         <li>MSSV: 1811240476</li>
                         <li>Lớp: 18DTHJB1</li>
+                        <li>Điện thoại: 0378706070</li>
                     </ul>
                 </div>
                 <div class="col-3 center card shadow-lg about">
@@ -33,21 +215,242 @@
                         <li>Email: ducle6487@gmail.com</li>
                         <li>MSSV: 1811062916</li>
                         <li>Lớp: 18DTHJB1</li>
+                        <li>Điện thoại: 0788833634</li>
                     </ul>
                 </div>
                 <div class="col-3 center card shadow-lg about">
                     <div class="text-center about-img">
-                        <img class="img-circle" src="../image/duc.jpg" width="230px" height="230px">
+                        <img class="img-circle" src="../image/quan.jpg" width="230px" height="230px">
                     </div>
-                    <h1 class="text-center"><strong>Nguyen Hoang quaan</strong></h1>
+                    <h1 class="text-center"><strong>Nguyễn Hoàng Quân</strong></h1>
                     <ul>
-                        <li>Email: ducle6487@gmail.com</li>
-                        <li>MSSV: 1811062916</li>
+                        <li>Email: nquan146@gmail.com</li>
+                        <li>MSSV: 1811063477</li>
                         <li>Lớp: 18DTHJB1</li>
+                        <li>Điện thoại: 0788833634</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>  
+	<!-- End About -->
+
+
+
+	<!-- Start Shop Services Area -->
+	<section class="shop-services section home">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-rocket"></i>
+						<h4>Ship rẻ</h4>
+						<p>30k toàn quốc</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-reload"></i>
+						<h4>Miễn phí đổi trả</h4>
+						<p>trong 7 ngày từ ngày nhận hàng</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-lock"></i>
+						<h4>bảo mật thông tin</h4>
+						<p>100% bảo mật thông tin khách hàng</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-tag"></i>
+						<h4>Giá tốt nhất</h4>
+						<p>Đảm bảo rẻ, đẹp, chất lượng</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Shop Services Area -->
+
+	
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span class="ti-close" aria-hidden="true"></span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row no-gutters">
+						<div class="col-lg-6 offset-lg-3 col-12">
+							<h4
+								style="margin-top: 100px; font-size: 14px; font-weight: 500; color: #F7941D; display: block; margin-bottom: 5px;">Eshop
+								Free Lite</h4>
+							<h3 style="font-size: 30px; color: #333;">
+								Currently You are using free lite Version of Eshop.
+								<h3>
+									<p
+										style="display: block; margin-top: 20px; color: #888; font-size: 14px; font-weight: 400;">Please,
+										purchase full version of the template to get all pages,
+										features and commercial license</p>
+									<div class="button" style="margin-top: 30px;">
+										<a
+											href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/"
+											target="_blank" class="btn" style="color: #fff;">Buy Now!</a>
+									</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal end -->
+<!-- Start Footer Area -->
+	<footer class="footer">
+		<!-- Footer Top -->
+		<div class="footer-top section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer about">
+							<div class="logo">
+								<a href="index.html"><img src="/image/logo2.png" alt="#"></a>
+							</div>
+							<p class="text">Web mua bán ốp điện thoại, ốp tai phone. 
+							Thời trang - bền - rẻ - đẹp - chất lượng.
+							Chúng tôi rất vui lòng được phục vụ quý khách hàng.
+							Love you <3 </p>
+							<p class="call">
+								Có câu hỏi không? gọi chúng tôi 24/7<span><a href="tel:123456789">+0123
+										456 789</a></span>
+							</p>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Thông tin</h4>
+							<ul>
+								<li><a th:href="@{/about}">Về chúng tôi</a></li>
+								<li><a href="#">Faq</a></li>
+								<li><a href="#">Terms & Conditions</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Help</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Dịch vụ</h4>
+							<ul>
+								<li><a href="#">Payment Methods</a></li>
+								<li><a href="#">Money-back</a></li>
+								<li><a href="#">Returns</a></li>
+								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer social">
+							<h4>Liên lạc</h4>
+							<!-- Single Widget -->
+							<div class="contact">
+								<ul>
+									<li>395 Phan Văn Trị  </li>
+									<li>Phường 11 Bình Thạnh</li>
+									<li>Icase</li>
+									<li>+032 3456 7890</li>
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+							<ul>
+								<li><a href="#"><i class="ti-facebook"></i></a></li>
+								<li><a href="#"><i class="ti-twitter"></i></a></li>
+								<li><a href="#"><i class="ti-flickr"></i></a></li>
+								<li><a href="#"><i class="ti-instagram"></i></a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Footer Top -->
+		<div class="copyright">
+			<div class="container">
+				<div class="inner">
+					<div class="row">
+						<div class="col-lg-6 col-12">
+							<div class="left">
+								<p>
+									Copyright © 2021 <a href="http://www.wpthemesgrid.com"
+										target="_blank">Wpthemesgrid</a> - Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh Sang.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-12">
+							<div class="right">
+								<img src="/images/payments.png" alt="#">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /End Footer Area -->
+	<!-- Jquery -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery-migrate-3.0.0.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<!-- Popper JS -->
+	<script src="/js/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- Color JS -->
+	<script src="/js/colors.js"></script>
+	<!-- Slicknav JS -->
+	<script src="/js/slicknav.min.js"></script>
+	<!-- Owl Carousel JS -->
+	<script src="/js/owl-carousel.js"></script>
+	<!-- Magnific Popup JS -->
+	<script src="/js/magnific-popup.js"></script>
+	<!-- Waypoints JS -->
+	<script src="/js/waypoints.min.js"></script>
+	<!-- Countdown JS -->
+	<script src="/js/finalcountdown.min.js"></script>
+	<!-- Nice Select JS -->
+	<script src="/js/nicesellect.js"></script>
+	<!-- Flex Slider JS -->
+	<script src="/js/flex-slider.js"></script>
+	<!-- ScrollUp JS -->
+	<script src="/js/scrollup.js"></script>
+	<!-- Onepage Nav JS -->
+	<script src="/js/onepage-nav.min.js"></script>
+	<!-- Easing JS -->
+	<script src="/js/easing.js"></script>
+	<!-- Active JS -->
+	<script src="/js/active.js"></script>
 </body>
 </html>
