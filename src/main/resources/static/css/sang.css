@@ -1,0 +1,230 @@
+*{
+    padding :0px;
+    margin :0xp;
+}
+/* =============BOX================= */
+.box-240-315{
+    width: 240px;
+    max-width: 240px;
+    max-width: 240px;
+    height: 315px;
+    max-height: 315px;
+    min-height: 315px;
+    padding:0px;
+}
+.box-470-715{
+    width: 470px;
+    max-width: 470px;
+    max-width: 470px;
+    height: 715px;
+    max-height: 715px;
+    min-height: 715px;
+    padding:0px;
+}
+/* ===========search============= */
+.search-title{
+    margin: 30px 0px;
+    background-color: #232f49;
+}
+.search-title div{
+    width:130px;
+    background-color: #40547e;
+    padding-left: 20px;
+}
+.search-title h3{
+    font-size: 35px;
+    color:#f6f6f6;
+}
+.search-content{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.card-product{
+    border:1px black solid;
+}
+.card-product-text{
+    padding:5px;
+}
+.card-product-text a{
+    width: 230px;
+    display: inline-block;
+    color:#232f49;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.card-product-text a:hover{
+    color:#5773b3;
+    text-decoration: none;
+}
+.card-product-text p{
+    font-size: 20px;
+}
+.filter-side{
+    margin-top:150px;
+    margin-left: 50px;
+}
+.filter-side h6{
+    color:#12d4d2;
+    font-size: 30px;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.filter-side-content{
+    color:rgb(39, 39, 39);
+    margin:30px 20px;
+}
+.filter-select{
+    margin-bottom:20px;
+}
+.filter-side-footer{
+    margin-bottom:50px;
+}
+/* ======================About========================== */
+.about {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    padding:50px 70px;
+}
+.about h1 {
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.about ul {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.about ul li {
+    margin-top: 10px;
+}
+.about-img {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+/* ======================Detail Product============== */
+.img-prod{
+    padding : 10px;
+}
+.prod-infor{
+    padding :10px;
+}
+.prod-infor-title{
+    color: rgb(121, 121, 121);
+    font-size: 25px;
+    font-weight: normal;
+}
+.prod-infor-amount{
+    margin : 10px 20px;
+}
+.prod-infor-amount div p{
+    font-size: 35px;
+}
+.prod-infor-detail{
+    padding : 10px;
+}
+.prod-infor-detail-table{
+    font-size: 20px;
+}
+.prod-infor-detail-table ul{
+    list-style-type: none;
+}
+.prod-buy-button{
+    margin-top:30px;
+}
+.prod-buy-select button{
+    width: 40px;
+    max-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    padding:0px;
+}
+.prod-describer{
+    width:100%;
+    margin-top:30px;
+    padding: 20px;
+}
+.prod-comments{
+    width:100%;
+    margin-top:30px;
+    padding: 20px;
+}
+.prod-comment{
+    padding:20px;
+}
+
+/* =========================img====================== */
+.img-circle {
+    border-radius: 50%;
+}
+/* ======Quan=========== */
+.product-title {
+    display: flex;
+    align-items: center;
+    margin: 30px 20px 30px 70px;
+    height: 40px;
+    width: 100%;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+}
+.product-text {
+    width: 30%;
+    margin-top: 5px;
+    position: relative;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-left: 1px;
+    color: #fff;
+    background-color: #232f49;
+    font-weight: bold;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    font-size: 20px;
+}
+.product-main {
+    width: 92.9%;
+}
+
+.product-space {
+    width: 60%;
+}
+
+.product-text-continute {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: #232f49;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.product-text-continute:hover {
+    text-decoration: none;
+}
+
+.product-text::before {
+    content: '';
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    left: -51px;
+    object-fit: contain;
+    background: url('../image/before_tieude.png') no-repeat left top;
+}
+
+.product-text::after {
+    content: '';
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    left: 100%;
+    top: 0;
+    object-fit: contain;
+    background: url('../image/after_tieude.png') no-repeat left top;
+}

@@ -1,24 +1,22 @@
 package edu.hutech.Icase.Model;
 
 public class PhoneBrandModel {
+    public int idPhoneBrand;
+    public String name;
 
-    public int idbrand;
-    public String namebrand;
-
-    public int getIdbrand() {
-        return this.idbrand;
+    public int getIdPhoneBrand() {
+        return idPhoneBrand;
     }
 
-    public void setIdbrand(int idbrand) {
-        this.idbrand = idbrand;
+    public void setIdPhoneBrand(int idPhoneBrand) {
+        this.idPhoneBrand = idPhoneBrand;
     }
 
-    public String getNamebrand() {
-        return this.namebrand;
+    public String getName() {
+        return name;
     }
 
-    public void setNamebrand(String namebrand) {
-        this.namebrand = namebrand;
+    public void setName(String name) {
+        this.name = name;
     }
-
 }

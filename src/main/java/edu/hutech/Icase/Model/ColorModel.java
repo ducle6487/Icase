@@ -1,24 +1,23 @@
 package edu.hutech.Icase.Model;
 
 public class ColorModel {
+    public int idproduct;
+    public String color;
 
-    public int idcolor;
-    public String namecolor;
-
-    public int getIdcolor() {
-        return this.idcolor;
+    public int getIdproduct() {
+        return idproduct;
     }
 
-    public void setIdcolor(int idcolor) {
-        this.idcolor = idcolor;
+    public void setIdproduct(int idproduct) {
+        this.idproduct = idproduct;
     }
 
-    public String getNamecolor() {
-        return this.namecolor;
+    public String getColor() {
+        return color;
     }
 
-    public void setNamecolor(String namecolor) {
-        this.namecolor = namecolor;
+    public void setColor(String color) {
+        this.color = color;
     }
 
 }
