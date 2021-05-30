@@ -44,6 +44,7 @@
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/style.css">
 <link rel="stylesheet" href="/css/responsive.css">
+<link rel="stylesheet" href="/css/sang.css">
 
 <link rel="stylesheet" href="/css/sang.css">
 
@@ -62,8 +63,8 @@
 	<!-- End Preloader -->
 
 	<!-- Header -->
-	<header class="header shop">
-	<!-- Topbar -->
+    <header class="header shop">
+        <!-- Topbar -->
         <div class="topbar">
             <div class="container">
                 <div class="row">
@@ -92,52 +93,88 @@
             </div>
         </div>
         <!-- End Topbar -->
-		<div class="middle-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-12">
-						<!-- Logo -->
-						<div class="logo">
-							<a th:href="@{/home}"><img src="/image/logo.png" alt="logo"
-								width="100px"></a>
-						</div>
-						<!--/ End Logo -->
-						<!-- Search Form -->
-						<div class="search-top">
-							<div class="top-search">
-								<a href="#0"><i class="ti-search"></i></a>
-							</div>
-							<!-- Search Form -->
-							<div class="search-top">
-								<form class="search-form" >
-									<input type="text" placeholder="Search here..." name="search">
-									<button value="search" type="submit">
-										<i class="ti-search"></i>
-									</button>
-								</form>
-							</div>
-							<!--/ End Search Form -->
-						</div>
-						<!--/ End Search Form -->
-						<div class="mobile-nav"></div>
-					</div>
-					<div class="col-lg-8 col-md-7 col-12">
-						<div class="search-bar-top">
-							<div class="search-bar">
-								<form th:action="@{/product/search}"  method="post">
-									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText"
-										type="text">
-									<button class="btnn" type="submit">
-										<i class="ti-search"></i>
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>	
-				</div>
-			</div>
-		</div>
-		<!-- Header Inner -->
+        <div class="middle-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a th:href="@{/home}"><img src="image/logo.gif" alt="logo"></a>
+                        </div>
+                        <!--/ End Logo -->
+                        <!-- Search Form -->
+                        <div class="search-top">
+                            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+                            <!-- Search Form -->
+                            <div class="search-top">
+                                <form class="search-form" th:action="@{/search}" th:object="${product}">
+                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">
+                                    <button value="Search" type="submit"><i class="ti-search"></i></button>
+                                </form>
+
+                            </div>
+                            <!--/ End Search Form -->
+                        </div>
+                        <!--/ End Search Form -->
+                        <div class="mobile-nav"></div>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-12">
+                        <div class="search-bar-top">
+                            <div class="search-bar">
+                                <form th:action="@{/search}" th:object="${product}">
+                                    <input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
+                                    <button class="btnn" type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-12">
+                        <div class="right-bar">
+                            <!-- Search Form -->
+                            <div class="sinlge-bar">
+                                <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="sinlge-bar">
+                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                            <div class="sinlge-bar shopping">
+                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span
+                                        class="total-count">2</span></a>
+                                <!-- Shopping Item -->
+                                <div class="shopping-item">
+                                    <div class="dropdown-cart-header">
+                                        <span th:text="${cartcount}">2 Items</span>
+                                        <a th:href="@{/giohang}">View Cart</a>
+                                    </div>
+                                    <ul class="shopping-list">
+                                        <li th:each="giohang : ${cart}">
+                                            <a href="#" class="remove" title="Remove this item"><i
+                                                    class="fa fa-remove"></i></a>
+                                            <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70"
+                                                    alt="#"></a>
+                                            <h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
+                                            <p class="quantity">1x - <span class="amount">$99.00</span></p>
+                                        </li>
+
+                                    </ul>
+                                    <div class="bottom">
+                                        <div class="total">
+                                            <span>Total</span>
+                                            <span class="total-amount">$134.00</span>
+                                        </div>
+                                        <a href="checkout.html" class="btn animate">Checkout</a>
+                                    </div>
+                                </div>
+                                <!--/ End Shopping Item -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Inner -->
         <div class="header-inner">
             <div class="container">
                 <div class="cat-nav-head">
@@ -151,7 +188,7 @@
                                     <div class="navbar-collapse">
                                         <div class="nav-inner">
                                             <ul class="nav main-menu menu navbar-nav">
-                                                <li class="active"><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li><a th:href="@{/home}">Trang Chủ</a></li>
                                                 <li><a th:href="@{/product}">Sản Phẩm</a></li>
                                                 <li><a href="#">Shop<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown ">
@@ -161,17 +198,22 @@
                                                 </li>
                                                 <li><a href="#">Hãng<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown">
-                                                    	<div th:each="phonebrands : ${listPhoneBrands}">
-                                                        <li><a th:text="${phonebrands.getName}"></a>
-                                                        <ul class="dropright">
-                                                    	<div class="div-grid" >
-                                                        <li th:each="phones : ${listPhones}"><a  th:href="@{|/product/{getNamephone}|}" class="a-trong"  th:text="${phones.getNamephone}"></a></li>                                                 	
-                                                    	</div>                                                      
-                                                    	</ul>                                                    	
-                                                        </li>
-                                                    	</div>
+                                                        <div th:each="phonebrands : ${phonebrands}">
+                                                            <li><a th:text="${phonebrands.getName}"></a>
+                                                                <ul class="dropright">
+                                                                    <div class="div-grid">
+                                                                        <li th:each="phones : ${phones}"><a
+                                                                                th:href="@{|/product/${phones.getIdphone}|}"
+                                                                                class="a-trong"
+                                                                                th:text="${phones.getNamephone}"></a>
+                                                                        </li>
+                                                                    </div>
+                                                                </ul>
+                                                            </li>
+                                                        </div>
                                                     </ul>
                                                 </li>
+                                                <li class="active"><a th:href="@{/news}">Bài viết</a></li>
                                                 <li><a href="contact.html">Liên Hệ</a></li>
                                             </ul>
                                         </div>
@@ -185,8 +227,8 @@
             </div>
         </div>
         <!--/ End Header Inner -->
-	</header>
-	<!--/ End Header -->
+    </header>
+    <!--/ End Header -->
 	    
 	<!-- Start Blog Single -->
 		<section class="blog-single section">
@@ -287,7 +329,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="section-title">
-						<h2>Hot Item</h2>
+						<h2>Mặt hàng mới</h2>
 					</div>
 				</div>
 			</div>
@@ -295,34 +337,50 @@
 				<div class="col-12">
 					<div class="owl-carousel popular-slider">
 						<!-- Start Single Product -->
-						<th:block >
-							<div  th:each=" newProductItem : ${new5Products}"class="single-product">
+						<th:block>
+							<div th:each=" newProductItem : ${new5Products}" class="single-product">
 								<div class="product-img">
-									<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"> 
-										<img class="default-img" th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.1.png'}" alt="#"> 
-										<img class="hover-img"   th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.2.png'}" alt="#"> 
+									<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}">
+										<img class="default-img"
+											th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.1.png'}" alt="#">
+										<img class="hover-img"
+											th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.2.png'}" alt="#">
 										<span class="out-of-stock">New</span>
 									</a>
+									<div class="button-head">
+	                                    <div class="product-action">
+	                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
+	                                            href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+	                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
+	                                                Wishlist</span></a>
+	                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
+	                                                Compare</span></a>
+	                                    </div>
+	                                    <div class="product-action-2">
+	                                        <a title="Add to cart" th:href="@{|/Addtocart/${newProductItem.idProduct}|}">Add to
+	                                            cart</a>
+	                                    </div>
+	                                </div>
 								</div>
 								<div class="product-content">
 									<h3>
-										<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}" th:text="${newProductItem.name}"></a>
+										<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"
+											th:text="${newProductItem.name}"></a>
 									</h3>
 									<div class="product-price">
-										 <span th:text="${newProductItem.price}"></span><span>VND</span>
+										<span th:text="${newProductItem.price}"></span><span>VND</span>
 									</div>
 								</div>
 							</div>
 						</th:block>
 						<!-- End Single Product -->
-						
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- End Most Popular Area -->
-
 	<!-- Start Shop Blog  -->
 	<section class="shop-blog section">
 		<div class="container">
@@ -442,7 +500,7 @@
 				<div class="row">
 					<div class="col-lg-5 col-md-6 col-12">
 						<!-- Single Widget -->
-						<div class="single-footer about">
+						<div class="single-footer ">
 							<div class="logo">
 								<a href="index.html"><img src="/image/logo2.png" alt="#"></a>
 							</div>
