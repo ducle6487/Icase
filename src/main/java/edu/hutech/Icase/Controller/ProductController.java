@@ -1,7 +1,6 @@
 package edu.hutech.Icase.Controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.hutech.Icase.Model.ProductModel;
-import edu.hutech.Icase.Model.Case;
-import edu.hutech.Icase.Model.GioHang;
 import edu.hutech.Icase.Model.ImageModel;
 import edu.hutech.Icase.Model.NewsModel;
 import edu.hutech.Icase.Model.PhoneBrandModel;
@@ -232,7 +229,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/giohang/damua", method = RequestMethod.POST)
 	public String Buyed(@ModelAttribute("prodinfor") ProductModel prodinfor) {
-		System.out.println((prodinfor).toString());
+		System.out.println(prodinfor.getAmount());
 		return "About";
 	}
 
