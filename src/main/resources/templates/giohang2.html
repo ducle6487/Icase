@@ -253,13 +253,14 @@
 								<th>NAME</th>
 								<th class="text-center">UNIT PRICE</th>
 								<th class="text-center">QUANTITY</th>
+								<th class="text-center">MÀU</th> 
 								<th class="text-center">TOTAL</th> 
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="cart : ${cart}">
-								<td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+								<td class="image" data-title="No"><img th:src="@{'/imageCase/'+ ${cart.getImage1}}" alt="#"></td>
 								<td class="product-des" data-title="Description">
 									<p class="product-name"><a href="#" th:text="${cart.getName}">Women Dress</a></p>
 									<p class="product-des" th:text="${cart.getDescription}">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
@@ -268,19 +269,20 @@
 								<td class="qty" data-title="Qty"><!-- Input Order -->
 									<div class="input-group">
 										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" th:attr="data-field='quant['+${cart.getIdproduct}+']'">
 												<i class="ti-minus"></i>
 											</button>
 										</div>
-										<input type="text" th:name="${cart.getName}" class="input-number"  data-min="1" data-max="100" value="1" th:value="${cart.getSl}">
+										<input type="text"  th:name="'quant['+${cart.getIdproduct}+']'"  class="input-number"  data-min="1" th:attr="data-max=${cart.getAmount}" value="1"  th:value="${cart.getSl}">
 										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" th:field="${cart.getName}">
+											<button type="button" class="btn btn-primary btn-number" data-type="plus" th:attr="data-field='quant['+${cart.getIdproduct}+']'">
 												<i class="ti-plus"></i>
 											</button>
 										</div>
 									</div>
 									<!--/ End Input Order -->
 								</td>
+								<td class="price" data-title="Màu"><span th:text="${cart.getColor}"></span></td>
 								<td class="total-amount" data-title="Total"><span th:text="${cart.getPrice}*${cart.getSl}">$220.88</span></td>
 								<td class="action" data-title="Remove"><a th:href="@{|/Remove/${cart.getIdproduct}|}"><i class="ti-trash remove-icon"></i></a></td>
 							</tr>
@@ -296,15 +298,6 @@
 						<div class="row">
 							<div class="col-lg-8 col-md-5 col-12">
 								<div class="left">
-									<div class="coupon">
-										<form action="#" target="_blank">
-											<input name="Coupon" placeholder="Enter Your Coupon">
-											<button class="btn">Apply</button>
-										</form>
-									</div>
-									<div class="checkbox">
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>
-									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
@@ -641,5 +634,41 @@
 	<script src="js/easing.js"></script>
 	<!-- Active JS -->
 	<script src="js/active.js"></script>
+	<script type="text/javascript" th:inline="javascript">
+	/*<![CDATA[*/
+	var list = /*[[${cart}]]*/ "Test1";
+/*]]>*/
+
+$(document).ready(
+	function(){
+		var sl =[];
+			 for(var i=0;i<list.length;i++){
+				 var y = list[i].idproduct;
+				 var x = list[i].sl;
+		 console.log(x);
+		 console.log(y);
+		 sl1=[x];
+		 sl2=[y];
+		 sl.push(sl1);
+		 sl.push(sl2);
+		 console.log(sl);
+		 console.log(sl2);
+			 }
+		 sl = JSON.stringify ({
+
+	            'sl': sl 
+
+	        }); 
+		 $.ajax({
+			 traditional: true,
+		     type: 'GET',
+		     url: '/giohang+thanhtoan',
+		     data: {'sl': sl },
+		     datatype: 'json',
+		     success: function( data ) {
+		     }
+		   });
+	});
+	</script>
 </body>
 </html>

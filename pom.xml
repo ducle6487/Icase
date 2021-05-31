@@ -24,12 +24,20 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>5.3.6</version>
 		</dependency>
-
 		<dependency>
+
+      <groupId>org.codehaus.jackson</groupId>
+
+      <artifactId>jackson-mapper-asl</artifactId>
+
+      <version>1.9.13</version>
+
+	</dependency>
+		<!--<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
-        </dependency>
+        </dependency>-->
 		<dependency>
 			<groupId>net.sourceforge.jtds</groupId>
 			<artifactId>jtds</artifactId>

@@ -20,6 +20,11 @@ public class ProductInforBuying {
 	public String getColor() {
 		return color;
 	}
+	@Override
+	public String toString() {
+		return "ProductInforBuying [idProduct=" + idProduct + ", amount=" + amount + ", color=" + color + ", phone="
+				+ phone + "]";
+	}
 	public void setColor(String color) {
 		this.color = color;
 	}

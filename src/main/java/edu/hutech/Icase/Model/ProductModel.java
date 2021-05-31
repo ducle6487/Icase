@@ -1,6 +1,13 @@
 package edu.hutech.Icase.Model;
 
 public class ProductModel {
+	@Override
+	public String toString() {
+		return "ProductModel [idProduct=" + idProduct + ", name=" + name + ", idPhoneBrand=" + idPhoneBrand + ", price="
+				+ price + ", description=" + description + ", amount=" + amount + ", caseBrand=" + caseBrand + ", sold="
+				+ sold + ", dateAdded=" + dateAdded + "]";
+	}
+
 	public int idProduct;
 	public String name;
 	public int idPhoneBrand;

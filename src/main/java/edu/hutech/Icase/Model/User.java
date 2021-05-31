@@ -3,6 +3,13 @@ package edu.hutech.Icase.Model;
 import java.sql.Date;
 
 public class User {
+	private int idorder;
+	public int getIdorder() {
+		return idorder;
+	}
+	public void setIdorder(int idorder) {
+		this.idorder = idorder;
+	}
 	private String name;
 	private int number;
 	private String address;
