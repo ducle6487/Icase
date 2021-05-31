@@ -188,7 +188,11 @@
                                                     th:switch="${order.deliverystatus}">
                                                     <div th:case="'Đang lấy hàng'">
                                                         <a th:href="'/change-to-shipping&id='+${order.idorder}"
-                                                            th:if="${order.methodpayment} != 'COD' and ${order.paymentstatus} != 'Chưa thanh toán'"><button
+                                                            th:if="${order.methodpayment} != 'MOMO' and ${order.paymentstatus} == 'Chưa thanh toán'"><button
+                                                                type="button" class="btn btn-warning">Xác nhận vận
+                                                                chuyển</button></a>
+                                                        <a th:href="'/change-to-shipping&id='+${order.idorder}"
+                                                            th:if="${order.methodpayment} == 'MOMO' and ${order.paymentstatus} != 'Chưa thanh toán'"><button
                                                                 type="button" class="btn btn-warning">Xác nhận vận
                                                                 chuyển</button></a>
 

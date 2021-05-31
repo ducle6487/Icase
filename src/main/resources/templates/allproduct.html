@@ -12,8 +12,6 @@
 	<link rel="stylesheet" href="../assets/vendor/linearicons/style.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="../assets/css/main.css">
-	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href="../assets/css/demo.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- <link
@@ -137,7 +135,9 @@
 											<!-- <a title="remove" href="#">Remove</a> -->
 											<!-- </div> -->
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">&nbsp;&nbsp; &nbsp;&nbsp; Chi tiết
+												<a title="Add to cart"
+													th:href="'/detailproduct/'+${product.idProduct}">&nbsp;&nbsp;
+													&nbsp;&nbsp; Chi tiết
 													&nbsp;&nbsp;</a>
 												<a title="edit"
 													th:href="@{'/admin/product-edit&id='+${product.idProduct}}">Chỉnh
@@ -192,7 +192,10 @@
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/jquery-migrate-3.0.0.js"></script>
 	<script src="../js/jquery-ui.min.js"></script>
-
+	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../assets/scripts/klorofil-common.js"></script>
 	<script src="../js/slicknav.min.js"></script>
 	<!-- Owl Carousel JS -->
 	<!-- <script src="js/owl-carousel.js"></script> -->
