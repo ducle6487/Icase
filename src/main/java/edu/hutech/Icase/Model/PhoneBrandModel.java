@@ -3,7 +3,7 @@ package edu.hutech.Icase.Model;
 public class PhoneBrandModel {
     public int idPhoneBrand;
     public String name;
-
+    
     public int getIdPhoneBrand() {
         return idPhoneBrand;
     }

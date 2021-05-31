@@ -126,6 +126,25 @@ public class ProductController {
 
 		return "product";
 	}
+	@GetMapping("/product/phone={id}")
+	public String findProductByPhoneId(@PathVariable String id,Model model) {
+		List<ProductModel> productsList = prodService.getListProductsAfterFilterWithPhoneId(Integer.parseInt(id));
+		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
+		List<PhoneModel> listPhones = prodService.getAllPhone();
+		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+		List<NewsModel> list3NewNews = prodService.getList3NewNews();
+		boolean filter = true;
+		String namePhone = prodService.getNamePhoneWithPhoneId(Integer.parseInt(id));
+
+		model.addAttribute("products", productsList);
+		model.addAttribute("new5Products", new5Products);
+		model.addAttribute("listPhones", listPhones);
+		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		model.addAttribute("list3News", list3NewNews);
+		model.addAttribute("filter", filter);
+		model.addAttribute("filterStr", namePhone);
+		return "product";
+	}
 
 	@RequestMapping(value = "/product/phonebrand", method = RequestMethod.POST)
 	public String filterProductWithPhoneBrandName(@RequestParam("phoneBrand") String phoneBrandName, Model model) {
@@ -240,13 +259,27 @@ public class ProductController {
 
 		return "newsdetail";
 	}
+	//
+	//   Giới thiệu
+	//
+	@GetMapping("/introduct")
+	public String introduct(Model model) {
+		List<PhoneModel> listPhones = prodService.getAllPhone();
+		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 
-	// test
+		model.addAttribute("listPhones", listPhones);
+		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		
+		return "contact";
+	}
+
+	// add to card form detail product
 
 	@RequestMapping(value = "/giohang/damua", method = RequestMethod.POST)
 	public String Buyed(@ModelAttribute("prodinfor") ProductInforBuying prodinfor) {
 
-		return "About";
+		return "product";
 	}
+	
 
 }
