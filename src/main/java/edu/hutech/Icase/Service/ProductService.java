@@ -77,7 +77,6 @@ public class ProductService {
 		String sql = "SELECT prod.* FROM dbo.product prod,dbo.device de WHERE de.idphone = " + phoneId
 				+ " and de.idproduct = prod.idproduct";
 		List<ProductModel> productsList = jdbcTemplate.query(sql, new ProductMapper());
-		System.out.println(phoneId);
 
 		return productsList;
 	}
