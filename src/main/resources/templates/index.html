@@ -13,11 +13,17 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="image/favicon.ico">
     <!-- Web Font -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
 
     <!-- StyleSheet -->
- 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <!-- Magnific Popup -->
@@ -38,14 +44,12 @@
     <link rel="stylesheet" href="css/owl-carousel.css">
     <!-- Slicknav -->
     <link rel="stylesheet" href="css/slicknav.min.css">
+    <link rel="stylesheet" href="/css/sang.css">
 
     <!-- Eshop StyleSheet -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-
-
-
 </head>
 
 <body class="js">
@@ -106,12 +110,11 @@
                             <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
                             <!-- Search Form -->
                             <div class="search-top">
-                            
-                                <form class="search-form" th:action="@{/search}">
-                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">                         
-                                    <button value="Search" type="submit"><i class="ti-search"></i></button>                                    
+                                <form class="search-form" th:action="@{/search}" th:object="${product}">
+                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">
+                                    <button value="Search" type="submit"><i class="ti-search"></i></button>
                                 </form>
-                                
+
                             </div>
                             <!--/ End Search Form -->
                         </div>
@@ -122,7 +125,7 @@
                         <div class="search-bar-top">
                             <div class="search-bar">
                                 <form th:action="@{/search}" th:object="${product}">
-                                	<input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
+                                    <input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
                                     <button class="btnn" type="submit"><i class="ti-search"></i></button>
                                 </form>
                             </div>
@@ -135,31 +138,39 @@
                                 <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar">
-                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o"
+                                        aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar shopping">
-                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span class="total-count" th:text="${cartcount}">2</span></a>
+                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span
+                                        class="total-count" th:text="${cartcount}">2</span></a>
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span th:text="${cartcount}+ ' Sản Phẩm'">2 Items</span>
                                         <a th:href="@{/giohang}">Xem Giỏ Hàng</a>
                                     </div>
-                                    <ul class="shopping-list" th:if="${cartcount} >0")>
+                                    <ul class="shopping-list" th:if="${cartcount} >0" )>
                                         <li th:each="giohang : ${cart}">
-                                            <a th:href="@{|/remove/${giohang.getIdproduct}|}" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img th:src="@{'/imageCase/'+ ${giohang.getImage1}}" alt="#"></a>
+                                            <a th:href="@{|/remove/${giohang.getIdproduct}|}" class="remove"
+                                                title="Remove this item"><i class="fa fa-remove"></i></a>
+                                            <a class="cart-img" href="#"><img
+                                                    th:src="@{'/imageCase/'+ ${giohang.getImage1}}" alt="#"></a>
                                             <h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
-                                            <p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span class="amount" th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span></p>
+                                            <p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span
+                                                    class="amount"
+                                                    th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span>
+                                            </p>
                                         </li>
-                                     
+
                                     </ul>
-                                    <ul class="shopping-list" th:unless="${cartcount} >0")>
+                                    <ul class="shopping-list" th:unless="${cartcount} >0" )>
                                         <li>
-                                            <img src="image/images.png" alt="" style="position: relative;left: 50%;transform: translateX(-45%);">
+                                            <img src="image/images.png" alt=""
+                                                style="position: relative;left: 50%;transform: translateX(-45%);">
                                             <p style="text-align: center;">Không có sản phẩm</p>
                                         </li>
-                                     
+
                                     </ul>
                                     <div class="bottom">
                                         <div class="total">
@@ -200,10 +211,11 @@
                                                 </li>
                                                 <li><a href="#">Hãng<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown">
-                                                    	<div th:each="phonebrands : ${phonebrands}">
-                                                        <li><a th:text="${phonebrands.getName}" th:href="@{|/product/${phonebrands.getIdphonebrand}|}"></a>                                                                                                          	
-                                                        </li>
-                                                    	</div>
+                                                        <div th:each="phonebrands : ${phonebrands}">
+                                                            <li><a th:text="${phonebrands.getName}"
+                                                                    th:href="@{|/product/${phonebrands.getIdphonebrand}|}"></a>
+                                                            </li>
+                                                        </div>
                                                     </ul>
                                                 </li>
                                                 <li><a href="contact.html">Liên Hệ</a></li>
@@ -223,7 +235,7 @@
     <!--/ End Header -->
 
     <!-- Slider Area -->
-     <section class="hero-slider">
+    <section class="hero-slider">
         <!-- Single Slider -->
         <div class="single-slider">
             <div class="container">
@@ -254,22 +266,27 @@
                         <div class="single-product" th:each="product : ${product}">
                             <div class="product-img">
                                 <a href="product-details.html">
-                                    <img class="default-img"  th:src="@{'/imageCase/'+ ${product.getImage1}}" alt="#">
+                                    <img class="default-img" th:src="@{'/imageCase/'+ ${product.getImage1}}" alt="#">
                                     <img class="hover-img" th:src="@{'/imageCase/'+ ${product.getImage2}}" alt="#">
                                 </a>
                                 <div class="button-head">
                                     <div class="product-action">
-                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
+                                            href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
+                                                Wishlist</span></a>
+                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
+                                                Compare</span></a>
                                     </div>
                                     <div class="product-action-2">
-                                        <a title="Add to cart" th:href="@{|/Addtocart/${product.getIdproduct}|}">Add to cart</a>
+                                        <a title="Add to cart" th:href="@{|/Addtocart/${product.getIdproduct}|}">Add to
+                                            cart</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="product-content">
-                                <h3><a href="product-details.html" th:text="${product.getName}">Black Sunglass For Women</a></h3>
+                                <h3><a href="product-details.html" th:text="${product.getName}">Black Sunglass For
+                                        Women</a></h3>
                                 <div class="product-price">
                                     <span th:text="${product.getPrice} + ' đ'">$50.00</span>
                                 </div>
@@ -299,8 +316,10 @@
                         <div class="nav-main">
                             <!-- Tab Nav -->
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Ốp lưng điện thoại</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">Ốp lưng tai nghe</a></li>
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man"
+                                        role="tab">Ốp lưng điện thoại</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">Ốp
+                                        lưng tai nghe</a></li>
                             </ul>
                             <!--/ End Tab Nav -->
                         </div>
@@ -313,14 +332,22 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <a href="product-details.html">
-                                                        <img class="default-img" th:src="@{'/imageCase/'+ ${man.getImage1}}" alt="#">
-                                                        <img class="hover-img" th:src="@{'/imageCase/'+ ${man.getImage2}}" alt="#">
+                                                        <img class="default-img"
+                                                            th:src="@{'/imageCase/'+ ${man.getImage1}}" alt="#">
+                                                        <img class="hover-img"
+                                                            th:src="@{'/imageCase/'+ ${man.getImage2}}" alt="#">
                                                     </a>
                                                     <div class="button-head">
                                                         <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                                            <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                                            <a data-toggle="modal" data-target="#exampleModal"
+                                                                title="Quick View" href="#"><i
+                                                                    class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                            <a title="Wishlist" href="#"><i
+                                                                    class=" ti-heart "></i><span>Add to
+                                                                    Wishlist</span></a>
+                                                            <a title="Compare" href="#"><i
+                                                                    class="ti-bar-chart-alt"></i><span>Add to
+                                                                    Compare</span></a>
                                                         </div>
                                                         <div class="product-action-2">
                                                             <a title="Add to cart" href="#">Add to cart</a>
@@ -328,8 +355,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3><a href="product-details.html" th:text="${man.getName}">Women Hot Collection</a></h3>
-                                                    <div class="product-price" >
+                                                    <h3><a href="product-details.html" th:text="${man.getName}">Women
+                                                            Hot Collection</a></h3>
+                                                    <div class="product-price">
                                                         <span th:text="${man.getPrice} + ' đ'">$29.00</span>
                                                     </div>
                                                 </div>
@@ -347,14 +375,22 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <a href="product-details.html">
-                                                        <img class="default-img" th:src="@{'/imageCase/'+ ${women.getImage1}}" alt="#">
-                                                        <img class="hover-img" th:src="@{'/imageCase/'+ ${women.getImage2}}" alt="#">
+                                                        <img class="default-img"
+                                                            th:src="@{'/imageCase/'+ ${women.getImage1}}" alt="#">
+                                                        <img class="hover-img"
+                                                            th:src="@{'/imageCase/'+ ${women.getImage2}}" alt="#">
                                                     </a>
                                                     <div class="button-head">
                                                         <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                                            <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                                            <a data-toggle="modal" data-target="#exampleModal"
+                                                                title="Quick View" href="#"><i
+                                                                    class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                            <a title="Wishlist" href="#"><i
+                                                                    class=" ti-heart "></i><span>Add to
+                                                                    Wishlist</span></a>
+                                                            <a title="Compare" href="#"><i
+                                                                    class="ti-bar-chart-alt"></i><span>Add to
+                                                                    Compare</span></a>
                                                         </div>
                                                         <div class="product-action-2">
                                                             <a title="Add to cart" href="#">Add to cart</a>
@@ -362,13 +398,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3><a href="product-details.html" th:text="${women.getName}">Women Hot Collection</a></h3>
+                                                    <h3><a href="product-details.html" th:text="${women.getName}">Women
+                                                            Hot Collection</a></h3>
                                                     <div class="product-price">
                                                         <spanth th:text="${women.getPrice}+ 'đ'">$29.00</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>                    
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -456,9 +493,9 @@
                             </div>
                             <div class="product-content">
                                 <h3><a href="product-details.html">Awesome Bags Collection
-                                asdadasdag
-                                asdsadasdasdasdasdad
-                                asdasd</a></h3>
+                                        asdadasdag
+                                        asdsadasdasdasdasdad
+                                        asdasd</a></h3>
                                 <div class="product-price">
                                     <span>$50.00</span>
                                 </div>
@@ -526,17 +563,24 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close"
+                            aria-hidden="true"></span></button>
                 </div>
                 <div class="modal-body">
                     <div class="row no-gutters">
                         <div class="col-lg-6 offset-lg-3 col-12">
-                            <h4 style="margin-top:100px;font-size:14px; font-weight:500; color:#F7941D; display:block; margin-bottom:5px;">Eshop Free Lite</h4>
+                            <h4
+                                style="margin-top:100px;font-size:14px; font-weight:500; color:#F7941D; display:block; margin-bottom:5px;">
+                                Eshop Free Lite</h4>
                             <h3 style="font-size:30px;color:#333;">Currently You are using free lite Version of Eshop.
                                 <h3>
-                                    <p style="display:block; margin-top:20px; color:#888; font-size:14px; font-weight:400;">Please, purchase full version of the template to get all pages, features and commercial license</p>
+                                    <p
+                                        style="display:block; margin-top:20px; color:#888; font-size:14px; font-weight:400;">
+                                        Please, purchase full version of the template to get all pages, features and
+                                        commercial license</p>
                                     <div class="button" style="margin-top:30px;">
-                                        <a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/" target="_blank" class="btn" style="color:#fff;">Buy Now!</a>
+                                        <a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/"
+                                            target="_blank" class="btn" style="color:#fff;">Buy Now!</a>
                                     </div>
                         </div>
                     </div>
@@ -558,8 +602,11 @@
                             <div class="logo">
                                 <a href="index.html"><img src="images/logo2.png" alt="#"></a>
                             </div>
-                            <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-                            <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+                            <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna
+                                eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+                                facilisis luctus, metus.</p>
+                            <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456
+                                        789</a></span></p>
                         </div>
                         <!-- End Single Widget -->
                     </div>
@@ -624,7 +671,8 @@
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="left">
-                                <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a> - All Rights Reserved.</p>
+                                <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com"
+                                        target="_blank">Wpthemesgrid</a> - All Rights Reserved.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
@@ -639,7 +687,9 @@
     </footer>
     <!-- /End Footer Area -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous"></script>
     <script>
         $('.slider-inner').slick({
             dots: true,
