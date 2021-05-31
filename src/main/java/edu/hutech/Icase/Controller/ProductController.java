@@ -49,6 +49,7 @@ public class ProductController {
 
 	@GetMapping("/product/{id}")
 	public String productPageNumber(@PathVariable String id, Model model) {
+		System.out.println("Ok");
 		List<ProductModel> productsList = prodService.get32ProductsWithLocalPack(Integer.parseInt(id) - 1,
 				prodService.getAllProduct());
 		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
@@ -56,7 +57,7 @@ public class ProductController {
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 		List<NewsModel> list3NewNews = prodService.getList3NewNews();
-
+		
 		model.addAttribute("products", productsList);
 		model.addAttribute("new5Products", new5Products);
 		model.addAttribute("numberPage", listNumPages);
@@ -80,6 +81,7 @@ public class ProductController {
 			numberOfProductIsNull = true;
 		}
 		List<NewsModel> list3NewNews = prodService.getList3NewNews();
+		boolean filter = true;
 
 		model.addAttribute("products", productsList);
 		model.addAttribute("new5Products", new5Products);
@@ -88,6 +90,8 @@ public class ProductController {
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("numberOfProductIsNull", numberOfProductIsNull);
 		model.addAttribute("list3News", list3NewNews);
+		model.addAttribute("filter", filter);
+		model.addAttribute("filterStr", searchText);
 
 		return "product";
 	}
@@ -95,6 +99,9 @@ public class ProductController {
 	@RequestMapping(value = "/product/phone", method = RequestMethod.POST)
 	public String filterProductWithPhoneName(@RequestParam("phone") String phoneName, Model model) {
 		List<ProductModel> productsList = null;
+		if(phoneName.equals("---*---")) {
+			return "redirect:/product";
+		}
 		productsList = prodService.getListProductsAfterFilterWithPhoneId(prodService.getIdPhoneWithName(phoneName));
 		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
 		List<Integer> listNumPages = new ArrayList<Integer>();
@@ -105,6 +112,7 @@ public class ProductController {
 			numberOfProductIsNull = true;
 		}
 		List<NewsModel> list3NewNews = prodService.getList3NewNews();
+		boolean filter = true;
 
 		model.addAttribute("products", productsList);
 		model.addAttribute("new5Products", new5Products);
@@ -113,12 +121,17 @@ public class ProductController {
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("numberOfProductIsNull", numberOfProductIsNull);
 		model.addAttribute("list3News", list3NewNews);
+		model.addAttribute("filter", filter);
+		model.addAttribute("filterStr", phoneName);
 
 		return "product";
 	}
 
 	@RequestMapping(value = "/product/phonebrand", method = RequestMethod.POST)
 	public String filterProductWithPhoneBrandName(@RequestParam("phoneBrand") String phoneBrandName, Model model) {
+		if(phoneBrandName.equals("---*---")) {
+			return "redirect:/product";
+		}
 		List<ProductModel> productsList = null;
 		productsList = prodService
 				.getListProductsAfterFilterWithPhoneBrandId(prodService.getIdPhoneBrandWithName(phoneBrandName));
@@ -132,6 +145,7 @@ public class ProductController {
 		}
 		int amount = 0;
 		List<NewsModel> list3NewNews = prodService.getList3NewNews();
+		boolean filter = true;
 
 		model.addAttribute("products", productsList);
 		model.addAttribute("new5Products", new5Products);
@@ -141,6 +155,8 @@ public class ProductController {
 		model.addAttribute("numberOfProductIsNull", numberOfProductIsNull);
 		model.addAttribute("amountWantBuy", amount);
 		model.addAttribute("list3News", list3NewNews);
+		model.addAttribute("filter", filter);
+		model.addAttribute("filterStr", phoneBrandName);
 
 		return "product";
 	}

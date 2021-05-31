@@ -107,35 +107,41 @@
                     <div class="col-lg-3 col-md-3 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a th:href="@{/home}"><img src="image/logo.gif" alt="logo"></a>
+                            <a th:href="@{/home}"><img src="/image/logo.gif" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
-                        <!-- Search Form -->
-                        <div class="search-top">
-                            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-                            <!-- Search Form -->
-                            <div class="search-top">
-                                <form class="search-form" th:action="@{/search}" th:object="${product}">
-                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">
-                                    <button value="Search" type="submit"><i class="ti-search"></i></button>
-                                </form>
-
-                            </div>
-                            <!--/ End Search Form -->
-                        </div>
-                        <!--/ End Search Form -->
-                        <div class="mobile-nav"></div>
-                    </div>
-                    <div class="col-lg-8 col-md-7 col-12">
-                        <div class="search-bar-top">
-                            <div class="search-bar">
-                                <form th:action="@{/search}" th:object="${product}">
-                                    <input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
-                                    <button class="btnn" type="submit"><i class="ti-search"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                        	<!-- Search Form -->
+						<div class="search-top">
+							<div class="top-search">
+								<a href="#0"><i class="ti-search"></i></a>
+							</div>
+							<!-- Search Form -->
+							<div class="search-top">
+								<form class="search-form" >
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+							<!--/ End Search Form -->
+						</div>
+						<!--/ End Search Form -->
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-12">
+						<div class="search-bar-top">
+							<div class="search-bar">
+								<form th:action="@{/product/search}"  method="post">
+									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText"
+										type="text">
+									<button class="btnn" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>	
                     <div class="col-lg-1 col-md-2 col-12">
                         <div class="right-bar">
                             <!-- Search Form -->
@@ -249,6 +255,7 @@
 						<div class="form-group">
 							<p class="custom-control-label" style="padding-top: 60px;">Theo tên thiết bị</p>
 							<select class="js-example-basic-single js-states form-control" th:name="phone">
+								<option th:text="'---*---'"></option>
 								<th:block th:each="phoneItem : ${listPhones}">
 									<option th:text="${phoneItem.getNamephone}"></option>
 								</th:block>
@@ -260,6 +267,7 @@
 						<div class="form-group">
 							<p class="custom-control-label" style="padding-top: 60px;">Theo hãng thiết bị</p>
 							<select class="js-example-basic-single js-states form-control" th:name="phoneBrand">
+								<option th:text="'---*---'"></option>
 								<th:block th:each="phoneBrandItem : ${listPhoneBrands}">
 									<option th:text="${phoneBrandItem.getName}"></option>
 								</th:block>
@@ -278,7 +286,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="section-title">
-								<h2>Sản phẩm</h2>
+								<h2><th:block th:unless="${filter}"><th:block th:text="'Sản phẩm'"></th:block></th:block> <th:block th:if="${filter}"><th:block th:text="'Kết quả tìm kiếm: '+${filterStr}"></th:block></th:block></h2>
 							</div>
 						</div>
 					</div>
@@ -309,8 +317,8 @@
 															</a>
 															<div class="button-head">
 							                                    <div class="product-action">
-							                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
-							                                            href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+							                                        <a  title="Quick View"
+							                                            th:href="@{'/detailproduct/'+${productItem.idProduct}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
 							                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
 							                                                Wishlist</span></a>
 							                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
@@ -384,8 +392,8 @@
 									</a>
 									<div class="button-head">
 	                                    <div class="product-action">
-	                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
-	                                            href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+	                                        <a  title="Quick View"
+	                                             th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
 	                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
 	                                                Wishlist</span></a>
 	                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to

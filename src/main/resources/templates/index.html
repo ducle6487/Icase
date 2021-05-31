@@ -97,41 +97,47 @@
             </div>
         </div>
         <!-- End Topbar -->
-        <div class="middle-inner">
+               <div class="middle-inner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a th:href="@{/home}"><img src="image/logo.gif" alt="logo"></a>
+                            <a th:href="@{/home}"><img src="/image/logo.gif" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
-                        <!-- Search Form -->
-                        <div class="search-top">
-                            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-                            <!-- Search Form -->
-                            <div class="search-top">
-                                <form class="search-form" th:action="@{/search}" th:object="${product}">
-                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">
-                                    <button value="Search" type="submit"><i class="ti-search"></i></button>
-                                </form>
-
-                            </div>
-                            <!--/ End Search Form -->
-                        </div>
-                        <!--/ End Search Form -->
-                        <div class="mobile-nav"></div>
-                    </div>
-                    <div class="col-lg-8 col-md-7 col-12">
-                        <div class="search-bar-top">
-                            <div class="search-bar">
-                                <form th:action="@{/search}" th:object="${product}">
-                                    <input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
-                                    <button class="btnn" type="submit"><i class="ti-search"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                        	<!-- Search Form -->
+						<div class="search-top">
+							<div class="top-search">
+								<a href="#0"><i class="ti-search"></i></a>
+							</div>
+							<!-- Search Form -->
+							<div class="search-top">
+								<form class="search-form" >
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+							<!--/ End Search Form -->
+						</div>
+						<!--/ End Search Form -->
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-12">
+						<div class="search-bar-top">
+							<div class="search-bar">
+								<form th:action="@{/product/search}"  method="post">
+									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText"
+										type="text">
+									<button class="btnn" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>	
                     <div class="col-lg-1 col-md-2 col-12">
                         <div class="right-bar">
                             <!-- Search Form -->

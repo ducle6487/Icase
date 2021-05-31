@@ -11,7 +11,7 @@
 <!-- Title Tag  -->
 <title>Eshop - eCommerce HTML5 Template.</title>
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="/images/logo.png">
+<link rel="icon" type="image/png" href="/image/favicon.ico">
 <!-- Web Font -->
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
@@ -47,7 +47,149 @@
 <link rel="stylesheet" href="/css/responsive.css">
 <link rel="stylesheet" href="/css/sang.css">
 
-<link rel="stylesheet" href="/css/sang.css">
+<link rel="stylesheet" href="/css/style.css">
+
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+</style>
 
 </head>
 <body class="js">
@@ -93,42 +235,48 @@
                 </div>
             </div>
         </div>
-        <!-- End Topbar -->
+     <!-- End Topbar -->
         <div class="middle-inner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a th:href="@{/home}"><img src="image/logo.gif" alt="logo"></a>
+                            <a th:href="@{/home}"><img src="/image/logo.gif" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
-                        <!-- Search Form -->
-                        <div class="search-top">
-                            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-                            <!-- Search Form -->
-                            <div class="search-top">
-                                <form class="search-form" th:action="@{/search}" th:object="${product}">
-                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">
-                                    <button value="Search" type="submit"><i class="ti-search"></i></button>
-                                </form>
-
-                            </div>
-                            <!--/ End Search Form -->
-                        </div>
-                        <!--/ End Search Form -->
-                        <div class="mobile-nav"></div>
-                    </div>
-                    <div class="col-lg-8 col-md-7 col-12">
-                        <div class="search-bar-top">
-                            <div class="search-bar">
-                                <form th:action="@{/search}" th:object="${product}">
-                                    <input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
-                                    <button class="btnn" type="submit"><i class="ti-search"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                        	<!-- Search Form -->
+						<div class="search-top">
+							<div class="top-search">
+								<a href="#0"><i class="ti-search"></i></a>
+							</div>
+							<!-- Search Form -->
+							<div class="search-top">
+								<form class="search-form" >
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+							<!--/ End Search Form -->
+						</div>
+						<!--/ End Search Form -->
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-12">
+						<div class="search-bar-top">
+							<div class="search-bar">
+								<form th:action="@{/product/search}"  method="post">
+									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText"
+										type="text">
+									<button class="btnn" type="submit">
+										<i class="ti-search"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>	
                     <div class="col-lg-1 col-md-2 col-12">
                         <div class="right-bar">
                             <!-- Search Form -->
@@ -199,11 +347,11 @@
                                                 </li>
                                                 <li><a href="#">Hãng<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown">
-                                                        <div th:each="phonebrands : ${phonebrands}">
+                                                        <div th:each="phonebrands : ${listPhoneBrands}">
                                                             <li><a th:text="${phonebrands.getName}"></a>
                                                                 <ul class="dropright">
                                                                     <div class="div-grid">
-                                                                        <li th:each="phones : ${phones}"><a
+                                                                        <li th:each="phones : ${listPhones}"><a
                                                                                 th:href="@{|/product/${phones.getIdphone}|}"
                                                                                 class="a-trong"
                                                                                 th:text="${phones.getNamephone}"></a>
@@ -236,26 +384,49 @@
         <!-- image product -->
         <div class="col-5 border img-prod">
 			<div class="pb-3">
-				<img th:src="@{'/imageCase/'+${imgCover}}" width="450px" height="450px">
+				<img th:src="@{'/imageCase/'+${imgCover}}" width="450px" height="450px" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 			</div>
 
 			<div >
 			<th:block th:each="imgItem : ${listImages}">
-				<img th:src="@{'/imageCase/'+${imgItem.name}}" width="100px" height="100px">
+				<img th:src="@{'/imageCase/'+${imgItem.name}}" width="100px" height="100px" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 			</th:block>
-
 			</div>
+			<!--  -->
+				<div id="myModal" class="modal">
+				  <span class="close cursor" onclick="closeModal()">&times;</span>
+				  <div class="modal-content">
+					<th:block th:each="imgItem : ${listImages}">
+					    <div class="mySlides text-center">
+					      
+					      <img th:src="@{'/imageCase/'+${imgItem.name}}" style="width:50%">
+					    </div>
+				    </th:block>
+				    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+				
+				    <div class="caption-container">
+				      <p id="caption"></p>
+				    </div>
+					<!-- <th:block th:each="imgItem : ${listImages}">
+					    <div class="column row">
+					      <div class="col-2"><img class="demo cursor" th:src="@{'/imageCase/'+${imgItem.name}}" style="width:50%" onclick="currentSlide(1)" alt="Ảnh sản phẩm"></div>
+					    </div>
+				    </th:block> -->
+				  </div>
+				</div>
+			<!--  -->
         </div>
         <!--  -->
         <!-- Infor product -->
         <div class="col-7 prod-infor border">
             <div>
-                <h2 class="prod-infor-title mt-3" th:text="${product.name}"></h2>
+                <h1 class="prod-infor-title mt-3" th:text="${product.name}"></h1>
             </div>
             <div class="row">
                 <div class="col-6  bg-light m-4">
                     <div class="text-center">
-                        <h5 th:text="${product.price+' VND'}"></h5>
+                        <h3 th:text="${product.price+' VND'}"></h3>
                     </div>
                 </div>
 
@@ -310,7 +481,7 @@
 	                    <div class="col-4">
 	                    <p class="" style="padding-top: 60px;">Nhập số lượng</p>
 		                    <div class="prod-buy-select">
-		                    	<input type="number" placeholder="0" class="text-center"style="width:40px" th:field="*{amount}">
+		                    	<input type="number" placeholder="1" th:value="1" class="text-center"style="width:40px" th:field="*{amount}" th:min="1" th:max="${product.amount}">
 		                	</div>
 	                    </div>
 					</div>
@@ -333,6 +504,7 @@
 			</div>
 		</div>
         <!--  -->
+    </div>
     </div>
     <!--  -->
 
@@ -362,8 +534,8 @@
 									</a>
 									<div class="button-head">
 	                                    <div class="product-action">
-	                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
-	                                            href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+	                                        <a title="Quick View"
+	                                           th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
 	                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
 	                                                Wishlist</span></a>
 	                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
@@ -506,7 +678,7 @@
 		</div>
 	</div>
 	<!-- Modal end -->
-	</div>
+	
 <!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->
@@ -608,6 +780,44 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
+	<script>
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
 	<!-- Jquery -->
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery-migrate-3.0.0.js"></script>

@@ -127,16 +127,16 @@ public class HomeController {
 	// public String product(Model model) {
 	// return "product";
 	// }
-
-	@GetMapping("/product/{getIdphone}")
-	public String product(@PathVariable int getIdphone, Model model) {
-		List<Device> devices = jdbctemplate.query("select idproduct from device where idphone = ?",
-				BeanPropertyRowMapper.newInstance(Device.class), getIdphone);
-		List<Case> products = jdbctemplate.query("Select * from product where idproduct=?",
-				BeanPropertyRowMapper.newInstance(Case.class), devices.get(0).getIdproduct());
-		model.addAttribute("product", products);
-		return "product";
-	}
+//
+//	@GetMapping("/product/{getIdphone}")
+//	public String product(@PathVariable int getIdphone, Model model) {
+//		List<Device> devices = jdbctemplate.query("select idproduct from device where idphone = ?",
+//				BeanPropertyRowMapper.newInstance(Device.class), getIdphone);
+//		List<Case> products = jdbctemplate.query("Select * from product where idproduct=?",
+//				BeanPropertyRowMapper.newInstance(Case.class), devices.get(0).getIdproduct());
+//		model.addAttribute("product", products);
+//		return "product";
+//	}
 
 	@GetMapping(path = "search")
 	public String search(Case product, Model model) {
