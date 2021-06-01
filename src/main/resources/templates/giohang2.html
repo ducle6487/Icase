@@ -206,8 +206,8 @@
 										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
 												<li><a th:href="@{/home}">Trang Chủ</a></li>
-												<li class="active"><a th:href="@{/product}">Sản Phẩm</a></li>
-												<li><a href="#">Shop<i class="ti-angle-down"></i></a>
+												<li><a th:href="@{/product}">Sản Phẩm</a></li>
+												<li class="active"><a href="#">Shop<i class="ti-angle-down"></i></a>
 													<ul class="dropdown ">
 														<li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
 														<li><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
@@ -273,12 +273,13 @@
 					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
-								<th>PRODUCT</th>
-								<th>NAME</th>
-								<th class="text-center">UNIT PRICE</th>
-								<th class="text-center">QUANTITY</th>
-								<th class="text-center">MÀU</th>
-								<th class="text-center">TOTAL</th>
+								<th>Sản phẩm</th>
+								<th>Tên</th>
+								<th class="text-center">Đơn giá</th>
+								<th class="text-center">Mã thiết bị</th>
+								<th class="text-center">Số lượng</th>
+								<th class="text-center">Màu</th>
+								<th class="text-center">Tổng giá trị</th>
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
@@ -293,7 +294,7 @@
 								</td>
 								<td class="price" data-title="Price"><span th:text="${cart.getPrice}">$110.00 </span>
 								</td>
-								<td class="price" data-title="Price"><span th:text="${cart.getPrice}">$110.00 </span>
+								<td class="price" data-title="Price"><span th:text="${cart.getPhone}">$110.00 </span>
 								</td>
 								<td class="qty" data-title="Qty">
 									<!-- Input Order -->

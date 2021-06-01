@@ -18,8 +18,8 @@ import edu.hutech.Icase.Model.Case;
 import edu.hutech.Icase.Model.GioHang;
 import edu.hutech.Icase.Model.Image;
 import edu.hutech.Icase.Model.ImageModel;
-import edu.hutech.Icase.Model.MethodPayment;
 import edu.hutech.Icase.Model.NewsModel;
+import edu.hutech.Icase.Model.Phone;
 import edu.hutech.Icase.Model.PhoneBrandModel;
 import edu.hutech.Icase.Model.PhoneModel;
 import edu.hutech.Icase.Model.ProductInforBuying;
@@ -217,7 +217,7 @@ public class ProductController {
 		List<PhoneModel> listPhone = prodService.getListPhonesByProductId(id);
 		List<String> listColor = prodService.getListColorByIdProduct(id);
 		List<PhoneModel> listPhonesById = prodService.getListPhonesByProductId(id);
-		// List<PhoneModel> listPhones = prodService.getAllPhone();
+		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 		List<NewsModel> list3NewNews = prodService.getList3NewNews();
 
@@ -226,15 +226,17 @@ public class ProductController {
 		model.addAttribute("listImages", imagesList);
 		model.addAttribute("imgCover", imgCover);
 		model.addAttribute("phoneBrand", namePhoneBrand);
-		model.addAttribute("listPhones", listPhone);
+		model.addAttribute("listPhone", listPhone);
 		model.addAttribute("listColor", listColor);
 		model.addAttribute("listPhone", listPhonesById);
 		model.addAttribute("prodinfor", new ProductInforBuying());
+		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("list3News", list3NewNews);
 		model.addAttribute("cartcount", GioHang.cart.size());
 		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
+		model.addAttribute("defaultvalue", "1");
 
 		return "DetailProduct";
 	}
@@ -316,26 +318,54 @@ public class ProductController {
 	// add to card form detail product
 
 	@RequestMapping(value = "/giohang/damua", method = RequestMethod.POST)
-	public String Buyed(@RequestParam(name = "idProduct") int idProduct, @RequestParam(name = "color") String color,
-			@RequestParam(name = "amount") int sl, Model model) {
-		int cartship = 30000;
-		System.out.print(idProduct);
-		System.out.print(sl);
-		System.out.print(color);
-		List<MethodPayment> methodpayments = jdbcTemplate.query("select * from methodpayment",
-				BeanPropertyRowMapper.newInstance(MethodPayment.class));
-		List<Case> product = jdbcTemplate.query("select * from product where idproduct=" + idProduct + "",
-				BeanPropertyRowMapper.newInstance(Case.class));
+	public String Buyed(@RequestParam(name = "idProduct") String idProduct, @RequestParam(name = "color") String color,
+			@RequestParam(name = "amount") String sl, @RequestParam(name = "phone") String phone, Model model) {
+
+		int soluong = 1;
+		if (!sl.isEmpty()) {
+			soluong = Integer.parseInt(sl);
+
+		}
+		int count = GioHang.cart.size();
+		boolean flagadd = false;
+		boolean flagnotadd = false;
+		List<Case> product = jdbcTemplate.query("select * from product where idproduct = ?",
+				BeanPropertyRowMapper.newInstance(Case.class), idProduct);
+		List<Phone> devices = jdbcTemplate.query("select * from Phone where namePhone = ?",
+				BeanPropertyRowMapper.newInstance(Phone.class), phone);
 		List<Image> images = jdbcTemplate.query("select top 2 * from image where idproduct= ? order by idimage asc",
-				BeanPropertyRowMapper.newInstance(Image.class), idProduct);
-		product.get(0).setImage1(images.get(0).getName());
+				BeanPropertyRowMapper.newInstance(Image.class), product.get(0).getIdproduct());
+		product.get(0).setImage1(images.get(0).getName().toString());
+		product.get(0).setImage2(images.get(1).getName().toString());
 		product.get(0).setColor(color);
-		GioHang.cart.addAll(product);
-		model.addAttribute("methodpayments", methodpayments);
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
-		model.addAttribute("cartship", cartship);
-		System.out.println(product);
-		return "redirect:/giohang+thanhtoan";
+		product.get(0).setPhone(devices.get(0).getIdphone());
+
+		if (GioHang.cart.size() > 0) {
+			for (int j = 0; j < count; j++) {
+				for (int i = 0; i < product.size(); i++) {
+					if (GioHang.cart.get(j).getIdproduct() == product.get(i).getIdproduct()
+							&& GioHang.cart.get(j).getColor().equals(product.get(i).getColor())
+							&& GioHang.cart.get(j).getPhone() == product.get(i).getPhone()) {
+
+						GioHang.cart.forEach(System.out::println);
+						GioHang.cart.get(j).setSl(GioHang.cart.get(j).getSl() + soluong);
+
+						flagnotadd = true;
+					} else {
+						flagadd = true;
+					}
+				}
+			}
+		} else {
+			GioHang.cart.addAll(product);
+			GioHang.cart.get(0).setSl(soluong);
+		}
+		if (flagadd == true && flagnotadd == false) {
+			GioHang.cart.add(product.get(0));
+			GioHang.cart.get(GioHang.cart.size() - 1)
+					.setSl(GioHang.cart.get(GioHang.cart.size() - 1).getSl() + soluong);
+		}
+		return "redirect:/product";
 	}
 
 }

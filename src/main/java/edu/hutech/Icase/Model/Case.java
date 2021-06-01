@@ -57,6 +57,15 @@ public class Case {
 	private int sold;
 	public String image1;
 	public String image2;
+	public int phone;
+
+	public int getPhone() {
+		return this.phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
 
 	public String getImage1() {
 		return image1;

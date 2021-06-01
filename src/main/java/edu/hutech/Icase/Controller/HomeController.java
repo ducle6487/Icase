@@ -329,18 +329,24 @@ public class HomeController {
 				BeanPropertyRowMapper.newInstance(Case.class), getIdproduct);
 		List<Color> colors = jdbctemplate.query("select * from color where idproduct=" + getIdproduct + "",
 				BeanPropertyRowMapper.newInstance(Color.class));
+		List<Device> devices = jdbctemplate.query("select * from device where idproduct = " + getIdproduct,
+				BeanPropertyRowMapper.newInstance(Device.class));
 		List<Image> images = jdbctemplate.query("select top 2 * from image where idproduct= ? order by idimage asc",
 				BeanPropertyRowMapper.newInstance(Image.class), product.get(0).getIdproduct());
 		product.get(0).setImage1(images.get(0).getName().toString());
 		product.get(0).setImage2(images.get(1).getName().toString());
 		product.get(0).setColor(colors.get(0).getColor());
+		product.get(0).setPhone(devices.get(0).getIdphone());
 		if (GioHang.cart.size() > 0) {
 			for (int j = 0; j < count; j++) {
 				for (int i = 0; i < product.size(); i++) {
-					if (GioHang.cart.get(j).getIdproduct() == product.get(i).getIdproduct()) {
+					if (GioHang.cart.get(j).getIdproduct() == product.get(i).getIdproduct()
+							&& GioHang.cart.get(j).getColor().equals(product.get(i).getColor())
+							&& GioHang.cart.get(j).getPhone() == product.get(i).getPhone()) {
 
 						GioHang.cart.forEach(System.out::println);
 						GioHang.cart.get(j).setSl(GioHang.cart.get(j).getSl() + 1);
+
 						flagnotadd = true;
 					} else {
 						flagadd = true;
