@@ -137,6 +137,7 @@ public class HomeController {
 			List<Phone> phone = jdbctemplate.query("select * from Phone", BeanPropertyRowMapper.newInstance(Phone.class));
 			model.addAttribute("listPhoneBrands", phonebrands);
 			model.addAttribute("listPhones", phone);
+			model.addAttribute("cartcount", GioHang.cart.size());
 			model.addAttribute("message", "Giỏ Hàng Của Bạn Đang Trống Nên Không Thể Thanh Toán ");
 			return "giohangvathanhtoan2";
 		}
@@ -173,7 +174,8 @@ public class HomeController {
 		}
 		if(result ==false) {
 			model.addAttribute("message", "Họ và tên không chứa ký tự đặc biệt hoặc số");
-			return "redirect:/giohang+thanhtoan";
+			model.addAttribute("cartcount", GioHang.cart.size());
+			return "giohangvathanhtoan";
 		}
 		int row = jdbctemplate.update("insert into orders(DateOrder,Total,Name,Phone,Address,Message) values(GETDATE(),"+total+",N'"+user.getName()+"',"+user.getNumber()+",N'"+user.getAddress()+"',N'"+user.getMessage()+"')");
 		List<Infoorder> idorder = jdbctemplate.query("select top 1 * from orders order by DateOrder DESC", BeanPropertyRowMapper.newInstance(Infoorder.class));
@@ -187,11 +189,11 @@ public class HomeController {
 				
 			}
 			model.addAttribute("message", "Hóa Đơn Của Bạn Đã Được Tiếp Nhận Chúng Tôi Sẽ Thông Báo Cho Bạn Qua Email");
-			return "redirect:/giohang+thanhtoan";
+			return "giohangvathanhtoan";
 		}
 		else {
 			model.addAttribute("message", "Hiện tại máy chủ đang có sự cố nên việc mua bán hiện không hoạt động");
-			return "redirect:/giohang+thanhtoan";
+			return "giohangvathanhtoan";
 		}
 	}
 

@@ -685,7 +685,7 @@ textarea:focus {
   color: #111;
 }
 
-.select change{
+.select-change{
 	display: block !important;
   border: 1px solid #ccc;
   width: 100%;
