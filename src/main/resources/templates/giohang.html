@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title Tag  -->
-    <title>ICASE - Đổi Mới Thiết Bị Của Bạn</title>
+    <title>Icase - Giỏ hàng</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="image/favicon.ico">
     <!-- Web Font -->
@@ -63,7 +63,7 @@
 
 
     <!-- Header -->
-   <header class="header shop">
+    <header class="header shop">
         <!-- Topbar -->
         <div class="topbar">
             <div class="container">
@@ -178,7 +178,8 @@
                                     <div class="bottom">
                                         <div class="total">
                                             <span>tổng Tiền:</span>
-                                            <span class="total-amount" th:text="${#numbers.formatDecimal(CartTotal, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$134.00</span>
+                                            <span class="total-amount"
+                                                th:text="${#numbers.formatDecimal(CartTotal, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$134.00</span>
                                         </div>
                                         <a th:href="@{/giohang+thanhtoan}" class="btn animate">Thanh Toán</a>
                                     </div>
@@ -204,9 +205,9 @@
                                     <div class="navbar-collapse">
                                         <div class="nav-inner">
                                             <ul class="nav main-menu menu navbar-nav">
-                                                <li class="active"><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li><a th:href="@{/home}">Trang Chủ</a></li>
                                                 <li><a th:href="@{/product}">Sản Phẩm</a></li>
-                                                <li><a href="#">Shop<i class="ti-angle-down"></i></a>
+                                                <li class="active"><a href="#">Shop<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown ">
                                                         <li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
                                                         <li><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
@@ -266,8 +267,8 @@
                     <!-- Start Single Service -->
                     <div class="single-service">
                         <i class="ti-rocket"></i>
-                        <h4>Free shiping</h4>
-                        <p>Orders over $100</p>
+                        <h4>Giao hàng toàn quốc</h4>
+                        <p>Miễn phí cho đơn hàng từ 1.000.000 VNĐ</p>
                     </div>
                     <!-- End Single Service -->
                 </div>
@@ -275,8 +276,8 @@
                     <!-- Start Single Service -->
                     <div class="single-service">
                         <i class="ti-reload"></i>
-                        <h4>Free Return</h4>
-                        <p>Within 30 days returns</p>
+                        <h4>Miễn phí đổi trả</h4>
+                        <p>Trong vòng 7 ngày từ ngày nhận hàng</p>
                     </div>
                     <!-- End Single Service -->
                 </div>
@@ -284,8 +285,8 @@
                     <!-- Start Single Service -->
                     <div class="single-service">
                         <i class="ti-lock"></i>
-                        <h4>Sucure Payment</h4>
-                        <p>100% secure payment</p>
+                        <h4>Bảo mật thông tin</h4>
+                        <p>100% bảo mật thông tin khách hàng</p>
                     </div>
                     <!-- End Single Service -->
                 </div>
@@ -293,8 +294,8 @@
                     <!-- Start Single Service -->
                     <div class="single-service">
                         <i class="ti-tag"></i>
-                        <h4>Best Peice</h4>
-                        <p>Guaranteed price</p>
+                        <h4>Giá tốt nhất</h4>
+                        <p>Đảm bảo rẻ, đẹp, chất lượng</p>
                     </div>
                     <!-- End Single Service -->
                 </div>
@@ -302,6 +303,9 @@
         </div>
     </section>
     <!-- End Shop Services Area -->
+
+
+    <!-- Start Footer Area -->
     <footer class="footer">
         <!-- Footer Top -->
         <div class="footer-top section">
@@ -312,14 +316,15 @@
                         <div class="single-footer ">
                             <div class="logo">
                                 <a href="index.html"><img src="/image/logo2.png" alt="#"></a>
+                                <br>
                             </div>
                             <p class="text">Web mua bán ốp điện thoại, ốp tai phone.
                                 Thời trang - bền - rẻ - đẹp - chất lượng.
                                 Chúng tôi rất vui lòng được phục vụ quý khách hàng.
                             </p>
                             <p class="call">
-                                Có câu hỏi không? gọi chúng tôi 24/7<span><a href="tel:123456789">+0123
-                                        456 789</a></span>
+                                Mọi thắc mắc, vui lòng liên hệ <span><a href="tel:123456789">+0397067907</a> hoặc <a
+                                        href="Gmail:Ducle6487@gmail.com"> Ducle6487@gmail.com</a></span>
                             </p>
                         </div>
                         <!-- End Single Widget -->
@@ -333,7 +338,7 @@
                                 <li><a href="#">Faq</a></li>
                                 <li><a href="#">Terms & Conditions</a></li>
                                 <li><a th:href="@{/introduct}">Giới thiệu</a></li>
-                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Hỗ trợ</a></li>
                             </ul>
                         </div>
                         <!-- End Single Widget -->
@@ -343,11 +348,11 @@
                         <div class="single-footer links">
                             <h4>Dịch vụ</h4>
                             <ul>
-                                <li><a href="#">Payment Methods</a></li>
-                                <li><a href="#">Money-back</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Phương thức thanh toán</a></li>
+
+                                <li><a href="#">Đổi trả</a></li>
+                                <li><a href="#">Vận chuyển</a></li>
+                                <li><a href="#">Chính sách mua hàng</a></li>
                             </ul>
                         </div>
                         <!-- End Single Widget -->
@@ -359,10 +364,10 @@
                             <!-- Single Widget -->
                             <div class="contact">
                                 <ul>
-                                    <li>395 Phan Văn Trị </li>
-                                    <li>Phường 11 Bình Thạnh</li>
+                                    <li>276-282 Điện Biên Phủ </li>
+                                    <li> P.17, Q.Bình Thạnh, TP.HCM</li>
                                     <li>Icase</li>
-                                    <li>+032 3456 7890</li>
+                                    <li>+0397067907</li>
                                 </ul>
                             </div>
                             <!-- End Single Widget -->

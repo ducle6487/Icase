@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-	<title>Eshop - eCommerce HTML5 Template.</title>
+	<title>Icase - Bài viết</title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/image/favicon.ico">
 	<!-- Web Font -->
@@ -74,7 +74,8 @@
 						<!-- Top Left -->
 						<div class="top-left">
 							<ul class="list-main">
-								<li><i class="ti-location-pin"></i> 395 Phan Văn Trị, Phường 11, Bình Thạnh</li>
+								<li><i class="ti-location-pin"></i> 276-282 Điện Biên Phủ, P.17, Q.Bình Thạnh, TP.HCM
+								</li>
 							</ul>
 						</div>
 						<!--/ End Top Left -->
@@ -84,9 +85,8 @@
 						<div class="right-content">
 							<ul class="list-main">
 								<li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
-								<li><i class="ti-bell"></i><a href="#">Thông Báo</a></li>
+								<li><i class="ti-bell"></i><a th:href="@{/introduct}">Liên Hệ</a></li>
 								<li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
-								<li><i class="ti-power-off"></i><a href="login.html#">Đăng Nhập</a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -411,33 +411,6 @@
 		</div>
 	</div>
 	<!-- End Most Popular Area -->
-	<!-- Start Shop Blog  -->
-	<section class="shop-blog section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="section-title">
-						<h2>Từ Blog của chúng tôi</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6 col-12" th:each="newNews : ${list3News}">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img th:src="@{'../imageNews/'+${newNews.thumnail}}" alt="#" width="250px">
-						<div class="content">
-							<p class="date">24 July, 2020. Monday</p>
-							<a href="#" class="title" th:text="${newNews.header}"></a> <a href="#" class="more-btn">Tiếp
-								tục đọc</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Shop Blog  -->
 
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">
@@ -447,8 +420,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-rocket"></i>
-						<h4>Ship rẻ</h4>
-						<p>30k toàn quốc</p>
+						<h4>Giao hàng toàn quốc</h4>
+						<p>Miễn phí cho đơn hàng từ 1.000.000 VNĐ</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -457,7 +430,7 @@
 					<div class="single-service">
 						<i class="ti-reload"></i>
 						<h4>Miễn phí đổi trả</h4>
-						<p>trong 7 ngày từ ngày nhận hàng</p>
+						<p>Trong vòng 7 ngày từ ngày nhận hàng</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -465,7 +438,7 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-lock"></i>
-						<h4>bảo mật thông tin</h4>
+						<h4>Bảo mật thông tin</h4>
 						<p>100% bảo mật thông tin khách hàng</p>
 					</div>
 					<!-- End Single Service -->
@@ -485,43 +458,6 @@
 	<!-- End Shop Services Area -->
 
 
-
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span class="ti-close" aria-hidden="true"></span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="row no-gutters">
-						<div class="col-lg-6 offset-lg-3 col-12">
-							<h4
-								style="margin-top: 100px; font-size: 14px; font-weight: 500; color: #F7941D; display: block; margin-bottom: 5px;">
-								Eshop
-								Free Lite</h4>
-							<h3 style="font-size: 30px; color: #333;">
-								Currently You are using free lite Version of Eshop.
-								<h3>
-									<p
-										style="display: block; margin-top: 20px; color: #888; font-size: 14px; font-weight: 400;">
-										Please,
-										purchase full version of the template to get all pages,
-										features and commercial license</p>
-									<div class="button" style="margin-top: 30px;">
-										<a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/"
-											target="_blank" class="btn" style="color: #fff;">Buy Now!</a>
-									</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal end -->
-
 	<!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->
@@ -533,14 +469,15 @@
 						<div class="single-footer ">
 							<div class="logo">
 								<a href="index.html"><img src="/image/logo2.png" alt="#"></a>
+								<br>
 							</div>
 							<p class="text">Web mua bán ốp điện thoại, ốp tai phone.
 								Thời trang - bền - rẻ - đẹp - chất lượng.
 								Chúng tôi rất vui lòng được phục vụ quý khách hàng.
 							</p>
 							<p class="call">
-								Có câu hỏi không? gọi chúng tôi 24/7<span><a href="tel:123456789">+0123
-										456 789</a></span>
+								Mọi thắc mắc, vui lòng liên hệ <span><a href="tel:123456789">+0397067907</a> hoặc <a
+										href="Gmail:Ducle6487@gmail.com"> Ducle6487@gmail.com</a></span>
 							</p>
 						</div>
 						<!-- End Single Widget -->
@@ -554,7 +491,7 @@
 								<li><a href="#">Faq</a></li>
 								<li><a href="#">Terms & Conditions</a></li>
 								<li><a th:href="@{/introduct}">Giới thiệu</a></li>
-								<li><a href="#">Help</a></li>
+								<li><a href="#">Hỗ trợ</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -564,11 +501,11 @@
 						<div class="single-footer links">
 							<h4>Dịch vụ</h4>
 							<ul>
-								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Phương thức thanh toán</a></li>
+
+								<li><a href="#">Đổi trả</a></li>
+								<li><a href="#">Vận chuyển</a></li>
+								<li><a href="#">Chính sách mua hàng</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -580,10 +517,10 @@
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>395 Phan Văn Trị </li>
-									<li>Phường 11 Bình Thạnh</li>
+									<li>276-282 Điện Biên Phủ </li>
+									<li> P.17, Q.Bình Thạnh, TP.HCM</li>
 									<li>Icase</li>
-									<li>+032 3456 7890</li>
+									<li>+0397067907</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->

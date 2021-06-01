@@ -95,7 +95,7 @@ public class AdminControler {
 		LocalDate sunday = today.with(nextOrSame(SUNDAY));
 
 		String thisMonth = today.format(DateTimeFormatter.ofPattern("MM"));
-
+		System.out.println(thisMonth);
 		DecimalFormat fm = new DecimalFormat("###,###,###");
 
 		model.addAttribute("username", (String) session.getAttribute("username"));
@@ -113,6 +113,7 @@ public class AdminControler {
 		model.addAttribute("orderhistories", adminService.getRecent24hOrderHistory());
 		model.addAttribute("weekly", adminService.getListOrderCountInThisWeek());
 		model.addAttribute("yearly", adminService.getListOrderCountInThisYear());
+		model.addAttribute("thismonth", thisMonth);
 
 		return "index-admin";
 	}

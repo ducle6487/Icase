@@ -136,7 +136,7 @@
 										<tr th:each=" ord : ${orderhistories}">
 											<td th:text="${ord.idorder}"></td>
 											<td th:text="${ord.namecustomer}"></td>
-											<td th:text="${ord.phone}"></td>
+											<td th:text="'0'+${ord.phone}"></td>
 											<td th:text="${ord.address}"></td>
 											<td th:text="${ord.dateorder}"></td>
 											<td th:text="${ord.message}"></td>

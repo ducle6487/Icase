@@ -278,7 +278,10 @@ public class AdminService {
         String mondayStr = monday.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String todayStr = today.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        String sql = "select sum(Total) as sumtotal from orders where DateOrder >= ? and DateOrder <= ?";
+        System.out.println(mondayStr);
+        System.out.println(todayStr);
+
+        String sql = "select sum(Total) as sumtotal from orders where DateOrder >= ? and DateOrder <= GETDATE()";
 
         List<Long> ls = jdbcTemplate.query(sql, new RowMapper<Long>() {
 
@@ -287,7 +290,7 @@ public class AdminService {
                 return rs.getLong("sumtotal");
             }
 
-        }, mondayStr, todayStr);
+        }, mondayStr);
 
         if (!ls.isEmpty()) {
             return ls.get(0);

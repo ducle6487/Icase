@@ -1,11 +1,14 @@
 package edu.hutech.Icase.Controller;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +20,6 @@ import edu.hutech.Icase.Model.Color;
 import edu.hutech.Icase.Model.Device;
 import edu.hutech.Icase.Model.GioHang;
 import edu.hutech.Icase.Model.Image;
-import edu.hutech.Icase.Model.Infoorder;
 import edu.hutech.Icase.Model.MethodPayment;
 import edu.hutech.Icase.Model.Phone;
 import edu.hutech.Icase.Model.PhoneBrand;
@@ -228,12 +230,20 @@ public class HomeController {
 			model.addAttribute("methodpayments", methodpayments);
 			return "giohangvathanhtoan";
 		}
-		int row = jdbctemplate.update("insert into orders(DateOrder,Total,Name,Phone,Address,Message) values(GETDATE(),"
-				+ total + ",N'" + user.getName() + "'," + user.getNumber() + ",N'" + user.getAddress() + "',N'"
-				+ user.getMessage() + "')");
-		List<Infoorder> idorder = jdbctemplate.query("select top 1 * from orders order by DateOrder DESC",
-				BeanPropertyRowMapper.newInstance(Infoorder.class));
-		if (row == 1) {
+		List<Integer> l = jdbctemplate.query(
+				"insert into orders(DateOrder,Total,Name,Phone,Address,Message) output Inserted.IdOrder values(GETDATE(),"
+						+ total + ",N'" + user.getName() + "'," + user.getNumber() + ",N'" + user.getAddress() + "',N'"
+						+ user.getMessage() + "')",
+				new RowMapper<Integer>() {
+					@Override
+					public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+						return Integer.valueOf(rs.getInt("IdOrder"));
+					}
+				});
+		if (!l.isEmpty()) {
+			jdbctemplate.update(
+					"insert into history(IdOrder,IdMethod,IdStatusDelivery,IdStatusPayment) values(?,1,1,1)",
+					l.get(0).intValue());
 			for (int i = 0; i < GioHang.cart.size(); i++) {
 				int amount = GioHang.cart.get(i).getAmount() - GioHang.cart.get(i).getSl();
 				double totalPrice = GioHang.cart.get(i).getPrice() * GioHang.cart.get(i).getSl();
@@ -243,16 +253,19 @@ public class HomeController {
 				jdbctemplate.update("UPDATE product SET amount=" + amount + ",sold=" + GioHang.cart.get(i).getSl()
 						+ "where idproduct=" + GioHang.cart.get(i).getIdproduct() + "");
 				jdbctemplate.update("insert into infoorder(IdOrder,IdProduct,Amount,ToTal,Color,Phone) values("
-						+ idorder.get(0).getIdOrder() + "," + GioHang.cart.get(i).getIdproduct() + ","
+						+ l.get(0).intValue() + "," + GioHang.cart.get(i).getIdproduct() + ","
 						+ GioHang.cart.get(i).getSl() + "," + totalPrice + ",N'" + GioHang.cart.get(i).getColor() + "',"
 						+ device.get(0).getIdphone() + ")");
 
 			}
-			model.addAttribute("message","Hóa Đơn Của Bạn Đã Được Tiếp Nhận Chúng Tôi Sẽ Thông Báo Cho Bạn Qua Email");
+			GioHang.cart.clear();
+			model.addAttribute("message",
+					"Hóa Đơn Của Bạn Đã Được Tiếp Nhận Chúng Tôi Sẽ Thông Báo Cho Bạn Qua Email");
 			model.addAttribute("cartcount", GioHang.cart.size());
 			return "giohangvathanhtoan2";
 		} else {
-			model.addAttribute("message","Hiện tại máy chủ đang có sự cố nên việc mua bán hiện không hoạt động");
+			model.addAttribute("message",
+					"Hiện tại máy chủ đang có sự cố nên việc mua bán hiện không hoạt động");
 			model.addAttribute("cartcount", GioHang.cart.size());
 			return "giohangvathanhtoan";
 		}

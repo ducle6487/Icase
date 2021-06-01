@@ -312,6 +312,20 @@ public class ProductController {
 		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
+		return "redirect:/introduce";
+	}
+
+	@GetMapping("/introduce")
+	public String intro(Model model) {
+		List<PhoneModel> listPhones = prodService.getAllPhone();
+		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+
+		model.addAttribute("listPhones", listPhones);
+		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
+
 		return "contact";
 	}
 
