@@ -1,7 +1,6 @@
 package edu.hutech.Icase.Controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.hutech.Icase.Model.Case;
 import edu.hutech.Icase.Model.Color;
@@ -23,6 +19,7 @@ import edu.hutech.Icase.Model.GioHang;
 import edu.hutech.Icase.Model.Image;
 import edu.hutech.Icase.Model.Infoorder;
 import edu.hutech.Icase.Model.MethodPayment;
+import edu.hutech.Icase.Model.Phone;
 import edu.hutech.Icase.Model.PhoneBrand;
 import edu.hutech.Icase.Model.PhoneBrandModel;
 import edu.hutech.Icase.Model.PhoneModel;
@@ -218,7 +215,7 @@ public class HomeController {
 		user.setAddress(a);
 		double total = GioHang.cart.stream().mapToDouble(Case::getPrice).sum() + 30000;
 		char[] value1 = user.getName().toCharArray();
-		String value = Integer.toString(user.getNumber());
+		// String value = Integer.toString(user.getNumber());
 		for (char ch1 : value1) {
 			result = Character.isLetter(ch1);
 		}
