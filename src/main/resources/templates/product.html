@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-	<title>ICASE - Đổi Mới Thiết Bị Của Bạn.</title>
+	<title>Icase - Gian hàng</title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/image/favicon.ico">
 	<!-- Web Font -->
@@ -359,7 +359,7 @@
 														</div>
 														<div class="product-content">
 															<h3>
-																<a href="product-details.html"
+																<a th:href="@{'/detailproduct/'+${productItem.idProduct}}"
 																	th:text="${productItem.getName}"></a>
 															</h3>
 															<div class="product-price">

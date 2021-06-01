@@ -173,7 +173,7 @@
                                     </ul>
                                     <ul class="shopping-list" th:unless="${cartcount} >0" )>
                                         <li>
-                                            <img src="image/images.png" alt=""
+                                            <img src="/image/images.png" alt=""
                                                 style="position: relative;left: 50%;transform: translateX(-45%);">
                                             <p style="text-align: center;">Không có sản phẩm</p>
                                         </li>
@@ -361,7 +361,8 @@
                                                     </a>
                                                     <div class="button-head">
                                                         <div class="product-action">
-                                                            <a href="#"><i class=" ti-eye"></i><span>Quick
+                                                            <a th:href="@{'/detailproduct/'+${man.getIdproduct}}"><i
+                                                                    class=" ti-eye"></i><span>Quick
                                                                     Shop</span></a>
                                                             <a title="Wishlist" href="#"><i
                                                                     class=" ti-heart "></i><span>Add to
