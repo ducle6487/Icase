@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import edu.hutech.Icase.Model.ProductModel;
 import edu.hutech.Icase.Model.Case;
 import edu.hutech.Icase.Model.GioHang;
+import edu.hutech.Icase.Model.Image;
 import edu.hutech.Icase.Model.ImageModel;
+import edu.hutech.Icase.Model.MethodPayment;
 import edu.hutech.Icase.Model.NewsModel;
 import edu.hutech.Icase.Model.PhoneBrandModel;
 import edu.hutech.Icase.Model.PhoneModel;
@@ -26,8 +30,8 @@ import edu.hutech.Icase.Service.*;
 @Controller
 public class ProductController {
 
-	// @Autowired
-	// public JdbcTemplate jdbcTemplate;
+	 @Autowired
+	 public JdbcTemplate jdbcTemplate;
 	@Autowired
 	ProductService prodService;
 
@@ -231,9 +235,23 @@ public class ProductController {
 	// test
 
 	@RequestMapping(value = "/giohang/damua", method = RequestMethod.POST)
-	public String Buyed(@ModelAttribute("prodinfor") ProductModel prodinfor) {
-		System.out.println((prodinfor).toString());
-		return "About";
+	public String Buyed(@RequestParam(name ="idProduct") int idProduct,@RequestParam(name="color") String color
+			,@RequestParam(name="amount") int sl,Model model) {
+		int cartship = 30000;
+		System.out.print(idProduct);
+		System.out.print(sl);
+		System.out.print(color);
+		List<MethodPayment> methodpayments = jdbcTemplate.query("select * from methodpayment", BeanPropertyRowMapper.newInstance(MethodPayment.class));
+		List<Case> product = jdbcTemplate.query("select * from product where idproduct="+idProduct+"", BeanPropertyRowMapper.newInstance(Case.class));
+		List<Image> images = jdbcTemplate.query("select top 2 * from image where idproduct= ? order by idimage asc", BeanPropertyRowMapper.newInstance(Image.class),idProduct);			
+		product.get(0).setImage1(images.get(0).getName());
+		product.get(0).setColor(color);
+		GioHang.cart.addAll(product);
+		model.addAttribute("methodpayments", methodpayments);		
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cartship",cartship);
+		System.out.println(product);
+		return "redirect:/giohang+thanhtoan";
 	}
 
 }

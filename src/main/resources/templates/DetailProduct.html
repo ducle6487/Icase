@@ -243,14 +243,14 @@
             </div>  
             <div class="prod-buy  m-4">
 				<form th:action="@{/giohang/damua}" method="post" th:object="${prodinfor}">
-					<input hidden="true" th:field="*{idProduct}" th:value="${product.idProduct}">
-					<div class="text-center m-4">
-						<h6>Thêm vào giỏ hàng</h6>
+					<input hidden="true" name="idProduct" th:value="${product.idProduct}">
+					<div class="text-center m-4" >
+						<h6 >Thêm vào giỏ hàng</h6>
 					</div>
 					<div class="row">
 						<div class="col-4">
 	                        <p class="" style="padding-top: 60px;">Chọn màu</p>
-	                         <select  th:field="*{color}">
+	                         <select name="color" th:field="*{color}">
 	                            	<th:block th:each="colorStr : ${listColor}">
 	                            	<option  th:value="${colorStr}" th:text="${colorStr}"></option>
 	                            	</th:block>
@@ -267,7 +267,7 @@
 	                    <div class="col-4">
 	                    <p class="" style="padding-top: 60px;">Nhập số lượng</p>
 		                    <div class="prod-buy-select">
-		                    	<input type="number" placeholder="0" class="text-center"style="width:40px" th:field="*{amount}">
+		                    	<input name="amount" type="number" placeholder="0" class="text-center"style="width:40px" th:field="*{amount}">
 		                	</div>
 	                    </div>
 					</div>
@@ -286,7 +286,7 @@
 				<h2>Giới thiệu sản phẩm</h2>
 			</div>
 			<div>
-				<p th:text="${product.description}"></p>
+				<p   th:text="${product.description}"></p>
 			</div>
 		</div>
         <!--  -->
