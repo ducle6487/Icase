@@ -183,6 +183,7 @@ public class HomeController {
 					BeanPropertyRowMapper.newInstance(Phone.class));
 			model.addAttribute("listPhoneBrands", phonebrands);
 			model.addAttribute("listPhones", phone);
+			model.addAttribute("cartcount", GioHang.cart.size());
 			model.addAttribute("message", "Giỏ Hàng Của Bạn Đang Trống Nên Không Thể Thanh Toán ");
 			return "giohangvathanhtoan2";
 		}
@@ -221,7 +222,11 @@ public class HomeController {
 		}
 		if (result == false) {
 			model.addAttribute("message", "Họ và tên không chứa ký tự đặc biệt hoặc số");
-			return "redirect:/giohang+thanhtoan";
+			model.addAttribute("cartcount", GioHang.cart.size());
+			List<MethodPayment> methodpayments = jdbctemplate.query("select * from methodpayment",
+					BeanPropertyRowMapper.newInstance(MethodPayment.class));
+			model.addAttribute("methodpayments", methodpayments);
+			return "giohangvathanhtoan";
 		}
 		int row = jdbctemplate.update("insert into orders(DateOrder,Total,Name,Phone,Address,Message) values(GETDATE(),"
 				+ total + ",N'" + user.getName() + "'," + user.getNumber() + ",N'" + user.getAddress() + "',N'"
@@ -243,13 +248,13 @@ public class HomeController {
 						+ device.get(0).getIdphone() + ")");
 
 			}
-			model.addAttribute("message",
-					"Hóa Đơn Của Bạn Đã Được Tiếp Nhận Chúng Tôi Sẽ Thông Báo Cho Bạn Qua Email");
-			return "redirect:/giohang+thanhtoan";
+			model.addAttribute("message","Hóa Đơn Của Bạn Đã Được Tiếp Nhận Chúng Tôi Sẽ Thông Báo Cho Bạn Qua Email");
+			model.addAttribute("cartcount", GioHang.cart.size());
+			return "giohangvathanhtoan2";
 		} else {
-			model.addAttribute("message",
-					"Hiện tại máy chủ đang có sự cố nên việc mua bán hiện không hoạt động");
-			return "redirect:/giohang+thanhtoan";
+			model.addAttribute("message","Hiện tại máy chủ đang có sự cố nên việc mua bán hiện không hoạt động");
+			model.addAttribute("cartcount", GioHang.cart.size());
+			return "giohangvathanhtoan";
 		}
 	}
 

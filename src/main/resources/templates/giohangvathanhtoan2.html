@@ -63,7 +63,7 @@
 
 
     <!-- Header -->
-    <header class="header shop">
+     <header class="header shop">
         <!-- Topbar -->
         <div class="topbar">
             <div class="container">
@@ -72,7 +72,8 @@
                         <!-- Top Left -->
                         <div class="top-left">
                             <ul class="list-main">
-                                <li><i class="ti-location-pin"></i> 395 Phan Văn Trị, Phường 11, Bình Thạnh</li>
+                                <li><i class="ti-location-pin"></i> 276-282 Điện Biên Phủ, P.17, Q.Bình Thạnh, TP.HCM
+                                </li>
                             </ul>
                         </div>
                         <!--/ End Top Left -->
@@ -82,7 +83,7 @@
                         <div class="right-content">
                             <ul class="list-main">
                                 <li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
-                                <li><i class="ti-bell"></i><a th:href="@{/contactus}">Liên Hệ</a></li>
+                                <li><i class="ti-bell"></i><a th:href="@{/introduct}">Liên Hệ</a></li>
                                 <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
                             </ul>
                         </div>
@@ -98,20 +99,22 @@
                     <div class="col-lg-3 col-md-3 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a th:href="@{/home}"><img src="image/logo.gif" alt="logo"></a>
+                            <a th:href="@{/home}"><img src="/image/logo.gif" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
                         <!-- Search Form -->
                         <div class="search-top">
-                            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+                            <div class="top-search">
+                                <a href="#0"><i class="ti-search"></i></a>
+                            </div>
                             <!-- Search Form -->
                             <div class="search-top">
-                            
-                                <form class="search-form" th:action="@{/search}">
-                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">                         
-                                    <button value="Search" type="submit"><i class="ti-search"></i></button>                                    
+                                <form class="search-form">
+                                    <input type="text" placeholder="Search here..." name="search">
+                                    <button value="search" type="submit">
+                                        <i class="ti-search"></i>
+                                    </button>
                                 </form>
-                                
                             </div>
                             <!--/ End Search Form -->
                         </div>
@@ -121,53 +124,61 @@
                     <div class="col-lg-8 col-md-7 col-12">
                         <div class="search-bar-top">
                             <div class="search-bar">
-                                <form th:action="@{/product/search}"  method="post">
-									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText"
-										type="text">
-									<button class="btnn" type="submit">
-										<i class="ti-search"></i>
-									</button>
-								</form>
+                                <form th:action="@{/product/search}" method="post">
+                                    <input name="search" placeholder="Tìm sản phẩm" th:name="searchText" type="text">
+                                    <button class="btnn" type="submit">
+                                        <i class="ti-search"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-1 col-md-2 col-12">
+
                         <div class="right-bar">
                             <!-- Search Form -->
                             <div class="sinlge-bar">
                                 <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar">
-                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o"
+                                        aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar shopping">
-                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span class="total-count" th:text="${cartcount}">2</span></a>
+                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span
+                                        class="total-count" th:text="${cartcount}">2</span></a>
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span th:text="${cartcount}+ ' Sản Phẩm'">2 Items</span>
                                         <a th:href="@{/giohang}">Xem Giỏ Hàng</a>
                                     </div>
-                                    <ul class="shopping-list" th:if="${cartcount} >0")>
+                                    <ul class="shopping-list" th:if="${cartcount} >0" )>
                                         <li th:each="giohang : ${cart}">
-                                            <a th:href="@{|/remove/${giohang.getIdproduct}|}" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img th:src="@{'/imageCase/'+ ${giohang.getImage1}}" alt="#"></a>
+                                            <a th:href="@{|/remove/${giohang.getIdproduct}|}" class="remove"
+                                                title="Remove this item"><i class="fa fa-remove"></i></a>
+                                            <a class="cart-img" href="#"><img
+                                                    th:src="@{'/imageCase/'+ ${giohang.getImage1}}" alt="#"></a>
                                             <h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
-                                            <p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span class="amount" th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span></p>
+                                            <p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span
+                                                    class="amount"
+                                                    th:text="${#numbers.formatDecimal(giohang.getPrice*giohang.getSl, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$99.00</span>
+                                            </p>
                                         </li>
-                                     
+
                                     </ul>
-                                    <ul class="shopping-list" th:unless="${cartcount} >0")>
+                                    <ul class="shopping-list" th:unless="${cartcount} >0" )>
                                         <li>
-                                            <img src="image/images.png" alt="" style="position: relative;left: 50%;transform: translateX(-45%);">
+                                            <img src="image/images.png" alt=""
+                                                style="position: relative;left: 50%;transform: translateX(-45%);">
                                             <p style="text-align: center;">Không có sản phẩm</p>
                                         </li>
-                                     
+
                                     </ul>
                                     <div class="bottom">
                                         <div class="total">
                                             <span>tổng Tiền:</span>
-                                            <span class="total-amount" th:text="${CartTotal}+' đ'">$134.00</span>
+                                            <span class="total-amount" th:text="${#numbers.formatDecimal(CartTotal, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$134.00</span>
                                         </div>
                                         <a th:href="@{/giohang+thanhtoan}" class="btn animate">Thanh Toán</a>
                                     </div>
@@ -193,8 +204,8 @@
                                     <div class="navbar-collapse">
                                         <div class="nav-inner">
                                             <ul class="nav main-menu menu navbar-nav">
-                                                <li><a th:href="@{/home}">Trang Chủ</a></li>
-                                                <li class="active"><a th:href="@{/product}">Sản Phẩm</a></li>
+                                                <li class="active"><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li><a th:href="@{/product}">Sản Phẩm</a></li>
                                                 <li><a href="#">Shop<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown ">
                                                         <li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
@@ -208,10 +219,11 @@
                                                                 <ul class="dropright">
                                                                     <div class="div-grid">
                                                                         <li th:each="phones : ${listPhones}">
-                                                                        	<th:block th:if="${phonebrands.getIdphonebrand == phones.getIdphonebrand}">
-                                                                              <a  th:href="@{|/product/phone=${phones.getIdphone}|}"
-                                                                                class="a-trong"
-                                                                                th:text="${phones.getNamephone}"></a>
+                                                                            <th:block
+                                                                                th:if="${phonebrands.getIdphonebrand == phones.getIdphonebrand}">
+                                                                                <a th:href="@{|/product/phone=${phones.getIdphone}|}"
+                                                                                    class="a-trong"
+                                                                                    th:text="${phones.getNamephone}"></a>
                                                                             </th:block>
                                                                         </li>
                                                                     </div>
@@ -308,7 +320,6 @@
 		</section>
 		<!-- End Shop Services -->
 		<!-- Start Footer Area -->
-		!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->
 		<div class="footer-top section">

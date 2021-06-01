@@ -77,7 +77,8 @@
 						<!-- Top Left -->
 						<div class="top-left">
 							<ul class="list-main">
-								<li><i class="ti-location-pin"></i> 395 Phan Văn Trị, Phường 11, Bình Thạnh</li>
+								<li><i class="ti-location-pin"></i> 276-282 Điện Biên Phủ, P.17, Q.Bình Thạnh, TP.HCM
+								</li>
 							</ul>
 						</div>
 						<!--/ End Top Left -->
@@ -87,7 +88,7 @@
 						<div class="right-content">
 							<ul class="list-main">
 								<li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
-								<li><i class="ti-bell"></i><a th:href="@{/contactus}">Liên Hệ</a></li>
+								<li><i class="ti-bell"></i><a th:href="@{/introduct}">Liên Hệ</a></li>
 								<li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
 							</ul>
 						</div>
@@ -103,20 +104,22 @@
 					<div class="col-lg-3 col-md-3 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a th:href="@{/home}"><img src="image/logo.gif" alt="logo"></a>
+							<a th:href="@{/home}"><img src="/image/logo.gif" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
 						<div class="search-top">
-							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+							<div class="top-search">
+								<a href="#0"><i class="ti-search"></i></a>
+							</div>
 							<!-- Search Form -->
 							<div class="search-top">
-
-								<form class="search-form" th:action="@{/search}">
-									<input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">
-									<button value="Search" type="submit"><i class="ti-search"></i></button>
+								<form class="search-form">
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit">
+										<i class="ti-search"></i>
+									</button>
 								</form>
-
 							</div>
 							<!--/ End Search Form -->
 						</div>
@@ -136,6 +139,7 @@
 						</div>
 					</div>
 					<div class="col-lg-1 col-md-2 col-12">
+
 						<div class="right-bar">
 							<!-- Search Form -->
 							<div class="sinlge-bar">
@@ -163,7 +167,7 @@
 											<h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
 											<p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span
 													class="amount"
-													th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span>
+													th:text="${#numbers.formatDecimal(giohang.getPrice*giohang.getSl, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$99.00</span>
 											</p>
 										</li>
 
@@ -254,8 +258,8 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">Cart</a></li>
+							<li><a th:href="@{/home}">Trang Chủ<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a th:href="@{/giohang}">Giỏ Hàng</a></li>
 						</ul>
 					</div>
 				</div>
@@ -292,9 +296,9 @@
 									<p class="product-des" th:text="${cart.getDescription}">Maboriosam in a tonto
 										nesciung eget distingy magndapibus.</p>
 								</td>
-								<td class="price" data-title="Price"><span th:text="${cart.getPrice}">$110.00 </span>
-								</td>
-								<td class="price" data-title="Price"><span th:text="${cart.getPhone}">$110.00 </span>
+								<td class="price" data-title="Price"><span
+										th:text="${#numbers.formatDecimal(cart.getPrice, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$110.00
+									</span>
 								</td>
 								<td class="qty" data-title="Qty">
 									<!-- Input Order -->
@@ -322,7 +326,8 @@
 								</td>
 								<td class="price" data-title="Màu"><span th:text="${cart.getColor}"></span></td>
 								<td class="total-amount" data-title="Total"><span
-										th:text="${cart.getPrice}*${cart.getSl}">$220.88</span></td>
+										th:text="${#numbers.formatDecimal(cart.getPrice*cart.getSl, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$220.88</span>
+								</td>
 								<td class="action" data-title="Remove"><a th:href="@{|/Remove/${cart.getIdproduct}|}"><i
 											class="ti-trash remove-icon"></i></a></td>
 							</tr>
@@ -343,10 +348,15 @@
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Cart ToTal<span th:text="${CartTotal}">$330.00</span></li>
-										<li>Shipping<span th:value="${cartship}">30.000đ</span></li>
-										<li class="last">You Pay<span
-												th:text="${CartTotal} + ${cartship}">$310.00</span></li>
+										<li>Tổng HĐ<span
+												th:text="${#numbers.formatDecimal(CartTotal, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$330.00</span>
+										</li>
+										<li>Shipping<span
+												th:value="${#numbers.formatDecimal(cartship, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">30.000đ</span>
+										</li>
+										<li class="last">Tổng Tiền<span
+												th:text="${#numbers.formatDecimal(CartTotal+cartship, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$310.00</span>
+										</li>
 									</ul>
 									<div class="button5">
 										<a th:href="@{/giohang+thanhtoan}" class="btn">Thanh Toán</a>
@@ -409,26 +419,6 @@
 	<!-- End Shop Newsletter -->
 
 	<!-- Start Shop Newsletter  -->
-	<section class="shop-newsletter section">
-		<div class="container">
-			<div class="inner-top">
-				<div class="row">
-					<div class="col-lg-8 offset-lg-2 col-12">
-						<!-- Start Newsletter Inner -->
-						<div class="inner">
-							<h4>Newsletter</h4>
-							<p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
-							<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-								<input name="EMAIL" placeholder="Your email address" required="" type="email">
-								<button class="btn">Subscribe</button>
-							</form>
-						</div>
-						<!-- End Newsletter Inner -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	<!-- End Shop Newsletter -->
 
 
@@ -553,7 +543,6 @@
 	<!-- Modal end -->
 
 	<!-- Start Footer Area -->
-	!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->
 		<div class="footer-top section">
