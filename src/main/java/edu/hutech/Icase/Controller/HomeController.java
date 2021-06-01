@@ -23,6 +23,8 @@ import edu.hutech.Icase.Model.GioHang;
 import edu.hutech.Icase.Model.Image;
 import edu.hutech.Icase.Model.MethodPayment;
 import edu.hutech.Icase.Model.PhoneBrand;
+import edu.hutech.Icase.Model.PhoneBrandModel;
+import edu.hutech.Icase.Model.PhoneModel;
 import edu.hutech.Icase.Model.User;
 import edu.hutech.Icase.Service.ProductService;
 
@@ -64,6 +66,10 @@ public class HomeController {
 			productes.get(i).setImage1(images.get(0).getName().toString());
 			productes.get(i).setImage2(images.get(1).getName().toString());
 		}
+
+		List<PhoneModel> listPhones = prodService.getAllPhone();
+		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+
 		model.addAttribute("phonebrands", phonebrands);
 		model.addAttribute("product", cases);
 		model.addAttribute("man", products);
@@ -71,16 +77,61 @@ public class HomeController {
 		model.addAttribute("cartcount", GioHang.cart.size());
 		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
+		model.addAttribute("listPhones", listPhones);
+		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		return "index";
 	}
 
 	@GetMapping("/")
-	public String home2() {
+	public String home2(Model model) {
+		List<PhoneBrand> phonebrands = jdbctemplate.query("Select * from phonebrand",
+				BeanPropertyRowMapper.newInstance(PhoneBrand.class));
+		List<Case> cases = jdbctemplate.query("select top 10  * from product order by dateadded desc",
+				BeanPropertyRowMapper.newInstance(Case.class));
+		for (int i = 0; i < cases.size(); i++) {
+			List<Image> images = jdbctemplate.query("select top 2 * from image where idproduct= ? order by idimage asc",
+					BeanPropertyRowMapper.newInstance(Image.class), cases.get(i).getIdproduct());
+			cases.get(i).setImage1(images.get(0).getName().toString());
+			cases.get(i).setImage2(images.get(1).getName().toString());
+		}
+		List<Case> products = jdbctemplate.query("select top 8  * from product where name like N'Ốp lưng %'",
+				BeanPropertyRowMapper.newInstance(Case.class));
+		List<Case> productes = jdbctemplate.query("select top 8  * from product where name like N'Case%'",
+				BeanPropertyRowMapper.newInstance(Case.class));
+		for (int i = 0; i < products.size(); i++) {
+			List<Image> images = jdbctemplate.query("select top 2 * from image where idproduct= ? order by idimage asc",
+					BeanPropertyRowMapper.newInstance(Image.class), products.get(i).getIdproduct());
+			products.get(i).setImage1(images.get(0).getName().toString());
+			products.get(i).setImage2(images.get(1).getName().toString());
+		}
+		for (int i = 0; i < productes.size(); i++) {
+			List<Image> images = jdbctemplate.query("select top 2 * from image where idproduct= ? order by idimage asc",
+					BeanPropertyRowMapper.newInstance(Image.class), productes.get(i).getIdproduct());
+			productes.get(i).setImage1(images.get(0).getName().toString());
+			productes.get(i).setImage2(images.get(1).getName().toString());
+		}
+
+		List<PhoneModel> listPhones = prodService.getAllPhone();
+		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+
+		model.addAttribute("phonebrands", phonebrands);
+		model.addAttribute("product", cases);
+		model.addAttribute("man", products);
+		model.addAttribute("women", productes);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
+		model.addAttribute("listPhones", listPhones);
+		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		return "index";
 	}
 
 	@GetMapping("/giohang")
 	public String giohang(Model model) {
+		List<PhoneModel> listPhones = prodService.getAllPhone();
+		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+		model.addAttribute("listPhones", listPhones);
+		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		if (GioHang.cart.size() == 0) {
 			model.addAttribute("cartcount", GioHang.cart.size());
 			model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
@@ -97,7 +148,10 @@ public class HomeController {
 	}
 
 	@GetMapping("/ContactUs")
-	public String Contactus() {
+	public String Contactus(Model model) {
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 		return "contactus";
 	}
 
@@ -459,7 +513,10 @@ public class HomeController {
 	}
 
 	@GetMapping("/newdescription")
-	public String newdes() {
+	public String newdes(Model model) {
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 		return "newdescription";
 	}
 

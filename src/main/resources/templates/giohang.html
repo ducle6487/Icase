@@ -13,7 +13,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="image/favicon.ico">
     <!-- Web Font -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
 
     <!-- StyleSheet -->
     <!-- Bootstrap -->
@@ -104,12 +106,12 @@
                             <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
                             <!-- Search Form -->
                             <div class="search-top">
-                            
+
                                 <form class="search-form" th:action="@{/search}">
-                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">                         
-                                    <button value="Search" type="submit"><i class="ti-search"></i></button>                                    
+                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">
+                                    <button value="Search" type="submit"><i class="ti-search"></i></button>
                                 </form>
-                                
+
                             </div>
                             <!--/ End Search Form -->
                         </div>
@@ -120,7 +122,7 @@
                         <div class="search-bar-top">
                             <div class="search-bar">
                                 <form th:action="@{/search}" th:object="${product}">
-                                	<input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
+                                    <input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
                                     <button class="btnn" type="submit"><i class="ti-search"></i></button>
                                 </form>
                             </div>
@@ -133,31 +135,39 @@
                                 <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar">
-                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o"
+                                        aria-hidden="true"></i></a>
                             </div>
                             <div class="sinlge-bar shopping">
-                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span class="total-count" th:text="${cartcount}">2</span></a>
+                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span
+                                        class="total-count" th:text="${cartcount}">2</span></a>
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span th:text="${cartcount}+ ' Sản Phẩm'">2 Items</span>
                                         <a th:href="@{/giohang}">Xem Giỏ Hàng</a>
                                     </div>
-                                    <ul class="shopping-list" th:if="${cartcount} >0")>
+                                    <ul class="shopping-list" th:if="${cartcount} >0" )>
                                         <li th:each="giohang : ${cart}">
-                                            <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                            <a class="cart-img" href="#"><img th:src="@{'/imageCase/'+ ${giohang.getImage1}}" alt="#"></a>
+                                            <a th:href="@{|/remove/${giohang.getIdproduct}|}" class="remove"
+                                                title="Remove this item"><i class="fa fa-remove"></i></a>
+                                            <a class="cart-img" href="#"><img
+                                                    th:src="@{'/imageCase/'+ ${giohang.getImage1}}" alt="#"></a>
                                             <h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
-                                            <p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span class="amount" th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span></p>
+                                            <p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span
+                                                    class="amount"
+                                                    th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span>
+                                            </p>
                                         </li>
-                                     
+
                                     </ul>
-                                    <ul class="shopping-list" th:unless="${cartcount} >0")>
+                                    <ul class="shopping-list" th:unless="${cartcount} >0" )>
                                         <li>
-                                            <img src="image/images.png" alt="" style="position: relative;left: 50%;transform: translateX(-45%);">
+                                            <img src="image/images.png" alt=""
+                                                style="position: relative;left: 50%;transform: translateX(-45%);">
                                             <p style="text-align: center;">Không có sản phẩm</p>
                                         </li>
-                                     
+
                                     </ul>
                                     <div class="bottom">
                                         <div class="total">
@@ -188,9 +198,9 @@
                                     <div class="navbar-collapse">
                                         <div class="nav-inner">
                                             <ul class="nav main-menu menu navbar-nav">
-                                                <li class="active"><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li><a th:href="@{/home}">Trang Chủ</a></li>
                                                 <li><a th:href="@{/product}">Sản Phẩm</a></li>
-                                                <li><a href="#">Shop<i class="ti-angle-down"></i></a>
+                                                <li class="active"><a href="#">Shop<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown ">
                                                         <li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
                                                         <li><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
@@ -198,10 +208,22 @@
                                                 </li>
                                                 <li><a href="#">Hãng<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown">
-                                                    	<div th:each="phonebrands : ${phonebrands}">
-                                                        <li><a th:text="${phonebrands.getName}" th:href="@{|/product/${phonebrands.getIdphonebrand}|}"></a>                                                                                                          	
-                                                        </li>
-                                                    	</div>
+                                                        <div th:each="phonebrands : ${listPhoneBrands}">
+                                                            <li><a th:text="${phonebrands.getName}"></a>
+                                                                <ul class="dropright">
+                                                                    <div class="div-grid">
+                                                                        <li th:each="phones : ${listPhones}">
+                                                                            <th:block
+                                                                                th:if="${phonebrands.idPhoneBrand == phones.idPhoneBrand}">
+                                                                                <a th:href="@{|/product/phone=${phones.getIdphone}|}"
+                                                                                    class="a-trong"
+                                                                                    th:text="${phones.getNamephone}"></a>
+                                                                            </th:block>
+                                                                        </li>
+                                                                    </div>
+                                                                </ul>
+                                                            </li>
+                                                        </div>
                                                     </ul>
                                                 </li>
                                                 <li><a href="contact.html">Liên Hệ</a></li>
@@ -229,7 +251,7 @@
             </a>
         </div>
     </div>
-       <!-- Start Shop Services Area -->
+    <!-- Start Shop Services Area -->
     <section class="shop-services section home">
         <div class="container">
             <div class="row">
@@ -273,62 +295,106 @@
         </div>
     </section>
     <!-- End Shop Services Area -->
-    <footer class="container-fluid footer-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Toán</strong></h4>
-                    <p><a href="#">Hình học</a></p>
-                    <p><a href="#">Tuyến tính</a></p>
-                    <p><a href="#">Xác suất</a></p>
-                    <p><a href="#">IQ</a></p>
-                    <p><a href="#">Logic</a></p>
-                    <p><a href="#">Giải tích</a></p>
-                    <p><a href="#">Đồ thị</a></p>
-                    <p><a href="#">Hàm số</a></p>
+    <footer class="footer">
+        <!-- Footer Top -->
+        <div class="footer-top section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer ">
+                            <div class="logo">
+                                <a href="index.html"><img src="/image/logo2.png" alt="#"></a>
+                            </div>
+                            <p class="text">Web mua bán ốp điện thoại, ốp tai phone.
+                                Thời trang - bền - rẻ - đẹp - chất lượng.
+                                Chúng tôi rất vui lòng được phục vụ quý khách hàng.
+                            </p>
+                            <p class="call">
+                                Có câu hỏi không? gọi chúng tôi 24/7<span><a href="tel:123456789">+0123
+                                        456 789</a></span>
+                            </p>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Thông tin</h4>
+                            <ul>
+                                <li><a th:href="@{/about}">Về chúng tôi</a></li>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a th:href="@{/introduct}">Giới thiệu</a></li>
+                                <li><a href="#">Help</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Dịch vụ</h4>
+                            <ul>
+                                <li><a href="#">Payment Methods</a></li>
+                                <li><a href="#">Money-back</a></li>
+                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer social">
+                            <h4>Liên lạc</h4>
+                            <!-- Single Widget -->
+                            <div class="contact">
+                                <ul>
+                                    <li>395 Phan Văn Trị </li>
+                                    <li>Phường 11 Bình Thạnh</li>
+                                    <li>Icase</li>
+                                    <li>+032 3456 7890</li>
+                                </ul>
+                            </div>
+                            <!-- End Single Widget -->
+                            <ul>
+                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                <li><a href="#"><i class="ti-flickr"></i></a></li>
+                                <li><a href="#"><i class="ti-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
                 </div>
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Tiếng anh</strong></h4>
-                    <p><a href="#">IELTS</a></p>
-                    <p><a href="#">TOEFL</a></p>
-                    <p><a href="#">BASIC</a></p>
-                    <p><a href="#">SPEAKING</a></p>
-                    <p><a href="#">READING</a></p>
-                    <p><a href="#">LISTENING</a></p>
-                    <h4 class="footer-tittle-col"><strong>Vật lý</strong></h4>
-                    <p><a href="#">Đại cương</a></p>
-                    <p><a href="#">Nâng cao</a></p>
-                </div>
-                <div class="col-2 footer-col-link">
-                    <h4 class="footer-tittle-col"><strong>Lập trình</strong></h4>
-                    <p><a href="#">C/C++</a></p>
-                    <p><a href="#">Java</a></p>
-                    <p><a href="#">C#</a></p>
-                    <p><a href="#">Kotlin</a></p>
-                    <p><a href="#">Ruby</a></p>
-                    <p><a href="#">Javascript</a></p>
-                    <p><a href="#">Html/Css</a></p>
-                    <h4 class="footer-tittle-col"><strong>Bắt đầu</strong></h4>
-                    <p><a href="@Url.Action(" UserLogin ","Authenticate ", new{URL = Request.Url.ToString()})">Đăng ký</a></p>
-                    <p><a href="@Url.Action(" UserLogin ","Authenticate ", new{URL = Request.Url.ToString()})">Đăng nhập</a></p>
-                </div>
-                <div class="col-6 ">
-                    <div class="contact">
-                        <h3><strong>Liên hệ với chúng tôi!</strong></h3>
-                        <p>Email: harley20005@gmail.com <br>hoặc: ducle6487@gmail.com</p>
-                        <h4><strong>Kết nối với chúng tôi</strong></h4>
-                        <div>
-                            <img class="img-circle" onclick="location.href='https://www.facebook.com/ducle6487'" src="~/Content/Image/Facebook-200x200.jpg" width="80px" height="80px">
-                            <img class="img-circle" src="~/Content/Image/Twitter-1.jpg" width="80px" height="80px">
-                            <img class="img-circle" src="~/Content/Image/zalo_sharelogo.png" width="80px" height="80px">
+            </div>
+        </div>
+        <!-- End Footer Top -->
+        <div class="copyright">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="left">
+                                <p>
+                                    Copyright © 2021 by Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh
+                                    Sang.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="right">
+                                <img src="/image/payments.png" alt="#">
+                            </div>
                         </div>
                     </div>
-                    <div class="copyright">Copyright &copy; Sang - Đức</div>
                 </div>
             </div>
         </div>
     </footer>
-     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.0.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <!-- Popper JS -->

@@ -286,30 +286,41 @@
 							</div>
 							<div class="sinlge-bar shopping">
 								<a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span
-										class="total-count">2</span></a>
+										class="total-count" th:text="${cartcount}">2</span></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
-										<span th:text="${cartcount}">2 Items</span>
-										<a th:href="@{/giohang}">View Cart</a>
+										<span th:text="${cartcount}+ ' Sản Phẩm'">2 Items</span>
+										<a th:href="@{/giohang}">Xem Giỏ Hàng</a>
 									</div>
-									<ul class="shopping-list">
+									<ul class="shopping-list" th:if="${cartcount} >0" )>
 										<li th:each="giohang : ${cart}">
-											<a href="#" class="remove" title="Remove this item"><i
-													class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70"
-													alt="#"></a>
+											<a th:href="@{|/remove/${giohang.getIdproduct}|}" class="remove"
+												title="Remove this item"><i class="fa fa-remove"></i></a>
+											<a class="cart-img" href="#"><img
+													th:src="@{'/imageCase/'+ ${giohang.getImage1}}" alt="#"></a>
 											<h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
+											<p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span
+													class="amount"
+													th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span>
+											</p>
+										</li>
+
+									</ul>
+									<ul class="shopping-list" th:unless="${cartcount} >0" )>
+										<li>
+											<img src="image/images.png" alt=""
+												style="position: relative;left: 50%;transform: translateX(-45%);">
+											<p style="text-align: center;">Không có sản phẩm</p>
 										</li>
 
 									</ul>
 									<div class="bottom">
 										<div class="total">
-											<span>Total</span>
-											<span class="total-amount">$134.00</span>
+											<span>tổng Tiền:</span>
+											<span class="total-amount" th:text="${CartTotal}+' đ'">$134.00</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										<a th:href="@{/giohang+thanhtoan}" class="btn animate">Thanh Toán</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->
@@ -826,8 +837,7 @@
 						<div class="col-lg-6 col-12">
 							<div class="left">
 								<p>
-									Copyright © 2021 <a href="http://www.wpthemesgrid.com"
-										target="_blank">Wpthemesgrid</a> - Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh
+									Copyright © 2021 by Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh
 									Sang.
 								</p>
 							</div>

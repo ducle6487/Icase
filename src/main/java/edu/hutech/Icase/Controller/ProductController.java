@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.hutech.Icase.Model.ProductModel;
+import edu.hutech.Icase.Model.Case;
+import edu.hutech.Icase.Model.GioHang;
 import edu.hutech.Icase.Model.ImageModel;
 import edu.hutech.Icase.Model.NewsModel;
 import edu.hutech.Icase.Model.PhoneBrandModel;
@@ -43,6 +45,9 @@ public class ProductController {
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("list3News", list3NewNews);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
 	}
@@ -64,6 +69,9 @@ public class ProductController {
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("list3News", list3NewNews);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
 	}
@@ -92,6 +100,9 @@ public class ProductController {
 		model.addAttribute("list3News", list3NewNews);
 		model.addAttribute("filter", filter);
 		model.addAttribute("filterStr", searchText);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
 	}
@@ -123,6 +134,9 @@ public class ProductController {
 		model.addAttribute("list3News", list3NewNews);
 		model.addAttribute("filter", filter);
 		model.addAttribute("filterStr", phoneName);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
 	}
@@ -144,6 +158,9 @@ public class ProductController {
 		model.addAttribute("list3News", list3NewNews);
 		model.addAttribute("filter", filter);
 		model.addAttribute("filterStr", namePhone);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 		return "product";
 	}
 
@@ -177,6 +194,9 @@ public class ProductController {
 		model.addAttribute("list3News", list3NewNews);
 		model.addAttribute("filter", filter);
 		model.addAttribute("filterStr", phoneBrandName);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
 	}
@@ -209,6 +229,9 @@ public class ProductController {
 		model.addAttribute("prodinfor", new ProductInforBuying());
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("list3News", list3NewNews);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "DetailProduct";
 	}
@@ -223,6 +246,9 @@ public class ProductController {
 
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "About";
 	}
@@ -241,6 +267,9 @@ public class ProductController {
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("listNews", listNews);
 		model.addAttribute("new5Products", new5Products);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "news";
 	}
@@ -257,6 +286,9 @@ public class ProductController {
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("news", news);
 		model.addAttribute("new5Products", new5Products);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "newsdetail";
 	}
@@ -271,6 +303,9 @@ public class ProductController {
 
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
+		model.addAttribute("cartcount", GioHang.cart.size());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("cart", GioHang.cart);
 
 		return "contact";
 	}
