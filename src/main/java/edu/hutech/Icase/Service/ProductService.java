@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,11 @@ import edu.hutech.Icase.Model.ImageModel;
 import edu.hutech.Icase.Model.NewsModel;
 import edu.hutech.Icase.Model.PhoneBrandModel;
 import edu.hutech.Icase.Model.PhoneModel;
+import edu.hutech.Icase.Model.ProductInforBuying;
 import edu.hutech.Icase.Model.ProductModel;
+import edu.hutech.Icase.Model.Case;
 import edu.hutech.Icase.Model.ColorModel;
+import edu.hutech.Icase.Model.Image;
 
 @Service
 public class ProductService {
@@ -94,6 +98,26 @@ public class ProductService {
 		ProductModel product = productsList.get(0);
 		return product;
 	}
+	//  Case
+//	public Case convertProductInforToCase(ProductInforBuying pInfor) {
+//		Case caseBuying = new Case();
+//		ProductModel product = getProductById(String.valueOf(pInfor.idProduct));
+//		
+//		caseBuying.setIdproduct(product.idProduct);
+//		caseBuying.setName(product.name);
+//		caseBuying.setIdphonebrand(product.idPhoneBrand);
+//		caseBuying.setPrice((int)product.price);
+//		caseBuying.setSl(pInfor.amount);
+//		caseBuying.setDescription(product.description);
+//		caseBuying.setAmount(product.amount);
+//		caseBuying.setCasebrand(pInfor.phone);
+//		caseBuying.setSold(product.sold);
+//		caseBuying.image  = jdbcTemplate.query("select top 2 * from image where idproduct= ? order by idimage asc",
+//				BeanPropertyRowMapper.newInstance(Image.class), product.idProduct);
+//		caseBuying.set
+//		
+//		return caseBuying;
+//	}
 
 	//
 	// PhoneModel
@@ -113,6 +137,17 @@ public class ProductService {
 			}
 		}
 		return id;
+	}
+	public String getNamePhoneWithPhoneId(int id) {
+		String namePhone = "";
+		for (PhoneModel phone : getAllPhone()) {
+			if (phone.getIdphone() == id) {
+				namePhone = phone.namephone;
+				break;
+			}
+		}
+		
+		return namePhone;
 	}
 
 	public List<PhoneModel> getListPhonesByProductId(String id) {

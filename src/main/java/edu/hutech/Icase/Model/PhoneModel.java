@@ -3,8 +3,17 @@ package edu.hutech.Icase.Model;
 public class PhoneModel {
     public int idphone;
     public String namephone;
+    public int idPhoneBrand;
 
-    public int getIdphone() {
+    public int getIdPhoneBrand() {
+		return idPhoneBrand;
+	}
+
+	public void setIdPhoneBrand(int idPhoneBrand) {
+		this.idPhoneBrand = idPhoneBrand;
+	}
+
+	public int getIdphone() {
         return this.idphone;
     }
 

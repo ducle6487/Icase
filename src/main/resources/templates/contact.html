@@ -11,7 +11,7 @@
 <!-- Title Tag  -->
 <title>Eshop - eCommerce HTML5 Template.</title>
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="/image/favicon.ico">
+<link rel="icon" type="image/png" href="/images/logo.png">
 <!-- Web Font -->
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
@@ -45,9 +45,9 @@
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/style.css">
 <link rel="stylesheet" href="/css/responsive.css">
-<link rel="stylesheet" href="/css/sang.css">
-
 <link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/sang.css">
 
 </head>
 <body class="js">
@@ -63,7 +63,7 @@
 	</div>
 	<!-- End Preloader -->
 
-<!-- Header -->
+	<!-- Header -->
     <header class="header shop">
         <!-- Topbar -->
         <div class="topbar">
@@ -222,8 +222,8 @@
                                                         </div>
                                                     </ul>
                                                 </li>
-                                                <li class="active"><a th:href="@{/news}">Bài viết</a></li>
-                                                <li ><a th:href="@{/introduct}">Liên Hệ</a></li>
+                                                <li ><a th:href="@{/news}">Bài viết</a></li>
+                                                <li class="active" ><a th:href="@{/introduct}">Liên Hệ</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -238,186 +238,83 @@
         <!--/ End Header Inner -->
     </header>
     <!--/ End Header -->
-	    
-	<!-- Start Blog Single -->
-		<section class="blog-single section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-12">
-						<div class="blog-single-main">
-							<div class="row">
-								<div class="col-12">
-									<div class="image">
-										<img th:src="@{'/imageNews/'+${news.thumnail}}" alt="#">
-									</div>
-									<div class="blog-detail">
-										<h2 class="blog-title" th:text="${news.header}"></h2>
-										<div class="blog-meta">
-											<span class="author"><a href="#"><i class="fa fa-user"></i>By Admin</a><a href="#"><i class="fa fa-calendar"></i>Dec 24, 2018</a><a href="#"><i class="fa fa-comments"></i>Comment (15)</a></span>
-										</div>
-										<div class="content">
-											<p th:text="${news.detail}"></p>
-											<blockquote> <i class="fa fa-quote-left"></i> Hãy làm những gì bạn thích và cống hiến hết sức mình. Cho dù đó là kinh doanh hay bóng chày, nhà hát, hoặc bất kỳ lĩnh vực nào. Nếu bạn không yêu thích những gì bạn đang làm và bạn không thể cống hiến hết mình, hãy thoát khỏi nó. Cuộc sống quá ngắn. Bạn sẽ là một ông già trước khi bạn biết điều đó.</blockquote>
-											</div>
-									</div>
-								</div>
-											
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-12">
-						<div class="main-sidebar">
-							<!-- Single Widget -->
-							<div class="single-widget search">
-								<div class="form">
-									<input type="email" placeholder="Search Here...">
-									<a class="button" href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-							<!--/ End Single Widget -->
-							
-							<!-- Single Widget -->
-							<div class="single-widget recent-post">
-								<h3 class="title">Recent post</h3>
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="https://via.placeholder.com/100x100" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>Jan 11, 2020</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>35</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="https://via.placeholder.com/100x100" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>Mar 05, 2019</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>59</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
-								<!-- Single Post -->
-								<div class="single-post">
-									<div class="image">
-										<img src="https://via.placeholder.com/100x100" alt="#">
-									</div>
-									<div class="content">
-										<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
-										<ul class="comment">
-											<li><i class="fa fa-calendar" aria-hidden="true"></i>June 09, 2019</li>
-											<li><i class="fa fa-commenting-o" aria-hidden="true"></i>44</li>
-										</ul>
-									</div>
-								</div>
-								<!-- End Single Post -->
-							</div>
-							<!--/ End Single Widget -->
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--/ End Blog Single -->
 	
-
-	<!-- Start Most Popular -->
-	<div class="product-area most-popular section">
+	<!-- Breadcrumbs -->
+	<div class="breadcrumbs">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<div class="section-title">
-						<h2>Mặt hàng mới</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<div class="owl-carousel popular-slider">
-						<!-- Start Single Product -->
-						<th:block>
-							<div th:each=" newProductItem : ${new5Products}" class="single-product">
-								<div class="product-img">
-									<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}">
-										<img class="default-img"
-											th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.1.png'}" alt="#">
-										<img class="hover-img"
-											th:src="@{'../imageCase/'+${newProductItem.idProduct}+'.2.png'}" alt="#">
-										<span class="out-of-stock">New</span>
-									</a>
-									<div class="button-head">
-	                                    <div class="product-action">
-	                                        <a  title="Quick View"
-	                                            th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-	                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
-	                                                Wishlist</span></a>
-	                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
-	                                                Compare</span></a>
-	                                    </div>
-	                                    <div class="product-action-2">
-	                                        <a title="Add to cart" th:href="@{|/Addtocart/${newProductItem.idProduct}|}">Add to
-	                                            cart</a>
-	                                    </div>
-	                                </div>
-								</div>
-								<div class="product-content">
-									<h3>
-										<a th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"
-											th:text="${newProductItem.name}"></a>
-									</h3>
-									<div class="product-price">
-										<span th:text="${#numbers.formatDecimal(newProductItem.price, 0, 'COMMA', 0, 'POINT')+' VND'}"></span>
-									</div>
-								</div>
-							</div>
-						</th:block>
-						<!-- End Single Product -->
-
+					<div class="bread-inner">
+						<ul class="bread-list">
+							<li><a th:href="@{/home}">Home<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a th:href="@{/introduct}">Giới thiệu</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Most Popular Area -->
-	<!-- Start Shop Blog  -->
-	<section class="shop-blog section">
+	<!-- End Breadcrumbs -->
+  
+	<!-- Start Contact -->
+	<section id="contact-us" class="contact-us section">
 		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="section-title">
-						<h2>Từ Blog của chúng tôi</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row" >
-				<div class="col-lg-4 col-md-6 col-12" th:each="newNews : ${list3News}">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img th:src="@{'../imageNews/'+${newNews.thumnail}}" alt="#" width="250px">
-						<div class="content">
-							<p class="date">24 July, 2020. Monday</p>
-							<a href="#" class="title" th:text="${newNews.header}"></a> <a href="#"
-								class="more-btn">Tiếp tục đọc</a>
+				<div class="contact-head">
+					<div class="row">
+						<div class="col-lg-8 col-12">
+							<div class="form-main">
+								<div class="title">
+									<h4>Shop bán ốp</h4>
+									<h3>Icase</h3>
+								</div>
+								<div class="text-center">
+									<img src="/image/contach-image.jpg" width="50%">
+								</div>
+								<div class="mt-5">
+									<p>	&nbsp;&nbsp;&nbsp;&nbsp;Icase hân hạnh được hợp tác và phục vụ quý cửa hàng điện thoại, quý đại lý linh kiện! 
+										<br><br>	&nbsp;&nbsp;&nbsp;&nbsp;Icase chuyên cung cấp sỉ và lẻ linh kiện điện thoại trên toàn quốc .Hoạt động trong lĩnh vực cung cấp sỉ linh
+										 kiện điện thoại di động, chúng tôi đã và đang dần khẳng định tên tuổi của mình cũng như ngày càng đa dạng nguồn
+										  hàng và luôn chọn sản phẩm có chất lượng tốt nhất, giá cả rẻ nhất để cung cấp ra thị trường.Với độ dầy về kinh
+										   nghiệm và hoạt động uy tính lâu năm trong nghề, chúng tôi cam đoan đầu hàng nhập vào là tận gốc, giá cả cạnh tranh, 
+										   nguồn hàng phong phú và chất lượng từng loại sản phẩm đều đã qua kiểm tra trước khi đến tay khách hàng!Với phương 
+										   châm kinh doanh “đa dạng nguồn hàng, giá cả cạnh tranh, chất lượng tối ưu, uy tín làm hàng đầu” chúng tôi mong muốn ngày
+										    càng hợp tác nhiều hơn với quý cửa hàng điện thoại, quý đại lý linh kiện.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-12">
+							<div class="single-head">
+								<div class="single-info">
+									<i class="fa fa-phone"></i>
+									<h4 class="title">Gọi chúng tôi:</h4>
+									<ul>
+										<li>+123 456-789-1120</li>
+										<li>+522 672-452-1120</li>
+									</ul>
+								</div>
+								<div class="single-info">
+									<i class="fa fa-envelope-open"></i>
+									<h4 class="title">Email:</h4>
+									<ul>
+										<li><a href="#">icase@gmail.com</a></li>
+										<li><a href="#">support.icase@gmail.com</a></li>
+									</ul>
+								</div>
+								<div class="single-info">
+									<i class="fa fa-location-arrow"></i>
+									<h4 class="title">Địa chỉ:</h4>
+									<ul>
+										<li>395 Phan Văn Trị, Phường 11, Bình Thạnh, Tp Hồ Chí Minh</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
-					<!-- End Single Blog  -->
 				</div>
 			</div>
-		</div>
 	</section>
-	<!-- End Shop Blog  -->
-
+	<!--/ End Contact -->
+	
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">
 		<div class="container">
@@ -463,15 +360,14 @@
 	</section>
 	<!-- End Shop Services Area -->
 
-	
+
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span class="ti-close" aria-hidden="true"></span>
 					</button>
 				</div>
@@ -479,18 +375,19 @@
 					<div class="row no-gutters">
 						<div class="col-lg-6 offset-lg-3 col-12">
 							<h4
-								style="margin-top: 100px; font-size: 14px; font-weight: 500; color: #F7941D; display: block; margin-bottom: 5px;">Eshop
+								style="margin-top: 100px; font-size: 14px; font-weight: 500; color: #F7941D; display: block; margin-bottom: 5px;">
+								Eshop
 								Free Lite</h4>
 							<h3 style="font-size: 30px; color: #333;">
 								Currently You are using free lite Version of Eshop.
 								<h3>
 									<p
-										style="display: block; margin-top: 20px; color: #888; font-size: 14px; font-weight: 400;">Please,
+										style="display: block; margin-top: 20px; color: #888; font-size: 14px; font-weight: 400;">
+										Please,
 										purchase full version of the template to get all pages,
 										features and commercial license</p>
 									<div class="button" style="margin-top: 30px;">
-										<a
-											href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/"
+										<a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/"
 											target="_blank" class="btn" style="color: #fff;">Buy Now!</a>
 									</div>
 						</div>
@@ -513,14 +410,14 @@
 							<div class="logo">
 								<a href="index.html"><img src="/image/logo2.png" alt="#"></a>
 							</div>
-							<p class="text">Web mua bán ốp điện thoại, ốp tai phone. 
-							Thời trang - bền - rẻ - đẹp - chất lượng.
-							Chúng tôi rất vui lòng được phục vụ quý khách hàng.
-							Love you <3 </p>
-							<p class="call">
-								Có câu hỏi không? gọi chúng tôi 24/7<span><a href="tel:123456789">+0123
-										456 789</a></span>
-							</p>
+							<p class="text">Web mua bán ốp điện thoại, ốp tai phone.
+								Thời trang - bền - rẻ - đẹp - chất lượng.
+								Chúng tôi rất vui lòng được phục vụ quý khách hàng.
+								Love you <3 </p>
+									<p class="call">
+										Có câu hỏi không? gọi chúng tôi 24/7<span><a href="tel:123456789">+0123
+												456 789</a></span>
+									</p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
@@ -559,7 +456,7 @@
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>395 Phan Văn Trị  </li>
+									<li>395 Phan Văn Trị </li>
 									<li>Phường 11 Bình Thạnh</li>
 									<li>Icase</li>
 									<li>+032 3456 7890</li>
@@ -587,7 +484,8 @@
 							<div class="left">
 								<p>
 									Copyright © 2021 <a href="http://www.wpthemesgrid.com"
-										target="_blank">Wpthemesgrid</a> - Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh Sang.
+										target="_blank">Wpthemesgrid</a> - Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh
+									Sang.
 								</p>
 							</div>
 						</div>
@@ -602,7 +500,9 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
-
+	
+	
+ 
 	<!-- Jquery -->
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery-migrate-3.0.0.js"></script>

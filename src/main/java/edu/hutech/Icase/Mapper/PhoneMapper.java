@@ -13,6 +13,7 @@ public class PhoneMapper implements RowMapper<PhoneModel> {
         PhoneModel phone = new PhoneModel();
         phone.setIdphone(rs.getInt("idphone"));
         phone.setNamephone(rs.getString("namephone"));
+        phone.setIdPhoneBrand(rs.getInt("idphonebrand"));
         return phone;
     }
 }

@@ -468,34 +468,50 @@ public class HomeController {
 	// return "product";
 	// }
 
-	@GetMapping("/product/{getIdphonebrand}")
-	public String product(@PathVariable int getIdphonebrand, Model model) {
-		List<PhoneBrand> phonebrand = jdbctemplate.query(
-				"select * from phonebrand where idphonebrand=" + getIdphonebrand + "",
-				BeanPropertyRowMapper.newInstance(PhoneBrand.class));
-		List<Case> products = jdbctemplate.query("Select * from product where idphonebrand=" + getIdphonebrand + "",
-				BeanPropertyRowMapper.newInstance(Case.class));
-		for (int i = 0; i < products.size(); i++) {
-			List<Image> images = jdbctemplate.query("select top 2 * from image where idproduct= ? order by idimage asc",
-					BeanPropertyRowMapper.newInstance(Image.class), products.get(i).getIdproduct());
-			products.get(i).setImage1(images.get(0).getName().toString());
-			products.get(i).setImage2(images.get(1).getName().toString());
-		}
-		// List<ProductModel> new5Products =
-		// prodService.get5EndOfProducts(prodService.getAllProduct());
-		//// List<Integer> listNumPages = prodService.NumberPage(products);
-		// List<PhoneModel> listPhones = prodService.getAllPhone();
-		// List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
-		// List<NewsModel> list3NewNews = prodService.getList3NewNews();
-		// model.addAttribute("new5Products", new5Products);
-		// model.addAttribute("numberPage", listNumPages);
-		// model.addAttribute("listPhones", listPhones);
-		// model.addAttribute("listPhoneBrands", listPhoneBrands);
-		// model.addAttribute("list3News", list3NewNews);
-		model.addAttribute("Detail", phonebrand.get(0).getName());
-		model.addAttribute("product", products);
-		return "product";
-	}
+	// @GetMapping("/product/{getIdphonebrand}")
+	// public String product(@PathVariable int getIdphonebrand, Model model) {
+	// List<PhoneBrand> phonebrand = jdbctemplate.query(
+	// "select * from phonebrand where idphonebrand=" + getIdphonebrand + "",
+	// BeanPropertyRowMapper.newInstance(PhoneBrand.class));
+	// List<Case> products = jdbctemplate.query("Select * from product where
+	// idphonebrand=" + getIdphonebrand + "",
+	// BeanPropertyRowMapper.newInstance(Case.class));
+	// for (int i = 0; i < products.size(); i++) {
+	// List<Image> images = jdbctemplate.query("select top 2 * from image where
+	// idproduct= ? order by idimage asc",
+	// BeanPropertyRowMapper.newInstance(Image.class),
+	// products.get(i).getIdproduct());
+	// products.get(i).setImage1(images.get(0).getName().toString());
+	// products.get(i).setImage2(images.get(1).getName().toString());
+	// }
+	// // List<ProductModel> new5Products =
+	// // prodService.get5EndOfProducts(prodService.getAllProduct());
+	// //// List<Integer> listNumPages = prodService.NumberPage(products);
+	// // List<PhoneModel> listPhones = prodService.getAllPhone();
+	// // List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
+	// // List<NewsModel> list3NewNews = prodService.getList3NewNews();
+	// // model.addAttribute("new5Products", new5Products);
+	// // model.addAttribute("numberPage", listNumPages);
+	// // model.addAttribute("listPhones", listPhones);
+	// // model.addAttribute("listPhoneBrands", listPhoneBrands);
+	// // model.addAttribute("list3News", list3NewNews);
+	// model.addAttribute("Detail", phonebrand.get(0).getName());
+	// model.addAttribute("product", products);
+	// return "product";
+	// }
+	//
+	// @GetMapping("/product/{getIdphone}")
+	// public String product(@PathVariable int getIdphone, Model model) {
+	// List<Device> devices = jdbctemplate.query("select idproduct from device where
+	// idphone = ?",
+	// BeanPropertyRowMapper.newInstance(Device.class), getIdphone);
+	// List<Case> products = jdbctemplate.query("Select * from product where
+	// idproduct=?",
+	// BeanPropertyRowMapper.newInstance(Case.class),
+	// devices.get(0).getIdproduct());
+	// model.addAttribute("product", products);
+	// return "product";
+	// }
 
 	@GetMapping(path = "search")
 	public String search(Case product, Model model) {
