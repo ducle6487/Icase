@@ -87,7 +87,7 @@
                         <div class="right-content">
                             <ul class="list-main">
                                 <li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
-                                <li><i class="ti-bell"></i><a th:href="@{/contactus}">Liên Hệ</a></li>
+                                <li><i class="ti-bell"></i><a th:href="@{/introduct}">Liên Hệ</a></li>
                                 <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
                             </ul>
                         </div>
@@ -166,7 +166,7 @@
                                             <h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
                                             <p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span
                                                     class="amount"
-                                                    th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span>
+                                                    th:text="${#numbers.formatDecimal(giohang.getPrice*giohang.getSl, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$99.00</span>
                                             </p>
                                         </li>
 
@@ -182,7 +182,7 @@
                                     <div class="bottom">
                                         <div class="total">
                                             <span>tổng Tiền:</span>
-                                            <span class="total-amount" th:text="${CartTotal}+' đ'">$134.00</span>
+                                            <span class="total-amount" th:text="${#numbers.formatDecimal(CartTotal, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$134.00</span>
                                         </div>
                                         <a th:href="@{/giohang+thanhtoan}" class="btn animate">Thanh Toán</a>
                                     </div>
@@ -284,7 +284,7 @@
                         <!-- Start Single Product -->
                         <div class="single-product" th:each="p : ${product}">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a th:href="@{'/detailproduct/'+${p.getIdproduct}}">
                                     <img class="default-img" th:src="@{'/imageCase/'+ ${p.getImage1}}" alt="#">
                                     <img class="hover-img" th:src="@{'/imageCase/'+ ${p.getImage2}}" alt="#">
                                 </a>
@@ -304,10 +304,10 @@
                                 </div>
                             </div>
                             <div class="product-content">
-                                <h3><a href="product-details.html" th:text="${p.getName}">Black Sunglass For
+                                <h3><a th:href="@{'/detailproduct/'+${p.getIdproduct}}" th:text="${p.getName}">Black Sunglass For
                                         Women</a></h3>
                                 <div class="product-price">
-                                    <span th:text="${p.getPrice} + ' đ'">$50.00</span>
+                                    <span th:text="${#numbers.formatDecimal(p.getPrice, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$50.00</span>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +325,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>Trending Item</h2>
+                        <h2>Sản Phẩm Bán Chạy</h2>
                     </div>
                 </div>
             </div>
@@ -350,7 +350,7 @@
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-12" th:each="man: ${man}">
                                             <div class="single-product">
                                                 <div class="product-img">
-                                                    <a href="product-details.html">
+                                                    <a th:href="@{'/detailproduct/'+${man.getIdproduct}}">
                                                         <img class="default-img"
                                                             th:src="@{'/imageCase/'+ ${man.getImage1}}" alt="#">
                                                         <img class="hover-img"
@@ -358,7 +358,7 @@
                                                     </a>
                                                     <div class="button-head">
                                                         <div class="product-action">
-                                                            <a dth:href="@{'/detailproduct/'+${product.getIdproduct}}"><i
+                                                            <a  href="#"><i
                                                                     class=" ti-eye"></i><span>Quick Shop</span></a>
                                                             <a title="Wishlist" href="#"><i
                                                                     class=" ti-heart "></i><span>Add to
@@ -373,10 +373,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3><a href="product-details.html" th:text="${man.getName}">Women
+                                                    <h3><a th:href="@{'/detailproduct/'+${man.getIdproduct}}" th:text="${man.getName}">Women
                                                             Hot Collection</a></h3>
                                                     <div class="product-price">
-                                                        <span th:text="${man.getPrice} + ' VNĐ'">$29.00</span>
+                                                        <span th:text="${#numbers.formatDecimal(man.getPrice, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$29.00</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -392,7 +392,7 @@
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-12" th:each="women: ${women}">
                                             <div class="single-product">
                                                 <div class="product-img">
-                                                    <a href="product-details.html">
+                                                    <a th:href="@{'/detailproduct/'+${women.getIdproduct}}">
                                                         <img class="default-img"
                                                             th:src="@{'/imageCase/'+ ${women.getImage1}}" alt="#">
                                                         <img class="hover-img"
@@ -415,10 +415,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3><a href="product-details.html" th:text="${women.getName}">Women
+                                                    <h3><a th:href="@{'/detailproduct/'+${women.getIdproduct}}" th:text="${women.getName}">Women
                                                             Hot Collection</a></h3>
                                                     <div class="product-price">
-                                                        <spanth th:text="${women.getPrice}+ ' VNĐ'">$29.00</span>
+                                                        <spanth th:text="${#numbers.formatDecimal(women.getPrice, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$29.00</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -439,91 +439,6 @@
     <!-- End Midium Banner -->
 
     <!-- Start Most Popular -->
-    <div class="product-area most-popular section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h2>Our Log</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="owl-carousel popular-slider">
-                        <!-- Start Single Product -->
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Black Sunglass For Women</a></h3>
-                                <div class="product-price">
-                                    <span class="old">$60.00</span>
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Product -->
-                        <!-- Start Single Product -->
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Product -->
-                        <!-- Start Single Product -->
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Pink Show</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Product -->
-                        <!-- Start Single Product -->
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Bags Collection
-                                        asdadasdag
-                                        asdsadasdasdasdasdad
-                                        asdasd</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Product -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- End Most Popular Area -->
     <!-- End Shop Blog  -->
 

@@ -223,6 +223,9 @@ public class HomeController {
 		if (result == false) {
 			model.addAttribute("message", "Họ và tên không chứa ký tự đặc biệt hoặc số");
 			model.addAttribute("cartcount", GioHang.cart.size());
+			List<MethodPayment> methodpayments = jdbctemplate.query("select * from methodpayment",
+					BeanPropertyRowMapper.newInstance(MethodPayment.class));
+			model.addAttribute("methodpayments", methodpayments);
 			return "giohangvathanhtoan";
 		}
 		int row = jdbctemplate.update("insert into orders(DateOrder,Total,Name,Phone,Address,Message) values(GETDATE(),"
@@ -247,7 +250,7 @@ public class HomeController {
 			}
 			model.addAttribute("message","Hóa Đơn Của Bạn Đã Được Tiếp Nhận Chúng Tôi Sẽ Thông Báo Cho Bạn Qua Email");
 			model.addAttribute("cartcount", GioHang.cart.size());
-			return "giohangvathanhtoan";
+			return "giohangvathanhtoan2";
 		} else {
 			model.addAttribute("message","Hiện tại máy chủ đang có sự cố nên việc mua bán hiện không hoạt động");
 			model.addAttribute("cartcount", GioHang.cart.size());
