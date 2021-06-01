@@ -87,7 +87,7 @@
                             <ul class="list-main">
                                 <li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
                                 <li><i class="ti-bell"></i><a th:href="@{/contactus}">Liên Hệ</a></li>
-                                <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">About Us</a></li>
+                                <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
                             </ul>
                         </div>
                         <!-- End Top Right -->
@@ -206,8 +206,8 @@
                                     <div class="navbar-collapse">
                                         <div class="nav-inner">
                                             <ul class="nav main-menu menu navbar-nav">
-                                                <li class="active"><a th:href="@{/home}">Trang Chủ</a></li>
-                                                <li><a th:href="@{/product}">Sản Phẩm</a></li>
+                                                <li><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li class="active"><a th:href="@{/product}">Sản Phẩm</a></li>
                                                 <li><a href="#">Shop<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown ">
                                                         <li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
@@ -222,7 +222,7 @@
                                                                     <div class="div-grid">
                                                                         <li th:each="phones : ${listPhones}">
                                                                             <th:block
-                                                                                th:if="${phonebrands.idPhoneBrand == phones.idPhoneBrand}">
+                                                                                th:if="${phonebrands.getIdphonebrand == phones.getIdphonebrand}">
                                                                                 <a th:href="@{|/product/phone=${phones.getIdphone}|}"
                                                                                     class="a-trong"
                                                                                     th:text="${phones.getNamephone}"></a>
@@ -235,7 +235,7 @@
                                                     </ul>
                                                 </li>
                                                 <li><a th:href="@{/news}">Bài viết</a></li>
-                                                <li><a href="contact.html">Liên Hệ</a></li>
+                                                <li><a th:href="@{/introduct}">Liên Hệ</a></li>
                                             </ul>
                                         </div>
                                     </div>

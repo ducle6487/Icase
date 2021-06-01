@@ -3,7 +3,7 @@ package edu.hutech.Icase.Model;
 public class Phone {
 	private int idphone;
 	private String namephone;
-	private int brand;
+	private int idphonebrand;
 	
 	public Phone() {
 		
@@ -12,7 +12,7 @@ public class Phone {
 	public Phone(int a,String b,int c) {
 		this.idphone = a;
 		this.namephone = b;
-		this.brand = c;
+		this.idphonebrand = c;
 	}
 	
 	public int getIdphone() {
@@ -20,7 +20,7 @@ public class Phone {
 	}
 	@Override
 	public String toString() {
-		return "Phone [idphone=" + idphone + ", namephone=" + namephone + ", brand=" + brand + "]";
+		return "Phone [idphone=" + idphone + ", namephone=" + namephone + ", brand=" + idphonebrand + "]";
 	}
 	public void setIdphone(int idphone) {
 		this.idphone = idphone;
@@ -31,10 +31,13 @@ public class Phone {
 	public void setNamephone(String namephone) {
 		this.namephone = namephone;
 	}
-	public int getBrand() {
-		return brand;
+
+	public int getIdphonebrand() {
+		return idphonebrand;
 	}
-	public void setBrand(int brand) {
-		this.brand = brand;
+
+	public void setIdphonebrand(int idphonebrand) {
+		this.idphonebrand = idphonebrand;
 	}
+
 }

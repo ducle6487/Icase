@@ -83,7 +83,7 @@
                             <ul class="list-main">
                                 <li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
                                 <li><i class="ti-bell"></i><a th:href="@{/contactus}">Liên Hệ</a></li>
-                                <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">About Us</a></li>
+                                <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
                             </ul>
                         </div>
                         <!-- End Top Right -->
@@ -121,9 +121,12 @@
                     <div class="col-lg-8 col-md-7 col-12">
                         <div class="search-bar-top">
                             <div class="search-bar">
-                                <form th:action="@{/search}" th:object="${product}">
-                                    <input type="text" name="name" placeholder="Tìm kiếm sản phẩm ...">
-                                    <button class="btnn" type="submit"><i class="ti-search"></i></button>
+                                <form th:action="@{/product/search}" method="post">
+                                    <input name="search" placeholder="Tìm kiếm sản phẩm ..." th:name="searchText"
+                                        type="text">
+                                    <button class="btnn" type="submit">
+                                        <i class="ti-search"></i>
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -214,7 +217,7 @@
                                                                     <div class="div-grid">
                                                                         <li th:each="phones : ${listPhones}">
                                                                             <th:block
-                                                                                th:if="${phonebrands.idPhoneBrand == phones.idPhoneBrand}">
+                                                                                th:if="${phonebrands.getIdphonebrand == phones.getIdphonebrand}">
                                                                                 <a th:href="@{|/product/phone=${phones.getIdphone}|}"
                                                                                     class="a-trong"
                                                                                     th:text="${phones.getNamephone}"></a>
@@ -226,7 +229,8 @@
                                                         </div>
                                                     </ul>
                                                 </li>
-                                                <li><a href="contact.html">Liên Hệ</a></li>
+                                                <li><a th:href="@{/news}">Bài viết</a></li>
+                                                <li><a th:href="@{/introduct}">Liên Hệ</a></li>
                                             </ul>
                                         </div>
                                     </div>
