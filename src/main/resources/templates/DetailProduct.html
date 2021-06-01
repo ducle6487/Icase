@@ -1,198 +1,197 @@
 <!DOCTYPE html>
 <html lang="zxx" xmlns:th="https://www.thymeleaf.org">
-
 <head>
-	<!-- Meta Tag -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name='copyright' content=''>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Title Tag  -->
-	<title>Eshop - eCommerce HTML5 Template.</title>
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="/images/logo.png">
-	<!-- Web Font -->
-	<link
-		href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-		rel="stylesheet">
+<!-- Meta Tag -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='copyright' content=''>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Title Tag  -->
+<title>Eshop - eCommerce HTML5 Template.</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/image/favicon.ico">
+<!-- Web Font -->
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+	rel="stylesheet">
 
-	<!-- StyleSheet -->
+<!-- StyleSheet -->
 
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="/css/magnific-popup.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="/css/font-awesome.css">
-	<link rel="stylesheet" href="/fonts/fontawesome-free-5.15.0/css/all.min.css">
-	<!-- Fancybox -->
-	<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
-	<!-- Themify Icons -->
-	<link rel="stylesheet" href="/css/themify-icons.css">
-	<!-- Nice Select CSS -->
-	<link rel="stylesheet" href="/css/niceselect.css">
-	<!-- Animate CSS -->
-	<link rel="stylesheet" href="/css/animate.css">
-	<!-- Flex Slider CSS -->
-	<link rel="stylesheet" href="/css/flex-slider.min.css">
-	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="/css/owl-carousel.css">
-	<!-- Slicknav -->
-	<link rel="stylesheet" href="/css/slicknav.min.css">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="/css/bootstrap.css">
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="/css/magnific-popup.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/css/font-awesome.css">
+<link rel="stylesheet" href="/fonts/fontawesome-free-5.15.0/css/all.min.css">
+<!-- Fancybox -->
+<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+<!-- Themify Icons -->
+<link rel="stylesheet" href="/css/themify-icons.css">
+<!-- Nice Select CSS -->
+<link rel="stylesheet" href="/css/niceselect.css">
+<!-- Animate CSS -->
+<link rel="stylesheet" href="/css/animate.css">
+<!-- Flex Slider CSS -->
+<link rel="stylesheet" href="/css/flex-slider.min.css">
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="/css/owl-carousel.css">
+<!-- Slicknav -->
+<link rel="stylesheet" href="/css/slicknav.min.css">
 
-	<!-- Eshop StyleSheet -->
-	<link rel="stylesheet" href="/css/reset.css">
-	<link rel="stylesheet" href="/style.css">
-	<link rel="stylesheet" href="/css/responsive.css">
-	<link rel="stylesheet" href="/css/sang.css">
+<!-- Eshop StyleSheet -->
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link rel="stylesheet" href="/css/sang.css">
 
-	<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
-	<style>
-		body {
-			font-family: Verdana, sans-serif;
-			margin: 0;
-		}
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
 
-		* {
-			box-sizing: border-box;
-		}
+* {
+  box-sizing: border-box;
+}
 
-		.row>.column {
-			padding: 0 8px;
-		}
+.row > .column {
+  padding: 0 8px;
+}
 
-		.row:after {
-			content: "";
-			display: table;
-			clear: both;
-		}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-		.column {
-			float: left;
-			width: 25%;
-		}
+.column {
+  float: left;
+  width: 25%;
+}
 
-		/* The Modal (background) */
-		.modal {
-			display: none;
-			position: fixed;
-			z-index: 99;
-			padding-top: 100px;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: black;
-		}
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
 
-		/* Modal Content */
-		.modal-content {
-			position: relative;
-			background-color: #fefefe;
-			margin: auto;
-			padding: 0;
-			width: 90%;
-			max-width: 1200px;
-		}
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
 
-		/* The Close Button */
-		.close {
-			color: white;
-			position: absolute;
-			top: 10px;
-			right: 25px;
-			font-size: 35px;
-			font-weight: bold;
-		}
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
 
-		.close:hover,
-		.close:focus {
-			color: #999;
-			text-decoration: none;
-			cursor: pointer;
-		}
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-		.mySlides {
-			display: none;
-		}
+.mySlides {
+  display: none;
+}
 
-		.cursor {
-			cursor: pointer;
-		}
+.cursor {
+  cursor: pointer;
+}
 
-		/* Next & previous buttons */
-		.prev,
-		.next {
-			cursor: pointer;
-			position: absolute;
-			top: 50%;
-			width: auto;
-			padding: 16px;
-			margin-top: -50px;
-			color: white;
-			font-weight: bold;
-			font-size: 20px;
-			transition: 0.6s ease;
-			border-radius: 0 3px 3px 0;
-			user-select: none;
-			-webkit-user-select: none;
-		}
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
 
-		/* Position the "next button" to the right */
-		.next {
-			right: 0;
-			border-radius: 3px 0 0 3px;
-		}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
 
-		/* On hover, add a black background color with a little bit see-through */
-		.prev:hover,
-		.next:hover {
-			background-color: rgba(0, 0, 0, 0.8);
-		}
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
-		/* Number text (1/3 etc) */
-		.numbertext {
-			color: #f2f2f2;
-			font-size: 12px;
-			padding: 8px 12px;
-			position: absolute;
-			top: 0;
-		}
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 
-		img {
-			margin-bottom: -4px;
-		}
+img {
+  margin-bottom: -4px;
+}
 
-		.caption-container {
-			text-align: center;
-			background-color: black;
-			padding: 2px 16px;
-			color: white;
-		}
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
 
-		.demo {
-			opacity: 0.6;
-		}
+.demo {
+  opacity: 0.6;
+}
 
-		.active,
-		.demo:hover {
-			opacity: 1;
-		}
+.active,
+.demo:hover {
+  opacity: 1;
+}
 
-		img.hover-shadow {
-			transition: 0.3s;
-		}
+img.hover-shadow {
+  transition: 0.3s;
+}
 
-		.hover-shadow:hover {
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		}
-	</style>
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+</style>
 
 </head>
-
 <body class="js">
 
 	<!-- Preloader -->
@@ -207,55 +206,58 @@
 	<!-- End Preloader -->
 
 	<!-- Header -->
-	<header class="header shop">
-		<!-- Topbar -->
-		<div class="topbar">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-5 col-md-12 col-12">
-						<!-- Top Left -->
-						<div class="top-left">
-							<ul class="list-main">
-								<li><i class="ti-location-pin"></i> 395 Phan Văn Trị, Phường 11, Bình Thạnh</li>
-							</ul>
-						</div>
-						<!--/ End Top Left -->
-					</div>
-					<div class="col-lg-7 col-md-12 col-12">
-						<!-- Top Right -->
-						<div class="right-content">
-							<ul class="list-main">
-								<li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
-								<li><i class="ti-bell"></i><a href="#">Thông Báo</a></li>
-								<li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
-								<li><i class="ti-power-off"></i><a href="login.html#">Đăng Nhập</a></li>
-							</ul>
-						</div>
-						<!-- End Top Right -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Topbar -->
-		<div class="middle-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-12">
-						<!-- Logo -->
-						<div class="logo">
-							<a th:href="@{/home}"><img src="image/logo.gif" alt="logo"></a>
-						</div>
-						<!--/ End Logo -->
-						<!-- Search Form -->
+    <header class="header shop">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-12">
+                        <!-- Top Left -->
+                        <div class="top-left">
+                            <ul class="list-main">
+                                <li><i class="ti-location-pin"></i> 395 Phan Văn Trị, Phường 11, Bình Thạnh</li>
+                            </ul>
+                        </div>
+                        <!--/ End Top Left -->
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-12">
+                        <!-- Top Right -->
+                        <div class="right-content">
+                            <ul class="list-main">
+                                <li><i class="ti-alarm-clock"></i> Giờ làm việc: 8:30-23:00</li>
+                                <li><i class="ti-bell"></i><a href="#">Thông Báo</a></li>
+                                <li><i class="ti-shopping-cart"></i> <a th:href="@{/giohang}">Giỏ Hàng</a></li>
+                                <li><i class="ti-power-off"></i><a href="login.html#">Đăng Nhập</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Top Right -->
+                    </div>
+                </div>
+            </div>
+        </div>
+     <!-- End Topbar -->
+        <div class="middle-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a th:href="@{/home}"><img src="/image/logo.gif" alt="logo"></a>
+                        </div>
+                        <!--/ End Logo -->
+                        	<!-- Search Form -->
 						<div class="search-top">
-							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+							<div class="top-search">
+								<a href="#0"><i class="ti-search"></i></a>
+							</div>
 							<!-- Search Form -->
 							<div class="search-top">
-								<form class="search-form" th:action="@{/search}" th:object="${product}">
-									<input type="text" placeholder="Tìm kiếm sản phẩm..." name="name">
-									<button value="Search" type="submit"><i class="ti-search"></i></button>
+								<form class="search-form" >
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit">
+										<i class="ti-search"></i>
+									</button>
 								</form>
-
 							</div>
 							<!--/ End Search Form -->
 						</div>
@@ -265,325 +267,257 @@
 					<div class="col-lg-8 col-md-7 col-12">
 						<div class="search-bar-top">
 							<div class="search-bar">
-								<form th:action="@{/product/search}" method="post">
-									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText" type="text">
+								<form th:action="@{/product/search}"  method="post">
+									<input name="search" placeholder="Tìm sản phẩm" th:name="searchText"
+										type="text">
 									<button class="btnn" type="submit">
 										<i class="ti-search"></i>
 									</button>
 								</form>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-1 col-md-2 col-12">
-						<div class="right-bar">
-							<!-- Search Form -->
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-user-circle-o"
-										aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar shopping">
-								<a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span
-										class="total-count" th:text="${cartcount}">2</span></a>
-								<!-- Shopping Item -->
-								<div class="shopping-item">
-									<div class="dropdown-cart-header">
-										<span th:text="${cartcount}+ ' Sản Phẩm'">2 Items</span>
-										<a th:href="@{/giohang}">Xem Giỏ Hàng</a>
-									</div>
-									<ul class="shopping-list" th:if="${cartcount} >0" )>
-										<li th:each="giohang : ${cart}">
-											<a th:href="@{|/remove/${giohang.getIdproduct}|}" class="remove"
-												title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img
-													th:src="@{'/imageCase/'+ ${giohang.getImage1}}" alt="#"></a>
-											<h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
-											<p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span
-													class="amount"
-													th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span>
-											</p>
-										</li>
+					</div>	
+                    <div class="col-lg-1 col-md-2 col-12">
+                        <div class="right-bar">
+                            <!-- Search Form -->
+                            <div class="sinlge-bar">
+                                <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="sinlge-bar">
+                                <a href="#" class="single-icon"><i class="fa fa-user-circle-o"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                            <div class="sinlge-bar shopping">
+                                <a th:href="@{/giohang}" class="single-icon"><i class="ti-bag"></i> <span
+                                        class="total-count">2</span></a>
+                                <!-- Shopping Item -->
+                                <div class="shopping-item">
+                                    <div class="dropdown-cart-header">
+                                        <span th:text="${cartcount}">2 Items</span>
+                                        <a th:href="@{/giohang}">View Cart</a>
+                                    </div>
+                                    <ul class="shopping-list">
+                                        <li th:each="giohang : ${cart}">
+                                            <a href="#" class="remove" title="Remove this item"><i
+                                                    class="fa fa-remove"></i></a>
+                                            <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70"
+                                                    alt="#"></a>
+                                            <h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
+                                            <p class="quantity">1x - <span class="amount">$99.00</span></p>
+                                        </li>
 
-									</ul>
-									<ul class="shopping-list" th:unless="${cartcount} >0" )>
-										<li>
-											<img src="image/images.png" alt=""
-												style="position: relative;left: 50%;transform: translateX(-45%);">
-											<p style="text-align: center;">Không có sản phẩm</p>
-										</li>
+                                    </ul>
+                                    <div class="bottom">
+                                        <div class="total">
+                                            <span>Total</span>
+                                            <span class="total-amount">$134.00</span>
+                                        </div>
+                                        <a href="checkout.html" class="btn animate">Checkout</a>
+                                    </div>
+                                </div>
+                                <!--/ End Shopping Item -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-									</ul>
-									<div class="bottom">
-										<div class="total">
-											<span>tổng Tiền:</span>
-											<span class="total-amount" th:text="${CartTotal}+' đ'">$134.00</span>
-										</div>
-										<a th:href="@{/giohang+thanhtoan}" class="btn animate">Thanh Toán</a>
-									</div>
-								</div>
-								<!--/ End Shopping Item -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Header Inner -->
-		<div class="header-inner">
-			<div class="container">
-				<div class="cat-nav-head">
-					<div class="row">
-						<div class="col-lg-3">
-						</div>
-						<div class="col-lg-9 col-12">
-							<div class="menu-area">
-								<!-- Main Menu -->
-								<nav class="navbar navbar-expand-lg">
-									<div class="navbar-collapse">
-										<div class="nav-inner">
-											<ul class="nav main-menu menu navbar-nav">
-												<li><a th:href="@{/home}">Trang Chủ</a></li>
-												<li class="active"><a th:href="@{/product}">Sản Phẩm</a></li>
-												<li><a href="#">Shop<i class="ti-angle-down"></i></a>
-													<ul class="dropdown ">
-														<li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
-														<li><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
-													</ul>
-												</li>
-												<li><a href="#">Hãng<i class="ti-angle-down"></i></a>
-													<ul class="dropdown">
-														<div th:each="phonebrands : ${listPhoneBrands}">
-															<li><a th:text="${phonebrands.getName}"></a>
-																<ul class="dropright">
-																	<div class="div-grid">
-																		<li th:each="phones : ${listPhones}">
-																			<th:block
-																				th:if="${phonebrands.idPhoneBrand == phones.idPhoneBrand}">
-																				<a th:href="@{|/product/phone=${phones.getIdphone}|}"
-																					class="a-trong"
-																					th:text="${phones.getNamephone}"></a>
-																			</th:block>
-																		</li>
-																	</div>
-																</ul>
-															</li>
-														</div>
-													</ul>
-												</li>
-												<li><a th:href="@{/news}">Bài viết</a></li>
-												<li><a th:href="@{/introduct}">Liên Hệ</a></li>
-											</ul>
-										</div>
-									</div>
-								</nav>
-								<!--/ End Main Menu -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/ End Header Inner -->
-	</header>
-	<!--/ End Header -->
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-lg-3">
+                        </div>
+                        <div class="col-lg-9 col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li><a th:href="@{/home}">Trang Chủ</a></li>
+                                                <li class="active"><a th:href="@{/product}">Sản Phẩm</a></li>
+                                                <li><a href="#">Shop<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown ">
+                                                        <li><a th:href="@{/giohang}">Giỏ Hàng</a></li>
+                                                        <li><a th:href="@{/giohang+thanhtoan}">Thanh Toán</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Hãng<i class="ti-angle-down"></i></a>
+                                                    <ul class="dropdown">
+                                                        <div th:each="phonebrands : ${listPhoneBrands}">
+                                                            <li><a th:text="${phonebrands.getName}"></a>
+                                                                <ul class="dropright">
+                                                                    <div class="div-grid">
+                                                                        <li th:each="phones : ${listPhones}">
+                                                                        	<th:block th:if="${phonebrands.idPhoneBrand == phones.idPhoneBrand}">
+                                                                              <a  th:href="@{|/product/phone=${phones.getIdphone}|}"
+                                                                                class="a-trong"
+                                                                                th:text="${phones.getNamephone}"></a>
+                                                                            </th:block>
+                                                                        </li>
+                                                                    </div>
+                                                                </ul>
+                                                            </li>
+                                                        </div>
+                                                    </ul>
+                                                </li>
+                                                <li><a th:href="@{/news}">Bài viết</a></li>
+                                                <li><a th:href="@{/introduct}">Liên Hệ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <!--/ End Main Menu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!--/ End Header -->
 	<!-- Detail product main -->
-	<div class="container">
-		<div class=" bg-white row">
-			<!-- image product -->
-			<div class="col-5 border img-prod">
-				<div class="pb-3">
-					<img th:src="@{'/imageCase/'+${imgCover}}" width="450px" height="450px"
-						onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-				</div>
+    <div class="container">
+        <div class=" bg-white row">
+        <!-- image product -->
+        <div class="col-5 border img-prod">
+			<div class="pb-3">
+				<img th:src="@{'/imageCase/'+${imgCover}}" width="450px" height="450px" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 			</div>
-			<!--/ End Header Inner -->
-			</header>
-			<!--/ End Header -->
-			<!-- Detail product main -->
-			<div class="container">
-				<div class=" bg-white row">
-					<!-- image product -->
-					<div class="col-5 border img-prod">
-						<div class="pb-3">
-							<img th:src="@{'/imageCase/'+${imgCover}}" width="450px" height="450px">
-						</div>
 
-						<div>
-							<th:block th:each="imgItem : ${listImages}">
-								<img th:src="@{'/imageCase/'+${imgItem.name}}" width="100px" height="100px"
-									onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-							</th:block>
-						</div>
-						<!--  -->
-						<div id="myModal" class="modal">
-							<span class="close cursor" onclick="closeModal()">&times;</span>
-							<div class="modal-content">
-								<th:block th:each="imgItem : ${listImages}">
-									<div class="mySlides text-center">
-
-										<img th:src="@{'/imageCase/'+${imgItem.name}}" style="width:50%">
-									</div>
-								</th:block>
-								<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-								<a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-								<div class="caption-container">
-									<p id="caption"></p>
-								</div>
-								<!-- <th:block th:each="imgItem : ${listImages}">
+			<div >
+			<th:block th:each="imgItem : ${listImages}">
+				<img th:src="@{'/imageCase/'+${imgItem.name}}" width="100px" height="100px" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+			</th:block>
+			</div>
+			<!--  -->
+				<div id="myModal" class="modal">
+				  <span class="close cursor" onclick="closeModal()">&times;</span>
+				  <div class="modal-content">
+					<th:block th:each="imgItem : ${listImages}">
+					    <div class="mySlides text-center">
+					      
+					      <img th:src="@{'/imageCase/'+${imgItem.name}}" style="width:50%">
+					    </div>
+				    </th:block>
+				    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+				
+				    <div class="caption-container">
+				      <p id="caption"></p>
+				    </div>
+					<!-- <th:block th:each="imgItem : ${listImages}">
 					    <div class="column row">
 					      <div class="col-2"><img class="demo cursor" th:src="@{'/imageCase/'+${imgItem.name}}" style="width:50%" onclick="currentSlide(1)" alt="Ảnh sản phẩm"></div>
 					    </div>
 				    </th:block> -->
-							</div>
-						</div>
-						<!--  -->
-					</div>
-					<!--  -->
-					<!-- Infor product -->
-					<div class="col-7 prod-infor border">
-						<div>
-							<h1 class="prod-infor-title mt-3" th:text="${product.name}"></h1>
-						</div>
-						<div class="row">
-							<div class="col-6  bg-light m-4">
-								<div class="text-center">
-									<h3
-										th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')+' VND'}">
-									</h3>
-								</div>
-							</div>
-
-						</div>
-						<div class="prod-infor-detail mt-5">
-							<h4>Thông tin chi tiết</h4>
-							<div class="prod-infor-detail-table">
-								<ul>
-									<li class="bg-light row mt-2">
-										<p class="col-6">Thương hiệu</p>
-										<p class="col-6" th:text="${phoneBrand}"></p>
-									</li>
-									<li class="bg-white row mt-2">
-										<p class="col-6">Số lượng</p>
-										<p class="col-6" th:text="${product.amount}">></p>
-									</li>
-									<li class="bg-light row mt-2">
-										<p class="col-6">Thiết bị phù hợp</p>
-
-										<p class="col-6">
-											<th:block th:each="phoneName : ${listPhones}">
-												<span th:text="${phoneName.namephone}"></span>
-											</th:block>
-										</p>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="prod-buy  m-4">
-							<form th:action="@{/giohang/damua}" method="post" th:object="${prodinfor}">
-								<input hidden="true" th:field="*{idProduct}" th:value="${product.idProduct}">
-								<div class="text-center m-4">
-									<h6>Thêm vào giỏ hàng</h6>
-								</div>
-								<div class="row">
-									<div class="col-4">
-										<p class="" style="padding-top: 60px;">Chọn màu</p>
-										<select th:field="*{color}">
-											<th:block th:each="colorStr : ${listColor}">
-												<option th:value="${colorStr}" th:text="${colorStr}"></option>
-											</th:block>
-										</select>
-									</div>
-									<div class="col-4">
-										<p style="padding-top: 60px;">Chọn Loại điện thoại</p>
-										<select class="js-example-basic-single js-states form-control"
-											th:field="*{phone}">
-											<th:block th:each="phoneItem : ${listPhone}">
-												<option th:value="${phoneItem.getNamephone}"
-													th:text="${phoneItem.getNamephone}"></option>
-											</th:block>
-										</select>
-									</div>
-									<div class="col-4">
-										<p class="" style="padding-top: 60px;">Nhập số lượng</p>
-										<div class="prod-buy-select">
-											<input type="number" placeholder="1" th:value="1" class="text-center"
-												style="width:40px" th:field="*{amount}" th:min="1"
-												th:max="${product.amount}">
-										</div>
-									</div>
-								</div>
-						</div>
-						<div class="prod-buy  m-4">
-							<form th:action="@{/giohang/damua}" method="post" th:object="${prodinfor}">
-								<input hidden="true" th:field="*{idProduct}" th:value="${product.idProduct}">
-								<div class="text-center m-4">
-									<h6>Thêm vào giỏ hàng</h6>
-								</div>
-								<div class="row">
-									<div class="col-4">
-										<p class="" style="padding-top: 60px;">Chọn màu</p>
-										<select th:field="*{color}">
-											<th:block th:each="colorStr : ${listColor}">
-												<option th:value="${colorStr}" th:text="${colorStr}"></option>
-											</th:block>
-										</select>
-									</div>
-									<div class="col-4">
-										<p style="padding-top: 60px;">Chọn Loại điện thoại</p>
-										<select class="js-example-basic-single js-states form-control"
-											th:field="*{phone}">
-											<th:block th:each="phoneItem : ${listPhone}">
-												<option th:value="${phoneItem.getNamephone}"
-													th:text="${phoneItem.getNamephone}"></option>
-											</th:block>
-										</select>
-									</div>
-									<div class="col-4">
-										<p class="" style="padding-top: 60px;">Nhập số lượng</p>
-										<div class="prod-buy-select">
-											<input type="number" placeholder="0" class="text-center" style="width:40px"
-												th:field="*{amount}">
-										</div>
-									</div>
-								</div>
-								<div class="text-center">
-
-									<div class="prod-buy-button m-4">
-										<button class="btn btn-danger" type="submit">đưa vào giỏ hàng</button>
-										<a th:href="@{/giohang}" class="btn btn-danger text-white ml-3">Mua ngay</a>
-									</div>
-								</div>
-
-							</form>
-						</div>
-					</div>
-					<div class="m-5 p-5">
-						<div class="text-center m-4">
-							<h2>Giới thiệu sản phẩm</h2>
-						</div>
-						<div>
-							<p th:text="${product.description}"></p>
-						</div>
-					</div>
-					<!--  -->
+				  </div>
 				</div>
-				<!--  -->
+			<!--  -->
+        </div>
+        <!--  -->
+        <!-- Infor product -->
+        <div class="col-7 prod-infor border">
+            <div>
+                <h1 class="prod-infor-title mt-3" th:text="${product.name}"></h1>
+            </div>
+            <div class="row">
+                <div class="col-6  bg-light m-4">
+                    <div class="text-center">
+                        <h3 th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')+' VND'}"></h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="prod-infor-detail mt-5">
+                <h4>Thông tin chi tiết</h4>
+                <div class="prod-infor-detail-table">
+                    <ul>
+                        <li class="bg-light row mt-2">
+                            <p class="col-6">Thương hiệu</p>
+                            <p class="col-6" th:text="${phoneBrand}"></p>
+                        </li>
+                        <li class="bg-white row mt-2">
+                            <p class="col-6">Số lượng</p>
+                            <p class="col-6" th:text="${product.amount}">></p>
+                        </li>
+                        <li class="bg-light row mt-2">
+                            <p class="col-6">Thiết bị phù hợp</p>
+
+                            <p class="col-6">
+                                <th:block th:each="phoneName : ${listPhones}">
+                                	<span th:text="${phoneName.namephone}"></span>
+                            	</th:block>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>  
+            <div class="prod-buy  m-4">
+				<form th:action="@{/giohang/damua}" method="post" th:object="${prodinfor}">
+					<input hidden="true" th:field="*{idProduct}" th:value="${product.idProduct}">
+					<div class="text-center m-4">
+						<h6>Thêm vào giỏ hàng</h6>
+					</div>
+					<div class="row">
+						<div class="col-4">
+	                        <p class="" style="padding-top: 60px;">Chọn màu</p>
+	                         <select  th:field="*{color}">
+	                            	<th:block th:each="colorStr : ${listColor}">
+	                            	<option  th:value="${colorStr}" th:text="${colorStr}"></option>
+	                            	</th:block>
+	                       	 </select>
+	                    </div>
+	                    <div class="col-4" >
+	                        <p style="padding-top: 60px;">Chọn Loại điện thoại</p>
+	                        <select class="js-example-basic-single js-states form-control" th:field="*{phone}">
+	                         	<th:block th:each="phoneItem : ${listPhone}">
+	                           	<option  th:value="${phoneItem.getNamephone}" th:text="${phoneItem.getNamephone}"></option>
+	                           	</th:block>
+	                       	 </select>
+	                    </div>
+	                    <div class="col-4">
+	                    <p class="" style="padding-top: 60px;">Nhập số lượng</p>
+		                    <div class="prod-buy-select">
+		                    	<input type="number" placeholder="1" th:value="1" class="text-center"style="width:40px" th:field="*{amount}" th:min="1" th:max="${product.amount}">
+		                	</div>
+	                    </div>
+					</div>
+					<div class="text-center">
+
+	                	<div class="prod-buy-button m-4">
+	                    	<button  class="btn btn-danger" type="submit">đưa vào giỏ hàng</button>
+	                    	<a th:href="@{/giohang}" class="btn btn-danger text-white ml-3">Mua ngay</a>
+	                	</div>
+					</div>
+
+				</form>
+            </div>  
+        </div>
+        <div class="m-5 p-5">
+			<div class="text-center m-4">
+				<h2>Giới thiệu sản phẩm</h2>
+			</div>
+			<div>
+				<p th:text="${product.description}"></p>
 			</div>
 		</div>
-		<!--  -->
+        <!--  -->
+    </div>
+    </div>
+    <!--  -->
 
-		<!-- Start Most Popular -->
-		<div class="product-area most-popular section">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="section-title">
-							<h2>Mặt hàng mới</h2>
-						</div>
+	<!-- Start Most Popular -->
+	<div class="product-area most-popular section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>Mặt hàng mới</h2>
 					</div>
 				</div>
 			</div>
@@ -602,21 +536,19 @@
 										<span class="out-of-stock">New</span>
 									</a>
 									<div class="button-head">
-										<div class="product-action">
-											<a title="Quick View"
-												th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"><i
-													class=" ti-eye"></i><span>Quick Shop</span></a>
-											<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
-													Wishlist</span></a>
-											<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
-													Compare</span></a>
-										</div>
-										<div class="product-action-2">
-											<a title="Add to cart"
-												th:href="@{|/Addtocart/${newProductItem.idProduct}|}">Add to
-												cart</a>
-										</div>
-									</div>
+	                                    <div class="product-action">
+	                                        <a title="Quick View"
+	                                           th:href="@{'/detailproduct/'+${newProductItem.idProduct}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+	                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
+	                                                Wishlist</span></a>
+	                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
+	                                                Compare</span></a>
+	                                    </div>
+	                                    <div class="product-action-2">
+	                                        <a title="Add to cart" th:href="@{|/Addtocart/${newProductItem.idProduct}|}">Add to
+	                                            cart</a>
+	                                    </div>
+	                                </div>
 								</div>
 								<div class="product-content">
 									<h3>
@@ -624,10 +556,10 @@
 											th:text="${newProductItem.name}"></a>
 									</h3>
 									<div class="product-price">
-										<span
-											th:text="${#numbers.formatDecimal(newProductItem.price, 0, 'COMMA', 0, 'POINT')+' VND'}"></span>
+										<span th:text="${#numbers.formatDecimal(newProductItem.price, 0, 'COMMA', 0, 'POINT')+' VND'}"></span>
 									</div>
 								</div>
+							</div>
 						</th:block>
 						<!-- End Single Product -->
 
@@ -649,15 +581,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" >
 				<div class="col-lg-4 col-md-6 col-12" th:each="newNews : ${list3News}">
 					<!-- Start Single Blog  -->
 					<div class="shop-single-blog">
 						<img th:src="@{'../imageNews/'+${newNews.thumnail}}" alt="#" width="250px">
 						<div class="content">
 							<p class="date">24 July, 2020. Monday</p>
-							<a th:href="@{'/news/'+${newNews.idNews}}" class="title" th:text="${newNews.header}"></a> <a
-								href="#" class="more-btn">Tiếp tục đọc</a>
+							<a th:href="@{'/news/'+${newNews.idNews}}" class="title" th:text="${newNews.header}"></a> <a href="#"
+								class="more-btn">Tiếp tục đọc</a>
 						</div>
 					</div>
 					<!-- End Single Blog  -->
@@ -712,14 +644,15 @@
 	</section>
 	<!-- End Shop Services Area -->
 
-
+	
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
 						<span class="ti-close" aria-hidden="true"></span>
 					</button>
 				</div>
@@ -727,19 +660,18 @@
 					<div class="row no-gutters">
 						<div class="col-lg-6 offset-lg-3 col-12">
 							<h4
-								style="margin-top: 100px; font-size: 14px; font-weight: 500; color: #F7941D; display: block; margin-bottom: 5px;">
-								Eshop
+								style="margin-top: 100px; font-size: 14px; font-weight: 500; color: #F7941D; display: block; margin-bottom: 5px;">Eshop
 								Free Lite</h4>
 							<h3 style="font-size: 30px; color: #333;">
 								Currently You are using free lite Version of Eshop.
 								<h3>
 									<p
-										style="display: block; margin-top: 20px; color: #888; font-size: 14px; font-weight: 400;">
-										Please,
+										style="display: block; margin-top: 20px; color: #888; font-size: 14px; font-weight: 400;">Please,
 										purchase full version of the template to get all pages,
 										features and commercial license</p>
 									<div class="button" style="margin-top: 30px;">
-										<a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/"
+										<a
+											href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/"
 											target="_blank" class="btn" style="color: #fff;">Buy Now!</a>
 									</div>
 						</div>
@@ -749,10 +681,8 @@
 		</div>
 	</div>
 	<!-- Modal end -->
-	</div>
-	<!-- Modal end -->
-
-	<!-- Start Footer Area -->
+	
+<!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->
 		<div class="footer-top section">
@@ -764,10 +694,10 @@
 							<div class="logo">
 								<a href="index.html"><img src="/image/logo2.png" alt="#"></a>
 							</div>
-							<p class="text">Web mua bán ốp điện thoại, ốp tai phone.
-								Thời trang - bền - rẻ - đẹp - chất lượng.
-								Chúng tôi rất vui lòng được phục vụ quý khách hàng.
-							</p>
+							<p class="text">Web mua bán ốp điện thoại, ốp tai phone. 
+							Thời trang - bền - rẻ - đẹp - chất lượng.
+							Chúng tôi rất vui lòng được phục vụ quý khách hàng.
+							Love you <3 </p>
 							<p class="call">
 								Có câu hỏi không? gọi chúng tôi 24/7<span><a href="tel:123456789">+0123
 										456 789</a></span>
@@ -810,7 +740,7 @@
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>395 Phan Văn Trị </li>
+									<li>395 Phan Văn Trị  </li>
 									<li>Phường 11 Bình Thạnh</li>
 									<li>Icase</li>
 									<li>+032 3456 7890</li>
@@ -837,8 +767,8 @@
 						<div class="col-lg-6 col-12">
 							<div class="left">
 								<p>
-									Copyright © 2021 by Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh
-									Sang.
+									Copyright © 2021 <a href="http://www.wpthemesgrid.com"
+										target="_blank">Wpthemesgrid</a> - Lê Anh Đức - Nguyễn Hoàng Quân - Phạm Minh Sang.
 								</p>
 							</div>
 						</div>
@@ -854,43 +784,43 @@
 	</footer>
 	<!-- /End Footer Area -->
 	<script>
-		function openModal() {
-			document.getElementById("myModal").style.display = "block";
-		}
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
 
-		function closeModal() {
-			document.getElementById("myModal").style.display = "none";
-		}
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
 
-		var slideIndex = 1;
-		showSlides(slideIndex);
+var slideIndex = 1;
+showSlides(slideIndex);
 
-		function plusSlides(n) {
-			showSlides(slideIndex += n);
-		}
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
 
-		function currentSlide(n) {
-			showSlides(slideIndex = n);
-		}
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
-		function showSlides(n) {
-			var i;
-			var slides = document.getElementsByClassName("mySlides");
-			var dots = document.getElementsByClassName("demo");
-			var captionText = document.getElementById("caption");
-			if (n > slides.length) { slideIndex = 1 }
-			if (n < 1) { slideIndex = slides.length }
-			for (i = 0; i < slides.length; i++) {
-				slides[i].style.display = "none";
-			}
-			for (i = 0; i < dots.length; i++) {
-				dots[i].className = dots[i].className.replace(" active", "");
-			}
-			slides[slideIndex - 1].style.display = "block";
-			dots[slideIndex - 1].className += " active";
-			captionText.innerHTML = dots[slideIndex - 1].alt;
-		}
-	</script>
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
 	<!-- Jquery -->
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery-migrate-3.0.0.js"></script>
@@ -924,6 +854,4 @@
 	<!-- Active JS -->
 	<script src="/js/active.js"></script>
 </body>
-
-
 </html>
