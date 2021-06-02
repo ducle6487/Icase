@@ -281,7 +281,7 @@
 								<th>Sản phẩm</th>
 								<th>Tên</th>
 								<th class="text-center">Đơn giá</th>
-								<th class="text-center">Mã thiết bị</th>
+								<th class="text-center">Tên thiết bị</th>
 								<th class="text-center">Số lượng</th>
 								<th class="text-center">Màu</th>
 								<th class="text-center">Tổng giá trị</th>
@@ -299,6 +299,12 @@
 								</td>
 								<td class="price" data-title="Price"><span
 										th:text="${#numbers.formatDecimal(cart.getPrice, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$110.00
+									</span>
+								</td>
+								<td class="device" data-title="Device">
+									<span th:each="phone : ${listPhones}"
+										th:unless="${phone.getIdphone != cart.getPhone}"
+										th:text="${phone.namephone}">$110.00
 									</span>
 								</td>
 								<td class="qty" data-title="Qty">
