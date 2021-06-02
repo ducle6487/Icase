@@ -183,7 +183,8 @@
 									<div class="bottom">
 										<div class="total">
 											<span>tổng Tiền:</span>
-											<span class="total-amount" th:text="${CartTotal}+' đ'">$134.00</span>
+											<span class="total-amount"
+												th:text="${#numbers.formatDecimal(CartTotal, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$134.00</span>
 										</div>
 										<a th:href="@{/giohang+thanhtoan}" class="btn animate">Thanh Toán</a>
 									</div>

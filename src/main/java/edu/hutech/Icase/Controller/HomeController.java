@@ -75,7 +75,7 @@ public class HomeController {
 		model.addAttribute("man", products);
 		model.addAttribute("women", productes);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
@@ -119,7 +119,7 @@ public class HomeController {
 		model.addAttribute("man", products);
 		model.addAttribute("women", productes);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
@@ -170,7 +170,7 @@ public class HomeController {
 	@GetMapping("/ContactUs")
 	public String Contactus(Model model) {
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 		return "contactus";
 	}
@@ -199,12 +199,8 @@ public class HomeController {
 		model.addAttribute("listPhoneBrands", phonebrands);
 		model.addAttribute("listPhones", phone);
 		model.addAttribute("methodpayments", methodpayments);
-		double totalPrice = 0;
-		for (int i = 0; i < GioHang.cart.size(); i++) {
-			totalPrice += GioHang.cart.get(i).getPrice() * GioHang.cart.get(i).getSl();
-		}
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", totalPrice);
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cartship", cartship);
 		model.addAttribute("cart", GioHang.cart);
 		return "giohangvathanhtoan";
@@ -216,7 +212,7 @@ public class HomeController {
 		boolean result = false;
 		String a = user.getAddress() + "," + user.getPhuongxa() + "," + user.getQuanhuyen() + "," + user.getTinhthanh();
 		user.setAddress(a);
-		double total = GioHang.cart.stream().mapToDouble(Case::getPrice).sum() + 30000;
+		double total = GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum() + 30000;
 		char[] value1 = user.getName().toCharArray();
 		// String value = Integer.toString(user.getNumber());
 		for (char ch1 : value1) {
@@ -274,7 +270,7 @@ public class HomeController {
 	@GetMapping("/newdescription")
 	public String newdes(Model model) {
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 		return "newdescription";
 	}

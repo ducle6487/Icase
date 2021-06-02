@@ -146,4 +146,8 @@ public class Case {
 	public void setSold(int sold) {
 		this.sold = sold;
 	}
+
+	public Double getTotalPrice() {
+		return Double.valueOf(price) * sl;
+	}
 }

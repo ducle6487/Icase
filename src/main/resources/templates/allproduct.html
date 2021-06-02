@@ -121,7 +121,7 @@
 							<div class="col-xl-1 col-lg-2 col-md-2 col-8" th:each=" product : ${products}">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
+										<a th:href="'/detailproduct/'+${product.idProduct}">
 											<img class="default-img"
 												th:src="@{'../imageCase/'+${product.idProduct}+'.1.png'}" alt="#" />
 											<img class="hover-img"
@@ -156,7 +156,7 @@
 											display: -webkit-box;
 											-webkit-line-clamp: 2;
 											-webkit-box-orient: vertical;min-height: 50px;" id="nameproduct"
-												th:href="@{'/admin/product-edit&id='+${product.idProduct}}"
+												th:href="'/detailproduct/'+${product.idProduct}"
 												th:text="${product.nameProduct}"></a>
 										</h3>
 										<div class="product-price">

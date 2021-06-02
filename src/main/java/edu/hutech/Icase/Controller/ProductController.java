@@ -49,7 +49,7 @@ public class ProductController {
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("list3News", list3NewNews);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
@@ -73,7 +73,7 @@ public class ProductController {
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("list3News", list3NewNews);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
@@ -104,7 +104,7 @@ public class ProductController {
 		model.addAttribute("filter", filter);
 		model.addAttribute("filterStr", searchText);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
@@ -138,7 +138,7 @@ public class ProductController {
 		model.addAttribute("filter", filter);
 		model.addAttribute("filterStr", phoneName);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
@@ -162,7 +162,7 @@ public class ProductController {
 		model.addAttribute("filter", filter);
 		model.addAttribute("filterStr", namePhone);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 		return "product";
 	}
@@ -198,7 +198,7 @@ public class ProductController {
 		model.addAttribute("filter", filter);
 		model.addAttribute("filterStr", phoneBrandName);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "product";
@@ -234,7 +234,7 @@ public class ProductController {
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("list3News", list3NewNews);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 		model.addAttribute("defaultvalue", "1");
 
@@ -252,7 +252,7 @@ public class ProductController {
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "About";
@@ -273,7 +273,7 @@ public class ProductController {
 		model.addAttribute("listNews", listNews);
 		model.addAttribute("new5Products", new5Products);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "news";
@@ -292,7 +292,7 @@ public class ProductController {
 		model.addAttribute("news", news);
 		model.addAttribute("new5Products", new5Products);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "newsdetail";
@@ -309,7 +309,7 @@ public class ProductController {
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "redirect:/introduce";
@@ -323,7 +323,7 @@ public class ProductController {
 		model.addAttribute("listPhones", listPhones);
 		model.addAttribute("listPhoneBrands", listPhoneBrands);
 		model.addAttribute("cartcount", GioHang.cart.size());
-		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getPrice).sum());
+		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
 
 		return "contact";

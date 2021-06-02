@@ -163,7 +163,7 @@
 											<h4><a href="#" th:text="${giohang.getName}">Woman Ring</a></h4>
 											<p class="quantity"><span th:text="${giohang.getSl}+'x'"></span> - <span
 													class="amount"
-													th:text="${giohang.getPrice}*${giohang.getSl}+' đ'">$99.00</span>
+													th:text="${#numbers.formatDecimal(giohang.getPrice*giohang.getSl, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$99.00</span>
 											</p>
 										</li>
 
@@ -179,7 +179,8 @@
 									<div class="bottom">
 										<div class="total">
 											<span>tổng Tiền:</span>
-											<span class="total-amount" th:text="${CartTotal}+' đ'">$134.00</span>
+											<span class="total-amount"
+												th:text="${#numbers.formatDecimal(CartTotal, 0, 'COMMA', 0, 'POINT')+ ' VNĐ'}">$134.00</span>
 										</div>
 										<a th:href="@{/giohang+thanhtoan}" class="btn animate">Thanh Toán</a>
 									</div>
