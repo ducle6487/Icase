@@ -61,7 +61,7 @@ public class ProductController {
 		List<ProductModel> productsList = prodService.get32ProductsWithLocalPack(Integer.parseInt(id) - 1,
 				prodService.getAllProduct());
 		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
-		List<Integer> listNumPages = prodService.NumberPage(productsList);
+		List<Integer> listNumPages = prodService.NumberPage(prodService.getAllProduct());
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 		List<NewsModel> list3NewNews = prodService.getList3NewNews();
