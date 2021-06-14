@@ -216,8 +216,6 @@ public class AdminControler {
 		List<String> listSelectedPhone = adminService.convertArrayToList(phones);
 		List<String> listSelectedColor = adminService.convertArrayToList(colors);
 
-		String path = Paths.get("").toFile().getAbsolutePath();
-
 		// path + "/src/main/resources/static/temp/a.png"
 		if (adminService.getIdBrandByNameBrand(product.phonebrand) == -1) {
 			// add new phone brand and phone
@@ -260,10 +258,15 @@ public class AdminControler {
 				}
 			}
 			if (files.length > 0) {
+
+				String path = Paths.get("").toFile().getAbsolutePath();
 				for (int i = 0; i < files.length; i++) {
-					files[i].transferTo(
-							new File(path + "/src/main/resources/static/imageCase/" + files[i].getOriginalFilename()));
-					adminService.addNewImage(files[i].getOriginalFilename(), idproduct);
+					if (!files[i].getOriginalFilename().equals("")) {
+						files[i].transferTo(new File(
+								path + "/src/main/resources/static/imageCase/" + files[i].getOriginalFilename()));
+						System.out.println(files[i].getOriginalFilename());
+						adminService.addNewImage(files[i].getOriginalFilename(), idproduct);
+					}
 				}
 			}
 		}
