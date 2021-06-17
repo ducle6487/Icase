@@ -2,6 +2,9 @@ package edu.hutech.Icase.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,8 +36,12 @@ public class ProductController {
 	@Autowired
 	ProductService prodService;
 
+	@Autowired
+	HttpSession session;
+
 	@GetMapping("/product")
 	public String product(Model model) {
+		session.setAttribute("username", null);
 		List<ProductModel> productsList = prodService.get32ProductsWithLocalPack(0, prodService.getAllProduct());
 		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
 		List<Integer> listNumPages = prodService.NumberPage(prodService.getAllProduct());
@@ -57,6 +64,7 @@ public class ProductController {
 
 	@GetMapping("/product/{id}")
 	public String productPageNumber(@PathVariable String id, Model model) {
+		session.setAttribute("username", null);
 		System.out.println("Ok");
 		List<ProductModel> productsList = prodService.get32ProductsWithLocalPack(Integer.parseInt(id) - 1,
 				prodService.getAllProduct());
@@ -81,6 +89,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/product/search", method = RequestMethod.POST)
 	public String searchProductWithName(@RequestParam("searchText") String searchText, Model model) {
+		session.setAttribute("username", null);
 		List<ProductModel> productsList = null;
 		productsList = prodService.getListProductsAfterSearch(searchText);
 		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
@@ -112,6 +121,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/product/phone", method = RequestMethod.POST)
 	public String filterProductWithPhoneName(@RequestParam("phone") String phoneName, Model model) {
+		session.setAttribute("username", null);
 		List<ProductModel> productsList = null;
 		if (phoneName.equals("---*---")) {
 			return "redirect:/product";
@@ -146,6 +156,7 @@ public class ProductController {
 
 	@GetMapping("/product/phone={id}")
 	public String findProductByPhoneId(@PathVariable String id, Model model) {
+		session.setAttribute("username", null);
 		List<ProductModel> productsList = prodService.getListProductsAfterFilterWithPhoneId(Integer.parseInt(id));
 		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
 		List<PhoneModel> listPhones = prodService.getAllPhone();
@@ -169,6 +180,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/product/phonebrand", method = RequestMethod.POST)
 	public String filterProductWithPhoneBrandName(@RequestParam("phoneBrand") String phoneBrandName, Model model) {
+		session.setAttribute("username", null);
 		if (phoneBrandName.equals("---*---")) {
 			return "redirect:/product";
 		}
@@ -246,6 +258,7 @@ public class ProductController {
 	//
 	@GetMapping("/about")
 	public String About(Model model) {
+		session.setAttribute("username", null);
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 
@@ -263,6 +276,7 @@ public class ProductController {
 	//
 	@GetMapping("/news")
 	public String news(Model model) {
+		session.setAttribute("username", null);
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 		List<NewsModel> listNews = prodService.getListNews();
@@ -281,6 +295,7 @@ public class ProductController {
 
 	@GetMapping("/news/{id}")
 	public String newsDetail(@PathVariable String id, Model model) {
+		session.setAttribute("username", null);
 		List<ProductModel> new5Products = prodService.get5EndOfProducts(prodService.getAllProduct());
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
@@ -303,6 +318,7 @@ public class ProductController {
 	//
 	@GetMapping("/introduct")
 	public String introduct(Model model) {
+		session.setAttribute("username", null);
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 
@@ -317,6 +333,7 @@ public class ProductController {
 
 	@GetMapping("/introduce")
 	public String intro(Model model) {
+		session.setAttribute("username", null);
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 

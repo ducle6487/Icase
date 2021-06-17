@@ -148,19 +148,19 @@ public class AdminService {
     }
 
     public List<OrderHistoryModel> getAllOrderHistory() {
-        String sql = "select a.IdOrder as idorder, b.Name as namecustomer, Phone as phone, Address as address, DateOrder as dateorder, Message as message, c.NameMethod as methodpayment, e.name as paymentstatus, d.name as deliverystatus from history a, orders b, methodpayment c, DeliveryStatus d, PaymentStatus e where a.IdOrder = b.idOrder and a.IdMethod = c.IdMethod and d.idStatus = a.IdStatusDelivery and e.idStatus = a.idStatusPayment";
+        String sql = "select a.IdOrder as idorder, b.Name as namecustomer, Phone as phone, Address as address, DateOrder as dateorder, Message as message, c.NameMethod as methodpayment, e.name as paymentstatus, d.name as deliverystatus, b.Total as totalprice from history a, orders b, methodpayment c, DeliveryStatus d, PaymentStatus e where a.IdOrder = b.idOrder and a.IdMethod = c.IdMethod and d.idStatus = a.IdStatusDelivery and e.idStatus = a.idStatusPayment";
         return jdbcTemplate.query(sql, new OrderHistoryRowMapper());
     }
 
     public List<OrderHistoryModel> getRecent24hOrderHistory() {
 
-        String sql = "select distinct a.IdOrder as idorder, b.Name as namecustomer, Phone as phone, Address as address, DateOrder as dateorder, Message as message, c.NameMethod as methodpayment, e.name as paymentstatus, d.name as deliverystatus from history a, orders b, methodpayment c, DeliveryStatus d, PaymentStatus e where a.IdOrder = b.idOrder and a.IdMethod = c.IdMethod and d.idStatus = a.IdStatusDelivery and e.idStatus = a.idStatusPayment and DateOrder >= DATEADD(day, -1, GETDATE()) order by dateorder";
+        String sql = "select distinct a.IdOrder as idorder, b.Name as namecustomer, Phone as phone, Address as address, DateOrder as dateorder, Message as message, c.NameMethod as methodpayment, e.name as paymentstatus, d.name as deliverystatus, b.Total as totalprice from history a, orders b, methodpayment c, DeliveryStatus d, PaymentStatus e where a.IdOrder = b.idOrder and a.IdMethod = c.IdMethod and d.idStatus = a.IdStatusDelivery and e.idStatus = a.idStatusPayment and DateOrder >= DATEADD(day, -1, GETDATE()) order by dateorder";
         return jdbcTemplate.query(sql, new OrderHistoryRowMapper());
 
     }
 
     public List<OrderHistoryModel> getAllOrderHistoryByIdOrder(int idorder) {
-        String sql = "select a.IdOrder as idorder, b.Name as namecustomer, Phone as phone, Address as address, DateOrder as dateorder, Message as message, c.NameMethod as methodpayment, e.name as paymentstatus, d.name as deliverystatus from history a, orders b, methodpayment c, DeliveryStatus d, PaymentStatus e where a.IdOrder = b.idOrder and a.IdMethod = c.IdMethod and d.idStatus = a.IdStatusDelivery and e.idStatus = a.idStatusPayment and a.IdOrder = ?";
+        String sql = "select a.IdOrder as idorder, b.Name as namecustomer, Phone as phone, Address as address, DateOrder as dateorder, Message as message, c.NameMethod as methodpayment, e.name as paymentstatus, d.name as deliverystatus, b.Total as totalprice from history a, orders b, methodpayment c, DeliveryStatus d, PaymentStatus e where a.IdOrder = b.idOrder and a.IdMethod = c.IdMethod and d.idStatus = a.IdStatusDelivery and e.idStatus = a.idStatusPayment and a.IdOrder = ?";
 
         return jdbcTemplate.query(sql, new OrderHistoryRowMapper(), idorder);
     }
@@ -281,7 +281,7 @@ public class AdminService {
         System.out.println(mondayStr);
         System.out.println(todayStr);
 
-        String sql = "select sum(Total) as sumtotal from orders where DateOrder >= ? and DateOrder <= GETDATE()";
+        String sql = "select sum(Total) as sumtotal from orders a, history b where DateOrder >= ? and DateOrder <= GETDATE() and a.IdOrder = b.IdOrder and b.IdStatusDelivery = 3";
 
         List<Long> ls = jdbcTemplate.query(sql, new RowMapper<Long>() {
 
@@ -304,7 +304,7 @@ public class AdminService {
         LocalDate today = LocalDate.now();
         String todayStr = today.format(DateTimeFormatter.ofPattern("MM"));
 
-        String sql = "select sum(Total) as sumtotal from orders where MONTH(DateOrder)=?";
+        String sql = "select sum(Total) as sumtotal from orders a, history b where MONTH(DateOrder)=? and a.IdOrder = b.IdOrder and b.IdStatusDelivery = 3";
 
         List<Long> ls = jdbcTemplate.query(sql, new RowMapper<Long>() {
 
@@ -327,7 +327,7 @@ public class AdminService {
         LocalDate today = LocalDate.now();
         String todayStr = today.format(DateTimeFormatter.ofPattern("yyyy"));
 
-        String sql = "select sum(Total) as sumtotal from orders where YEAR(DateOrder)=?";
+        String sql = "select sum(Total) as sumtotal from orders a, history b where YEAR(DateOrder)=? and a.IdOrder = b.IdOrder and b.IdStatusDelivery = 3";
 
         List<Long> ls = jdbcTemplate.query(sql, new RowMapper<Long>() {
 

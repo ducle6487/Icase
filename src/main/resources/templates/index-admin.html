@@ -113,8 +113,8 @@
 							<a th:href="@{/admin/all-order}" class=""><i class="lnr lnr-file-empty"></i> <span>Đơn
 									hàng</span></i></a>
 						</li>
-						<li><a th:href="@{/admin/product-edit}" class=""><i class="lnr lnr-code"></i> <span>Cập nhật đơn
-									hàng</span></a></li>
+						<li><a th:href="@{/admin/product-edit}" class=""><i class="lnr lnr-code"></i> <span>Cập nhật sản
+									phẩm</span></a></li>
 
 					</ul>
 				</nav>
@@ -142,22 +142,22 @@
 									<div class="weekly-summary text-right">
 										<span class="number">[[${amountthisweek}]]</span><span class="percentage"></i>
 											đơn hàng</span>
-										<span class="info-label">Tổng số đơn hàng đã bán tuần này</span>
+										<span class="info-label">Tổng số đơn hàng đã đặt tuần này</span>
 									</div>
 									<div class="weekly-summary text-right">
 										<span class="number">[[${pricethisweek}]]</span><span class="percentage"></i>
 											VNĐ</span>
-										<span class="info-label">Lợi nhuận tuần này</span>
+										<span class="info-label">Doanh thu tuần này</span>
 									</div>
 									<div class="weekly-summary text-right">
 										<span class="number">[[${amountthismonth}]]</span><span class="percentage"></i>
 											đơn hàng</span>
-										<span class="info-label">Tổng số đơn hàng đã bán tháng [[${thismonth}]]</span>
+										<span class="info-label">Tổng số đơn hàng đã đặt tháng [[${thismonth}]]</span>
 									</div>
 									<div class="weekly-summary text-right">
 										<span class="number">[[${pricethismonth}]]</span><span class="percentage"></i>
 											VNĐ</span>
-										<span class="info-label">Lợi nhuận tháng [[${thismonth}]]</span>
+										<span class="info-label">Doanh thu tháng [[${thismonth}]]</span>
 									</div>
 								</div>
 							</div>
@@ -179,12 +179,12 @@
 										<span class="number">[[${amountthisyear}]]</span><span
 											class="percentage"></span> đơn
 										hàng</span>
-										<span class="info-label">Tổng số đơn hàng đã bán năm 2021</span>
+										<span class="info-label">Tổng số đơn hàng đã đặt năm 2021</span>
 									</div>
 									<div class="weekly-summary text-right">
 										<span class="number">[[${pricethisyear}]]</span><span class="percentage"></i>
 											VNĐ</span>
-										<span class="info-label">Tổng lợi nhuận năm 2021</span>
+										<span class="info-label">Doanh thu năm 2021</span>
 									</div>
 
 								</div>
@@ -215,9 +215,10 @@
 												<th onclick="sortTable(3)">Địa chỉ</th>
 												<th onclick="sortTable(4)">Ngày đặt</th>
 												<th onclick="sortTable(5)">Lời nhắn</th>
-												<th onclick="sortTable(6)">Phương thức thanh toán</th>
-												<th onclick="sortTable(7)">Trạng thái thanh toán</th>
-												<th onclick="sortTable(8)">Trạng thái vận chuyển</th>
+												<th onclick="sortTable(6)">Tổng giá trị</th>
+												<th onclick="sortTable(7)">Phương thức thanh toán</th>
+												<th onclick="sortTable(8)">Trạng thái thanh toán</th>
+												<th onclick="sortTable(9)">Trạng thái vận chuyển</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -228,6 +229,9 @@
 												<td th:text="${ord.address}"></td>
 												<td th:text="${ord.dateorder}"></td>
 												<td th:text="${ord.message}"></td>
+												<td
+													th:text="${#numbers.formatDecimal(ord.totalPrice, 0, 'COMMA', 0, 'POINT')}">
+												</td>
 												<td th:text="${ord.methodpayment}"></td>
 												<td th:switch="${ord.paymentstatus}">
 													<span th:case="'Chưa thanh toán'" th:text="${ord.paymentstatus}"

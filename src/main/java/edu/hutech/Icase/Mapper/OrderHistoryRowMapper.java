@@ -22,6 +22,7 @@ public class OrderHistoryRowMapper implements RowMapper<OrderHistoryModel> {
         ord.setMethodpayment(rs.getString("methodpayment"));
         ord.setPaymentstatus(rs.getString("paymentstatus"));
         ord.setDeliverystatus(rs.getString("deliverystatus"));
+        ord.setTotalPrice(rs.getLong("totalprice"));
         return ord;
     }
 

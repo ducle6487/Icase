@@ -171,12 +171,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Trạng thái</label>
                                             <div class="col-sm-3">
-                                                <label class="control-label small" for="date_start">Thanh toán: </label>
+                                                <label class="control-label small" for="date_start">Vận chuyển:</label>
                                                 <input disabled th:value="${order.deliverystatus}" type="text"
                                                     class="form-control" name="date_start" id="date_start">
                                             </div>
                                             <div class="col-sm-3">
-                                                <label class="control-label small" for="date_finish">Vận chuyển:</label>
+                                                <label class="control-label small" for="date_finish">Thanh toán:
+                                                </label>
                                                 <input disabled th:value="${order.paymentstatus}" type="text"
                                                     class="form-control" name="date_finish" id="date_finish">
                                             </div>
@@ -254,7 +255,8 @@
                                                 </td>
                                                 <td th:text="${inf.color}"></td>
                                                 <td th:text="${inf.phone}"></td>
-                                                <td><a th:href="'#'">Chi tiết ></a></td>
+                                                <td><a th:href="@{'/detailproduct/'+${inf.idproduct}}">Chi tiết ></a>
+                                                </td>
                                             </tr>
 
                                         </tbody>

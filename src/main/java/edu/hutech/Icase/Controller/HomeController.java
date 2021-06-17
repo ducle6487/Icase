@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -38,8 +40,14 @@ public class HomeController {
 	@Autowired
 	ProductService prodService;
 
+	@Autowired
+	HttpSession session;
+
 	@GetMapping("/home")
 	public String home(Model model) {
+
+		session.setAttribute("username", null);
+
 		List<PhoneBrand> phonebrands = jdbctemplate.query("Select * from phonebrand",
 				BeanPropertyRowMapper.newInstance(PhoneBrand.class));
 		List<Case> cases = jdbctemplate.query("select top 10  * from product order by dateadded desc",
@@ -84,6 +92,9 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home2(Model model) {
+
+		session.setAttribute("username", null);
+
 		List<PhoneBrand> phonebrands = jdbctemplate.query("Select * from phonebrand",
 				BeanPropertyRowMapper.newInstance(PhoneBrand.class));
 		List<Case> cases = jdbctemplate.query("select top 10  * from product order by dateadded desc",
@@ -128,6 +139,9 @@ public class HomeController {
 
 	@GetMapping("/giohang")
 	public String giohang(Model model) {
+
+		session.setAttribute("username", null);
+
 		List<PhoneModel> listPhones = prodService.getAllPhone();
 		List<PhoneBrandModel> listPhoneBrands = prodService.getAllPhoneBrand();
 		model.addAttribute("listPhones", listPhones);
@@ -169,6 +183,8 @@ public class HomeController {
 
 	@GetMapping("/ContactUs")
 	public String Contactus(Model model) {
+
+		session.setAttribute("username", null);
 		model.addAttribute("cartcount", GioHang.cart.size());
 		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
@@ -177,6 +193,7 @@ public class HomeController {
 
 	@GetMapping(value = "/giohang+thanhtoan")
 	public String giohangthanhtoan(Model model) {
+		session.setAttribute("username", null);
 		int cartship = 30000;
 		if (GioHang.cart.size() <= 0) {
 			List<PhoneBrand> phonebrands = jdbctemplate.query("Select * from phonebrand",
@@ -208,6 +225,7 @@ public class HomeController {
 
 	@PostMapping(path = "thanhtoan")
 	public String thanhtoan(User user, Model model) {
+		session.setAttribute("username", null);
 		System.out.println(user);
 		boolean result = false;
 		String a = user.getAddress() + "," + user.getPhuongxa() + "," + user.getQuanhuyen() + "," + user.getTinhthanh();
@@ -269,6 +287,7 @@ public class HomeController {
 
 	@GetMapping("/newdescription")
 	public String newdes(Model model) {
+		session.setAttribute("username", null);
 		model.addAttribute("cartcount", GioHang.cart.size());
 		model.addAttribute("CartTotal", GioHang.cart.stream().mapToDouble(Case::getTotalPrice).sum());
 		model.addAttribute("cart", GioHang.cart);
@@ -327,6 +346,7 @@ public class HomeController {
 
 	@GetMapping(path = "search")
 	public String search(Case product, Model model) {
+		session.setAttribute("username", null);
 		List<Case> products = jdbctemplate.query("Select * from product where name Like N'%" + product.getName() + "%'",
 				BeanPropertyRowMapper.newInstance(Case.class));
 		model.addAttribute("products", products);
@@ -336,6 +356,7 @@ public class HomeController {
 
 	@GetMapping("/Addtocart/{getIdproduct}")
 	public String AddtoCart(@PathVariable int getIdproduct) {
+		session.setAttribute("username", null);
 		int count = GioHang.cart.size();
 		boolean flagadd = false;
 		boolean flagnotadd = false;
@@ -380,6 +401,7 @@ public class HomeController {
 
 	@GetMapping("/addtocart/{getIdproduct}")
 	public String addtoCart(@PathVariable int getIdproduct) {
+		session.setAttribute("username", null);
 		int count = GioHang.cart.size();
 		System.out.println(getIdproduct);
 		boolean flagadd = false;
@@ -413,6 +435,7 @@ public class HomeController {
 
 	@GetMapping("/Remove/{getIdproduct}")
 	public String Remove(@PathVariable int getIdproduct) {
+		session.setAttribute("username", null);
 		List<Case> product = jdbctemplate.query("select  * from product where idproduct = ?",
 				BeanPropertyRowMapper.newInstance(Case.class), getIdproduct);
 		for (int i = 0; i < GioHang.cart.size(); i++) {

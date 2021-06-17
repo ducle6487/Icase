@@ -127,9 +127,10 @@
 											<th onclick="sortTable(3)">Địa chỉ</th>
 											<th onclick="sortTable(4)">Ngày đặt</th>
 											<th onclick="sortTable(5)">Lời nhắn</th>
-											<th onclick="sortTable(6)">Phương thức thanh toán</th>
-											<th onclick="sortTable(7)">Trạng thái thanh toán</th>
-											<th onclick="sortTable(8)">Trạng thái vận chuyển</th>
+											<th onclick="sortTable(6)">Tổng giá trị</th>
+											<th onclick="sortTable(7)">Phương thức thanh toán</th>
+											<th onclick="sortTable(8)">Trạng thái thanh toán</th>
+											<th onclick="sortTable(9)">Trạng thái vận chuyển</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -140,6 +141,9 @@
 											<td th:text="${ord.address}"></td>
 											<td th:text="${ord.dateorder}"></td>
 											<td th:text="${ord.message}"></td>
+											<td
+												th:text="${#numbers.formatDecimal(ord.totalPrice, 0, 'COMMA', 0, 'POINT')}">
+											</td>
 											<td th:text="${ord.methodpayment}"></td>
 											<td th:switch="${ord.paymentstatus}">
 												<span th:case="'Chưa thanh toán'" th:text="${ord.paymentstatus}"

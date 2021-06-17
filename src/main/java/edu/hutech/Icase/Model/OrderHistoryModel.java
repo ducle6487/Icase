@@ -11,6 +11,15 @@ public class OrderHistoryModel {
     public String methodpayment;
     public String paymentstatus;
     public String deliverystatus;
+    public Long totalPrice = 0l;
+
+    public Long getTotalPrice() {
+        return this.totalPrice;
+    }
+
+    public void setTotalPrice(Long totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     public int getIdorder() {
         return this.idorder;
